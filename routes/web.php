@@ -11,6 +11,9 @@ use App\Http\Controllers\website\UserController;
 use App\Http\Controllers\admin\Indexcontroller;
 use App\Http\Controllers\admin\Roomscontroller;
 use App\Http\Controllers\admin\Blogscontroller;
+use App\Http\Controllers\admin\EnquiryController;
+use App\Http\Controllers\admin\UsersController;
+
 
 ////////////////      website routes    /////////////////////
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -31,7 +34,7 @@ Route::get('/refund', [AboutController::class, 'show_refund_policy'])->name('ref
 
 /////////////////////        User section     ///////////////////////
 Route::post('/user-enquery', [UserController::class, 'user_enquery'])->name('user.enquery');
-
+Route::post('/user-subscribe', [UserController::class, 'user_subscribe'])->name('user.subscribe');
 
 
 
@@ -53,6 +56,15 @@ Route::get('/roomedit/{id}', [RoomsController::class, 'edit'])->name('roomedit')
 Route::post('/room/update', [RoomsController::class, 'room_edit'])->name('room.update');
 // Route::get('/rooms/add', [Roomscontroller::class, 'add_rooms'])->name('rooms.add');
 
+
+///////////////////////////      Room Type   ////////////////////
+Route::get('/adminroomtype', [Roomscontroller::class, 'view_room_type'])->name('adminroomtype');
+Route::post('/submit-roomtype', [Roomscontroller::class, 'room_type'])->name('room_type.store');
+Route::get('/roomtype/delete/{id}', [Roomscontroller::class, 'roomtype_delete'])->name('roomtype.delete');
+
+
+
+
 ///////////////////      Blogs and blog category section   ///////////////////////
 Route::get('/adminblogs', [Blogscontroller::class, 'view_blogs'])->name('adminblogs');
 Route::post('/submit-blog', [Blogscontroller::class, 'Blog_store'])->name('blog.store');
@@ -66,7 +78,13 @@ Route::post('/blog/update', [Blogscontroller::class, 'blog_update'])->name('blog
 
 
 //////////////////////////   Enquery ////////////////////////////
-Route::get('/adminenquery', [Indexcontroller::class, 'customer_enquery'])->name('adminenquery');
+Route::get('/adminenquery', [EnquiryController::class, 'customer_enquery'])->name('adminenquery');
+Route::get('/enquirydelete/{id}', [EnquiryController::class, 'enquiry_delete'])->name('enquirydelete');
 
 
+//////////////////////      Review Section  /////////////////////
+Route::get('/adminreview', [UsersController::class, 'customer_review'])->name('adminreview');
+
+/////////////////////        Payment Section  //////////////////////
+Route::get('/adminpayment', [UsersController::class, 'customer_payment'])->name('adminpayment');
 

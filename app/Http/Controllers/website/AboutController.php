@@ -11,7 +11,7 @@ class AboutController extends Controller
       return view("website.about");
     }
 
-    public function show_policy_policy(){
+    public function show_privacy_policy(){
       return view('website.privacy-policy');
     }
      public function show_refund_policy(){

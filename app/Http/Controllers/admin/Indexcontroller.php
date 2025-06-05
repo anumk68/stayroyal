@@ -10,15 +10,18 @@ use App\Models\Room;
 use App\Models\Metatype;
 use App\Models\Meta;
 use App\Models\Enquiry;
+use App\Models\Review;
 
 class Indexcontroller extends Controller
 { 
     public function index(){  
+      $reviews = Review::all();
       $rooms = Room::all();
       $blogs = Blog::all();
       $bookings = Booking::all();
-      $enquiries = Enquiry::all();
-      return view("admin.index", compact('rooms', 'blogs', 'bookings','enquiries'));
+      $enquiries = Enquiry::where('Is_subscribe', 0)->get();
+      $subscribers = Enquiry::where('Is_subscribe', 1)->get();
+      return view("admin.index", compact('rooms', 'blogs', 'bookings','enquiries','subscribers','reviews'));
     }
 
     public function meta_setting(Request $request){

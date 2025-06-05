@@ -70,11 +70,17 @@
 						<h4>Newsletter</h4>
 					</div>
 					<p>Subscribe our Newsletter</p>
-					<form action="#">
+					 <form action="{{ route('user.subscribe') }}" method="POST">
+				        @csrf
+						<input type="hidden" name="Is_subscribe"  value="1">
 						<div class="single-newsletter-box">
-							<input type="text" name="Email" placeholder="Enter E-Mail" required>
-							<button type="submit">Subscribe Now</button>
-						</div>
+							<input type="text" name="email" placeholder="Enter E-Mail" value="{{ old('email') }}">
+                         	<button type="submit">Subscribe Now</button>
+							 {{-- Show validation error under the input --}}
+							  @if ($errors->has('email'))
+                          <div class="error-message" style="color: red; margin-top: 5px;">{{ $errors->first('email') }}</div>
+                             @endif
+               	</div>
 					</form>
 				</div>
 			</div>

@@ -120,15 +120,15 @@
 
         <label for="size">Size (sq ft):</label>
         <input type="number" id="size" name="size" min="0" required />
-           <label for="roomType">Room Type:</label>
-        <select id="room_type" name="room_type" required>
-          <option value="" disabled selected>Select room type</option>
-          <option value="Single">Room</option>
-          <option value="Double">House</option>
-          <option value="Suite">Villa</option>
-          <option value="Deluxe">Apartment</option>
+
+          <label for="room_type">Room Type:</label>
+         <select id="room_type" name="room_type" required>
+        <option value="" disabled selected>Select Room Type</option>
+          @foreach ($roomtypes as $roomtype)
+            <option value="{{ $roomtype->id }}">{{ $roomtype->room_type }}</option>
+          @endforeach
         </select>
-         <label for="room_image">Room Image :</label>
+        <label for="room_image">Room Image :</label>
         <input type="file" id="room_image" name="room_image"  required />
 
         <button type="submit">Add Room</button>

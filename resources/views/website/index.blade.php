@@ -79,27 +79,29 @@
 <div class="booking-area home-1">
 	<div class="container">
 		<form action="https://formspree.io/f/myyleorq" method="POST" id="dreamit-form">
+			@csrf
 			<div class="row add-bg align-items-center">
 				<div class="booking-input-box">
 					<h4>Check In</h4>
-					<input type="date" required>
+					<input type="date" id="start_date" name="start_date" required>
 				</div>
 				<div class="booking-input-box">
 					<h4>Check Out</h4>
-					<input type="date" required>
+					<input type="date" id="end_date" name="end_date" required>
 				</div>
 				<div class="booking-input-box">
 					<h4>Rooms</h4>
-					<select name="place" id="place">
-						<option value="saab">01 Rooms</option>
-						<option value="opel">02 Rooms</option>
-						<option value="audi">03 Rooms</option>
-						<option value="audi">04 Rooms</option>
-					</select>
+					  <select id="room_type" name="room_type" required>
+                        <option value="" disabled selected>Select Room</option>
+                         @foreach ($roomtypes as $roomtype)
+                      <option value="{{ $roomtype->id }}">{{ $roomtype->room_type }}</option>
+                       @endforeach
+                      </select>
+
 				</div>
 				<div class="booking-input-box upper">
 					<h4>Guests</h4>
-					<select name="place" id="place">
+					<select name="place" id="total_days" name="total_days">
 						<option value="saab">01 Adult, 0 Child</option>
 						<option value="opel">02 Adult, 1 Child</option>
 						<option value="audi">02 Adult, 2 Child</option>

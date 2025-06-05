@@ -11,5 +11,6 @@ class Enquiry extends Model
         'email',
         'subject',
         'message',
+        'Is_subscribe',
       ];
 }

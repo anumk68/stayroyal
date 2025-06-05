@@ -170,7 +170,7 @@ $(document).ready(function() {
       subject: $('#subject').val(),
       message: $('#message').val().trim()
     };
-console.log(formData);
+
     // Send AJAX
     $.ajax({
       url: "{{ route('user.enquery') }}",

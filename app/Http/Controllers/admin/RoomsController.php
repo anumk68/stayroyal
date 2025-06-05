@@ -6,12 +6,15 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Room;
 use App\Models\Booking;
+use App\Models\Roomtype;
+use Illuminate\Support\Facades\Validator;
 
 class RoomsController extends Controller
 {
      public function view_rooms(){
+       $roomtypes = Roomtype::all();
        $rooms = Room::all();
-       return view("admin.rooms.index", compact('rooms'));
+       return view("admin.rooms.index", compact('rooms','roomtypes'));
      }
      
     public function room_delete(Request $request, $id)
@@ -87,5 +90,31 @@ class RoomsController extends Controller
     $room->room_type = $validated['room_type'];
     $room->save();
     return redirect()->route('adminroom')->with('success', 'Room updated successfully!');
+    }
+
+    public function view_room_type(){
+      $roomtypes = Roomtype::all();
+      return view('admin.roomType.index', compact('roomtypes'));
+    }
+
+    public function room_type(Request $request){ 
+      $validator = Validator::make($request->all(), [
+        'room_type' => 'required|string|max:255|min:4',
+        ]);
+        if ($validator->fails()) { 
+        return back()
+            ->withErrors($validator) 
+            ->withInput();
+       } 
+        Roomtype::create([
+        'room_type' => $request->room_type,
+       ]);
+        return back()->with('success', 'Room Type Add Sucessfully');
+    }
+
+    public function roomtype_delete(Request $request, $id){
+        $roomtype = Roomtype::findOrFail($id); 
+        $roomtype->delete();
+        return redirect()->route('adminroomtype')->with('success', 'Delete successfully.');
     }
 }

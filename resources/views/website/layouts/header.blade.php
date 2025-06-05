@@ -62,8 +62,11 @@
 	<script src="{{ asset('assets/js/vendor/modernizr-3.5.0.min.js') }}"></script>
 </head>
 <body>
-
-
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
 <!--==================================================-->
 <!-- Start Royella Header Area -->
 <!--==================================================-->

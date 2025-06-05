@@ -137,33 +137,66 @@
 				</div>	
 			</div>
 			<div class="col-lg-6 col-md-12">
-				<form action="https://formspree.io/f/myyleorq" method="POST" id="dreamit-form">
-					<div class="single-contact-form" data-cue="zoomIn">
-						<div class="contact-content">
-							<h4>Get In Touch</h4>
-						</div>
-						<div class="single-input-box">
-							<input type="text" name="Name" placeholder="Your Name" required>
-						</div>
-						<div class="single-input-box">
-							<input type="text" name="Email" placeholder="Enter Your Email" required>
-						</div>
-						<div class="single-input-box">
-					        <select name="Subject" id="Subject">
-					        	<option value="saab">select Subject</option>
-					        	<option value="opel">Luxury Hotel</option>
-					        	<option value="audi">Room</option>
-					        	<option value="audi">Hottel</option>
-					        </select>
-						</div>
-						<div class="single-input-box">
-							<textarea name="Message" id="Message" placeholder="Write Message"></textarea>
-						</div>
-						<div class="single-input-box">
-							<button type="submit">Sent Message</button>
-						</div>
-					</div>
-				</form>
+				 <form action="{{ route('user.enquery') }}" method="POST" id="dreamit-form">
+                @csrf
+              <div class="single-contact-form">
+            <div class="contact-content">
+              <h4>Get In Touch</h4>
+                 </div>
+
+                 <div class="single-input-box">
+              <input type="text" name="name" id="name" placeholder="Your Name" required>
+              <div class="error-msg text-danger" id="name-error"></div>
+               </div>
+                 @if ($errors->has('name'))
+               <div class="error-message" style="color: red; margin-top: 5px; text-align: left;">
+                 {{ $errors->first('name') }}
+              </div>
+             @endif
+ 
+           <div class="single-input-box">
+               <input type="email" name="email" id="email" placeholder="Enter Your Email" required>
+                <div class="error-msg text-danger" id="email-error"></div>
+                </div>
+				  @if ($errors->has('email'))
+                <div class="error-message" style="color: red; margin-top: 5px; text-align: left;">
+                 {{ $errors->first('email') }}
+              </div>
+             @endif
+
+             <div class="single-input-box">
+             <select name="subject" id="subject">
+               <option value="">Select Subject</option>  <!-- value="" -->
+               <option value="Luxury Hotel">Luxury Hotel</option>
+              <option value="Room">Room</option>
+              <option value="Hotel">Hotel</option>
+              </select>
+          <div class="error-msg text-danger" id="subject-error"></div>
+            </div>
+			  @if ($errors->has('subject'))
+                 <div class="error-message" style="color: red; margin-top: 5px; text-align: left;">
+                 {{ $errors->first('subject') }}
+              </div>
+             @endif
+
+          <div class="single-input-box">
+            <textarea name="message" id="message" placeholder="Write Message" required></textarea>
+            <div class="error-msg text-danger" id="message-error"></div>
+         </div>
+		   @if ($errors->has('message'))
+                <div class="error-message" style="color: red; margin-top: 5px; text-align: left;">
+                 {{ $errors->first('message') }}
+              </div>
+             @endif
+
+         <div class="single-input-box">
+            <button type="submit">Send Message</button>
+         </div>
+
+         <div id="form-success" class="text-success mt-3"></div>
+         <div id="form-error" class="text-danger mt-3"></div>
+       </div>
+       </form>
 				<div id="status"></div>
 			</div>
 		</div>
