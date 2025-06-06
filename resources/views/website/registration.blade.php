@@ -131,68 +131,81 @@
 							</div>
 				
 							<div class="booking-item">
-								<form action="{{ route('user.details') }}" method="POST" style="max-width:900px;margin:40px auto;background:#fff;box-shadow:0 10px 25px rgba(0,0,0,0.1);padding:30px 40px;border-radius:12px;">
-                              @csrf
-							  <input type="hidden" name="id" id="id" value="{{ $details->id }}">
-                           <div style="display:flex;gap:20px;flex-wrap:wrap;">
-                             <div style="flex:1;min-width:250px;">
-                             <label for="start_date" style="font-weight:500;display:block;margin-bottom:8px;">Check-In Date</label>
-                            <input type="date" name="start_date" value="{{ $data['start_date'] }}" required
-                            style="width:100%;padding:10px 15px;border-radius:8px;border:1px solid #ccc;height:45px;">
-                            </div>
+        <!--              Personal detail  add        -->
+					<!-- Registration Form -->
+<div id="register-form" style="display:block;">
+    <form action="{{ route('user.register') }}" method="POST" style="max-width:900px; margin:40px auto; background:#fff; box-shadow:0 10px 25px rgba(0,0,0,0.1); padding:30px 40px; border-radius:12px;">
+        @csrf
+        <div style="display:flex; gap:20px; flex-wrap:wrap;">
+            <div style="flex:1; min-width:250px;">
+                <label for="user_name" style="font-weight:600; display:block; margin-bottom:6px; color:#333;">Name</label>
+                <input type="text" name="user_name" id="user_name" required
+                    style="width:100%; padding:10px 15px; border-radius:8px; border:1px solid #ccc; height:45px; font-size:16px;">
+            </div>
+            <div style="flex:1; min-width:250px;">
+                <label for="email" style="font-weight:600; display:block; margin-bottom:6px; color:#333;">Email</label>
+                <input type="email" name="email" id="email" required
+                    style="width:100%; padding:10px 15px; border-radius:8px; border:1px solid #ccc; height:45px; font-size:16px;">
+            </div>
+            <div style="flex:1; min-width:250px;">
+                <label for="phone" style="font-weight:600; display:block; margin-bottom:6px; color:#333;">Phone</label>
+                <input type="tel" name="phone" id="phone" required
+                    style="width:100%; padding:10px 15px; border-radius:8px; border:1px solid #ccc; height:45px; font-size:16px;">
+            </div>
+            <div style="flex:1; min-width:250px;">
+                <label for="address" style="font-weight:600; display:block; margin-bottom:6px; color:#333;">Address</label>
+                <input type="text" name="address" id="address" required
+                    style="width:100%; padding:10px 15px; border-radius:8px; border:1px solid #ccc; height:45px; font-size:16px;">
+            </div>
+        </div>
 
-                         <div style="flex:1;min-width:250px;">
-                            <label for="end_date" style="font-weight:500;display:block;margin-bottom:8px;">Check-Out Date</label>
-                           <input type="date" name="end_date" value="{{ $data['end_date'] }}" required
-                               style="width:100%;padding:10px 15px;border-radius:8px;border:1px solid #ccc;height:45px;">
-                             </div>
+        <div style="text-align:center; margin-top:30px;">
+            <button type="submit"
+                style="background-color:#0d6efd; color:#fff; border:none; padding:12px 30px; border-radius:8px; font-size:16px; cursor:pointer;">
+                Register
+            </button>
+            <div style="margin-top:15px;">
+                <a href="javascript:void(0);" onclick="toggleForms()"
+                    style="color:#0d6efd; text-decoration:none; font-weight:500; font-size:14px;">
+                    Already have an account? Login
+                </a>
+            </div>
+        </div>
+    </form>
+</div>
 
-                          <div style="flex:1;min-width:250px;">
-                       <label for="room_type" style="font-weight:500;display:block;margin-bottom:8px;">Room Type</label>
-                          <select name="room_type" required
-                          style="width:100%;padding:10px 15px;border-radius:8px;border:1px solid #ccc;height:45px;">
-                             @foreach ($roomtypes as $roomtype)
-                              <option value="{{ $roomtype->id }}"
-                            @if(isset($data['room_type']) && $data['room_type'] == $roomtype->id) selected @endif>
-                             {{ $roomtype->room_type }}
-                       </option>
-                     @endforeach
-                </select>
-                 </div>
+<!-- Login Form (Hidden by default) -->
+<div id="login-form" style="display:none;">
+    <form action="{{ route('user.login') }}" method="POST" style="max-width:600px; margin:40px auto; background:#fff; box-shadow:0 10px 25px rgba(0,0,0,0.1); padding:30px 40px; border-radius:12px;">
+        @csrf
+        <h3 style="text-align:center; margin-bottom:20px;">Login</h3>
+        <div style="margin-bottom:20px;">
+            <label for="login_email" style="font-weight:600; display:block; margin-bottom:6px; color:#333;">Email</label>
+            <input type="email" name="email" id="login_email" required
+                style="width:100%; padding:10px 15px; border-radius:8px; border:1px solid #ccc; height:45px; font-size:16px;">
+        </div>
+        <div style="margin-bottom:20px;">
+            <label for="login_password" style="font-weight:600; display:block; margin-bottom:6px; color:#333;">Password</label>
+            <input type="password" name="password" id="login_password" required
+                style="width:100%; padding:10px 15px; border-radius:8px; border:1px solid #ccc; height:45px; font-size:16px;">
+        </div>
+        <div style="text-align:center;">
+            <button type="submit"
+                style="background-color:#0d6efd; color:#fff; border:none; padding:12px 30px; border-radius:8px; font-size:16px; cursor:pointer;">
+                Login
+            </button>
+            <div style="margin-top:15px;">
+                <a href="javascript:void(0);" onclick="toggleForms()"
+                    style="color:#0d6efd; text-decoration:none; font-weight:500; font-size:14px;">
+                    Don't have an account? Register
+                </a>
+            </div>
+        </div>
+    </form>
+</div>
 
 
-                 <div style="flex:1;min-width:250px;">
-                     <label for="total_days" style="font-weight:500;display:block;margin-bottom:8px;">Guests</label>
-                       <select name="total_days" required
-                       style="width:100%;padding:10px 15px;border-radius:8px;border:1px solid #ccc;height:45px;">
 
-                       <option value="" disabled {{ empty($data['total_days']) ? 'selected' : '' }}>Select Guests</option>
-                        <option value="01 Adult, 0 Child" @if(isset($data['total_days']) && $data['total_days'] == "01 Adult, 0 Child") selected @endif>
-                       01 Member
-                      </option>
-                       <option value="02 Adult, 1 Child" @if(isset($data['total_days']) && $data['total_days'] == "02 Adult, 1 Child") selected @endif>
-                     02 Member
-                     </option>
-
-                      <option value="02 Adult, 2 Child" @if(isset($data['total_days']) && $data['total_days'] == "02 Adult, 2 Child") selected @endif>
-                        02 Member
-                     </option>
-                      <option value="02 Adult, 3 Child" @if(isset($data['total_days']) && $data['total_days'] == "02 Adult, 3 Child") selected @endif>
-                      02 Member
-                       </option>
-
-                    </select>
-                </div>
-
-           </div>
-
-    <div style="text-align:center;margin-top:30px;">
-        <button type="submit"
-                style="background-color:#0d6efd;color:white;border:none;padding:12px 30px;border-radius:8px;font-size:16px;cursor:pointer;transition:0.3s;">
-            Book Now
-        </button>
-    </div>
-</form>
 
 							</div>
 						</div>
@@ -273,6 +286,19 @@
 <!--==================================================-->
 <!-- End Royella Brand Area -->
 <!--==================================================-->
-
+<!-- JavaScript to toggle forms -->
+<script>
+    function toggleForms() {
+        var regForm = document.getElementById('register-form');
+        var loginForm = document.getElementById('login-form');
+        if (regForm.style.display === 'none') {
+            regForm.style.display = 'block';
+            loginForm.style.display = 'none';
+        } else {
+            regForm.style.display = 'none';
+            loginForm.style.display = 'block';
+        }
+    }
+</script>
 @endsection
 

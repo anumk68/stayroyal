@@ -78,8 +78,9 @@
 <!--==================================================-->
 <div class="booking-area home-1">
 	<div class="container">
-		<form action="https://formspree.io/f/myyleorq" method="POST" id="dreamit-form">
+		<form action="{{ route('booking.review') }}" method="POST" id="dreamit-form">
 			@csrf
+			<input type="hidden" id="session_id" name="session_id" value="1">
 			<div class="row add-bg align-items-center">
 				<div class="booking-input-box">
 					<h4>Check In</h4>
@@ -101,7 +102,7 @@
 				</div>
 				<div class="booking-input-box upper">
 					<h4>Guests</h4>
-					<select name="place" id="total_days" name="total_days">
+					<select name="total_days" id="total_days" name="total_days">
 						<option value="saab">01 Adult, 0 Child</option>
 						<option value="opel">02 Adult, 1 Child</option>
 						<option value="audi">02 Adult, 2 Child</option>

@@ -58,7 +58,7 @@
 					<div class="room-thumb">
 						<img src="{{ asset('storage/' . $room->room_image) }}" alt="">
 						<div class="room-details-button">
-							<a href="standard-room.html">View Details<i class="bi bi-arrow-right"></i></a>
+							<a href="{{ route('roomdetails', $room->id) }}">View Details<i class="bi bi-arrow-right"></i></a>
 						</div>
 					</div>
 					<div class="room-pricing">

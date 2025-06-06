@@ -10,7 +10,7 @@ use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
-    public function user_enquery(Request $request){   
+    public function user_enquery(Request $request){  
        $validator = Validator::make($request->all(), [
         'name' => 'required|string|min:4|max:20',
         'email' => 'required|email|unique:enquiries,email',

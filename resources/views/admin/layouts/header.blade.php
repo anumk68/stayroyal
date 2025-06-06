@@ -252,23 +252,27 @@
                     </li>
                    
                     <li><hr class="dropdown-divider"></li>
-                    <li>
+                    <!-- <li>
                       <a class="dropdown-item" href="authentication-signup-with-header-footer.html">
                          <div class="d-flex align-items-center">
                            <div class="setting-icon"><i class="bi bi-lock-fill"></i></div>
-                           <div class="setting-text ms-3"><span>Logout</span></div>
+                           <div class="setting-text ms-3"><span>Logoutppp</span></div>
                          </div>
                        </a>
-                    </li>
+                    </li> -->
                 </ul>
               </li>
-              <li class="nav-item dropdown dropdown-large">
-                <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">
-                  <div class="">
-                    <i class="bi bi-person-fill">Logout</i>
-                  </div>
-                </a>
-              </li>
+             <li class="nav-item dropdown dropdown-large">
+             <div class="">
+            <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+              <i class="bi bi-person-fill"> Logout</i>
+           </a>
+           <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
+            @csrf
+        </form>
+    </div>
+</li>
+
               </ul>
               </div>
         </nav>

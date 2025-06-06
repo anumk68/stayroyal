@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Middleware\AdminAuthenticate;
 use Illuminate\Support\Facades\Route;
+
+
 use App\Http\Controllers\website\HomeController;
 use App\Http\Controllers\website\BlogController;
 use App\Http\Controllers\website\ContactController;
@@ -19,13 +22,19 @@ use App\Http\Controllers\admin\UsersController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/blogs', [BlogController::class, 'index'])->name('blogs');
 Route::get('/contacts', [ContactController::class, 'index'])->name('contacts');
-Route::get('/rooms', [RoomController::class, 'index'])->name('rooms');
 Route::get('/about', [AboutController::class, 'index'])->name('about');
 
 
 //////////////////      rooms booking   //////////////////
+Route::get('/rooms', [RoomController::class, 'index'])->name('rooms');
 Route::get('/online/booking', [RoomController::class, 'show'])->name('online.booking');
 Route::get('/roomdetails/{id}', [RoomController::class, 'room_detail'])->name('roomdetails');
+Route::post('/booking/review', [RoomController::class, 'booking_review'])->name('booking.review');
+Route::post('/user/details', [RoomController::class, 'user_details'])->name('user.details');
+Route::post('/user/register', [RoomController::class, 'user_register'])->name('user.register');
+Route::post('/user/login', [RoomController::class, 'user_login'])->name('user.login');
+Route::get('/payment', [RoomController::class, 'payment'])->name('payment');
+Route::post('/booking', [RoomController::class, 'booking'])->name('booking');
 
 ////////////////////     About Us section  //////////////
 Route::get('/policy', [AboutController::class, 'show_privacy_policy'])->name('policy');
@@ -42,6 +51,14 @@ Route::post('/user-subscribe', [UserController::class, 'user_subscribe'])->name(
 
 
 ///////////////        Admin routes   /////////////////////////
+Route::get('/login', [Indexcontroller::class, 'login'])->name('login');
+Route::get('/admin/login', [Indexcontroller::class, 'login'])->name('admin.login');
+Route::post('/login/submit', [Indexcontroller::class, 'login_submit'])->name('login.submit');
+Route::post('/admin/logout', [Indexcontroller::class, 'logout'])->name('admin.logout');
+
+
+Route::middleware('auth:admin')->group(function () {
+
 Route::get('/dashboard', [Indexcontroller::class, 'index'])->name('dashboard');
 Route::get('/setting', [Indexcontroller::class, 'meta_setting'])->name('setting');
 Route::post('/submit-metatag', [Indexcontroller::class, 'metatag_store'])->name('metatag.store');
@@ -88,3 +105,4 @@ Route::get('/adminreview', [UsersController::class, 'customer_review'])->name('a
 /////////////////////        Payment Section  //////////////////////
 Route::get('/adminpayment', [UsersController::class, 'customer_payment'])->name('adminpayment');
 
+ });

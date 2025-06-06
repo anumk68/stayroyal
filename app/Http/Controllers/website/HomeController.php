@@ -11,7 +11,9 @@ use App\Models\Roomtype;
 class HomeController extends Controller
 { 
     public function index(){
-      $roomtypes = Roomtype::all();
+        $roomtypes = Room::join('roomtypes', 'rooms.room_type', '=', 'roomtypes.id')
+        ->select('rooms.*', 'roomtypes.room_type')
+       ->get();  
       $rooms = Room::all();   
       return view("website.index", compact('rooms', 'roomtypes'));
     }

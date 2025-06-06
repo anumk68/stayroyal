@@ -11,9 +11,38 @@ use App\Models\Metatype;
 use App\Models\Meta;
 use App\Models\Enquiry;
 use App\Models\Review;
+use App\Models\Admin;
+use Illuminate\Support\Facades\Auth;
 
 class Indexcontroller extends Controller
 { 
+
+    public function login(){
+        return view('admin.login');
+    }
+
+    public function login_submit(Request $request){
+      $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+        if (Auth::guard('admin')->attempt($credentials)) {   
+            $request->session()->regenerate();
+            return redirect()->intended(route('dashboard'));
+        }
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ]);
+    }
+
+    public function logout(Request $request) {
+        Auth::guard('admin')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('admin.login');
+    }
+
+
     public function index(){  
       $reviews = Review::all();
       $rooms = Room::all();
