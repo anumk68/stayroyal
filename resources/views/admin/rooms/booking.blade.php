@@ -33,12 +33,13 @@
           <tr>
             <th>#ID</th>
             <th>Room type</th>
+            <th>Booking User Name</th>
             <th>Price</th>
             <th>Size</th>
             <th>Location</th>
             <th>Start Date</th>
             <th>End date</th>
-            <th>Total days</th>
+            <th>Total Member</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -50,6 +51,13 @@
                 <div class="d-flex align-items-center gap-3">
                   <div class="product-info">
                     <h6 class="product-name mb-1">{{ $booking->room_type }}</h6>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="d-flex align-items-center gap-3">
+                  <div class="product-info">
+                    <h6 class="product-name mb-1">{{ $booking->user_name }}</h6>
                   </div>
                 </div>
               </td>
@@ -106,7 +114,7 @@
 
           @if ($bookings->isEmpty())
             <tr>
-              <td colspan="5" class="text-center">No blog records found.</td>
+              <td colspan="5" class="text-center">No Booking found.</td>
             </tr>
           @endif
         </tbody>

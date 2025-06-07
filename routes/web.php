@@ -31,6 +31,7 @@ Route::get('/online/booking', [RoomController::class, 'show'])->name('online.boo
 Route::get('/roomdetails/{id}', [RoomController::class, 'room_detail'])->name('roomdetails');
 Route::post('/booking/review', [RoomController::class, 'booking_review'])->name('booking.review');
 Route::post('/user/details', [RoomController::class, 'user_details'])->name('user.details');
+Route::get('/user/form/{id}', [RoomController::class, 'show_user_form'])->name('user.form');
 Route::post('/user/register', [RoomController::class, 'user_register'])->name('user.register');
 Route::post('/user/login', [RoomController::class, 'user_login'])->name('user.login');
 Route::get('/payment', [RoomController::class, 'payment'])->name('payment');
@@ -104,5 +105,6 @@ Route::get('/adminreview', [UsersController::class, 'customer_review'])->name('a
 
 /////////////////////        Payment Section  //////////////////////
 Route::get('/adminpayment', [UsersController::class, 'customer_payment'])->name('adminpayment');
+Route::get('/paymentdelete/{id}', [UsersController::class, 'payment_delete'])->name('paymentdelete');
 
  });

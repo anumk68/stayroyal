@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
             $table->string('room_type');
+            $table->string('room_id');
+           $table->string('user_id');
             $table->string('location')->nullable();
             $table->string('price');
              $table->string('size');

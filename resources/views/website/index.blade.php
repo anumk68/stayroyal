@@ -83,13 +83,24 @@
 			<input type="hidden" id="session_id" name="session_id" value="1">
 			<div class="row add-bg align-items-center">
 				<div class="booking-input-box">
-					<h4>Check In</h4>
-					<input type="date" id="start_date" name="start_date" required>
-				</div>
+                <h4>Check In</h4>
+            <input type="date" id="start_date" name="start_date" required>
+          </div>
+          <script>
+         // Get today's date in YYYY-MM-DD format
+           const today = new Date().toISOString().split('T')[0];
+          document.getElementById('start_date').setAttribute('min', today);
+          </script>
+
 				<div class="booking-input-box">
 					<h4>Check Out</h4>
 					<input type="date" id="end_date" name="end_date" required>
 				</div>
+				 <script>
+             const today = new Date().toISOString().split('T')[0];
+             document.getElementById('end_date').setAttribute('min', today);
+             </script>
+
 				<div class="booking-input-box">
 					<h4>Rooms</h4>
 					  <select id="room_type" name="room_type" required>
@@ -103,14 +114,14 @@
 				<div class="booking-input-box upper">
 					<h4>Guests</h4>
 					<select name="total_days" id="total_days" name="total_days">
-						<option value="saab">01 Adult, 0 Child</option>
-						<option value="opel">02 Adult, 1 Child</option>
-						<option value="audi">02 Adult, 2 Child</option>
-						<option value="audi">02 Adult, 3 Child</option>
+						<option value="saab">01 Adult</option>
+						<option value="opel">02 Adult</option>
+						<option value="audi">03 Adult</option>
+						<option value="audi">04 Adult</option>
 					</select>
 				</div>
 			    <div class="booking-button">
-					<button type="submit">Book Now</button>
+					<button type="submit">Search Here</button>
 				</div>
 		    </div>
 		</form>
@@ -147,28 +158,28 @@
 	<div class="container">
 		<div class="row margin-top" data-cue="zoomIn">
 			<div class="room_list owl-carousel">
-				@foreach($rooms as $room)
+				@foreach($roomtypes as $roomtype)
 			    <div class="col-lg-12">
 					<div class="room-single-box">
 						<div class="room-thumb">
-							<img src="{{ asset('storage/' . $room->room_image) }}" alt="">
+							<img src="{{ asset('storage/' . $roomtype->room_image) }}" alt="">
 							<div class="room-details-button">
-								<a href="{{ route('roomdetails', $room->id) }}">View Details<i class="bi bi-arrow-right"></i></a>
+								<a href="{{ route('roomdetails', $roomtype->id) }}">View Details<i class="bi bi-arrow-right"></i></a>
 							</div>
                           </div>
 						<div class="room-pricing">
-							<span class="dolar">$ #{{ $room->price }}</span>
+							<span class="dolar">$ #{{ $roomtype->price }}</span>
 							<span>Night</span>
 						</div>
 	                    <div class="room-content">
 	                    	<span class="room-location">
-                            <i class="bi bi-geo-alt-fill"></i> {{ $room->location }}
+                            <i class="bi bi-geo-alt-fill"></i> {{ $roomtype->location }}
                                 </span>
-	                    	<p>{{ $room->room_type }} </p>
+	                    	<p>{{ $roomtype->room_type }} </p>
 	                    </div>
 	                    <div class="room-bottom">
 	                    	<div class="room-bottom-icon">
-	                    		<span><img src="assets/images/home-1/room-bottom-icon.png" alt="">{{ $room->size }}</span>
+	                    		<span><img src="assets/images/home-1/room-bottom-icon.png" alt="">{{ $roomtype->size }}</span>
 	                    	</div>
 	                    	<div class="coustomar-rating">
 	                    		<ul>

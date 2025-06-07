@@ -12,9 +12,11 @@ use Illuminate\Support\Facades\Validator;
 class RoomsController extends Controller
 {
      public function view_rooms(){
-       $roomtypes = Roomtype::all();
-       $rooms = Room::all();
-       return view("admin.rooms.index", compact('rooms','roomtypes'));
+       $rooms = Room::join('roomtypes', 'rooms.room_type', '=', 'roomtypes.id')
+        ->select('rooms.*', 'roomtypes.room_type')
+       ->get(); 
+      $roomtypes = Roomtype::all();
+      return view("admin.rooms.index", compact('rooms','roomtypes'));
      }
      
     public function room_delete(Request $request, $id)
@@ -24,7 +26,12 @@ class RoomsController extends Controller
         return redirect()->route('adminroom')->with('success', 'Room deleted successfully.');
     }
     public function view_booking_list(){
-       $bookings = Booking::all();
+      $bookings = Booking::join('users', 'bookings.user_id', '=', 'users.id')
+             ->join('rooms', 'bookings.room_type', '=', 'rooms.room_type')
+             ->join('roomtypes', 'rooms.room_type', '=', 'roomtypes.id')
+            ->select('bookings.*', 'users.user_name', 'rooms.location',  'rooms.price', 'rooms.size','roomtypes.room_type')
+        ->get();  
+      //  $bookings = Booking::all();
        return view("admin.rooms.booking", compact('bookings'));
 }
   
@@ -54,7 +61,7 @@ class RoomsController extends Controller
          Room::create([
         'price' => $validated['price'],
         'location' => $validated['location'],
-        'size' => $validated['size'], // Assuming your DB column is category_id
+        'size' => $validated['size'] . 'BHK', // Assuming your DB column is category_id
         'room_type' => $validated['room_type'], 
         'room_image' => $imagePath ?? null,
      ]);

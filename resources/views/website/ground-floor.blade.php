@@ -1,5 +1,7 @@
 @extends('website.layouts.layout')
 @section('content')
+
+
 <!--==================================================-->
 <!-- Start Royella Breadcumb Area -->
 <div class="breadcumb-area d-flex align-items-center">
@@ -61,7 +63,66 @@
 					    </div>								    
 					</div>
 				</div>
-             
+
+        
+    <div class="row align-items-center" style="margin-top: 30px;">
+    @foreach($rooms as $room)
+        <div class="col-lg-4 col-md-6" style="margin-top: 30px;">
+            <div class="room-single-box {{ in_array($room->id, $bookedRoomIds ?? []) ? 'booked' : '' }}"
+                 style="{{ in_array($room->id, $bookedRoomIds ?? []) ? 'opacity: 0.6;' : '' }}">
+                 
+                <div class="room-thumb">
+                    <img src="{{ asset('storage/' . $room->room_image) }}" alt="">
+                    <div class="room-details-button">
+                        @if(in_array($room->id, $bookedRoomIds ?? []))
+                            <span style="color:red; font-weight:bold;">Unavailable</span>
+                        @else
+                            <a href="{{ route('roomdetails', $room->id) }}">View Details <i class="bi bi-arrow-right"></i></a>
+                        @endif
+                    </div>
+                </div>
+
+                <div class="room-pricing">
+                    <span class="dolar">$#{{ $room->price }}</span>
+                    <span>Night</span>
+                </div>
+
+                <div class="room-content">
+                    <span class="room-location">
+                        <i class="bi bi-geo-alt-fill"></i> {{ $room->location }}
+                    </span>
+                    <h3>{{ $room->room_type }}</h3>   
+                    <p>{{ $room->type_name }}</p>
+                </div>
+
+                <div class="room-bottom">
+                    <div class="room-bottom-icon">
+                        <span><img src="assets/images/home-1/room-bottom-icon.png" alt=""> {{ $room->size }}</span>
+                    </div>
+                    <div class="coustomar-rating">
+                        <ul>
+                            <li><i class="bi bi-star-fill"></i></li>
+                            <li><i class="bi bi-star-fill"></i></li>
+                            <li><i class="bi bi-star-fill"></i></li>
+                            <li><i class="bi bi-star-fill"></i></li>
+                            <li><i class="bi bi-star-half"></i></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            @if(in_array($room->id, $bookedRoomIds ?? []))
+                <p style="color:red; margin-top: 15px; margin-bottom: 0;">
+                    ⚠️ This room is booked for selected dates
+                </p>
+            @endif
+        </div>
+    @endforeach
+</div>
+
+
+
+
 
 
 
@@ -129,17 +190,31 @@
 							<div class="booking-list-content">
 								<h4>Booking</h4>
 							</div>
-				
+				          @if ($errors->has('booking_error'))
+                   <div style="color: red; margin-bottom: 10px;">
+                  {{ $errors->first('booking_error') }}
+                   </div>
+                  @endif
 							<div class="booking-item">
 								<form action="{{ route('user.details') }}" method="POST" style="max-width:900px;margin:40px auto;background:#fff;box-shadow:0 10px 25px rgba(0,0,0,0.1);padding:30px 40px;border-radius:12px;">
                               @csrf
 							  <input type="hidden" name="id" id="id" value="{{ $details->id }}">
                            <div style="display:flex;gap:20px;flex-wrap:wrap;">
-                             <div style="flex:1;min-width:250px;">
+                            <div style="flex:1;min-width:250px;">
                              <label for="start_date" style="font-weight:500;display:block;margin-bottom:8px;">Check-In Date</label>
-                            <input type="date" name="start_date" value="{{ $data['start_date'] }}" required
-                            style="width:100%;padding:10px 15px;border-radius:8px;border:1px solid #ccc;height:45px;">
-                            </div>
+                             <input type="date"
+                              id="start_date"
+                             name="start_date"
+                             value="{{ $data['start_date'] ?? '' }}"
+                             required
+                             style="width:100%;padding:10px 15px;border-radius:8px;border:1px solid #ccc;height:45px;">
+                           </div>
+
+                          <script>
+                              // Set today's date as minimum for check-in
+                               const today = new Date().toISOString().split('T')[0];
+                               document.getElementById('start_date').setAttribute('min', today);
+                           </script>
 
                          <div style="flex:1;min-width:250px;">
                             <label for="end_date" style="font-weight:500;display:block;margin-bottom:8px;">Check-Out Date</label>
@@ -167,18 +242,18 @@
                        style="width:100%;padding:10px 15px;border-radius:8px;border:1px solid #ccc;height:45px;">
 
                        <option value="" disabled {{ empty($data['total_days']) ? 'selected' : '' }}>Select Guests</option>
-                        <option value="01 Adult, 0 Child" @if(isset($data['total_days']) && $data['total_days'] == "01 Adult, 0 Child") selected @endif>
+                        <option value="01 Adult" @if(isset($data['total_days']) && $data['total_days'] == "01 Adult") selected @endif>
                        01 Member
                       </option>
-                       <option value="02 Adult, 1 Child" @if(isset($data['total_days']) && $data['total_days'] == "02 Adult, 1 Child") selected @endif>
+                       <option value="02 Adult" @if(isset($data['total_days']) && $data['total_days'] == "02 Adult") selected @endif>
                      02 Member
                      </option>
 
-                      <option value="02 Adult, 2 Child" @if(isset($data['total_days']) && $data['total_days'] == "02 Adult, 2 Child") selected @endif>
-                        02 Member
+                      <option value="03 Adult" @if(isset($data['total_days']) && $data['total_days'] == "03 Adult") selected @endif>
+                        03 Member
                      </option>
-                      <option value="02 Adult, 3 Child" @if(isset($data['total_days']) && $data['total_days'] == "02 Adult, 3 Child") selected @endif>
-                      02 Member
+                      <option value="04 Adult" @if(isset($data['total_days']) && $data['total_days'] == "04 Adult") selected @endif>
+                      04 Member
                        </option>
 
                     </select>

@@ -27,4 +27,10 @@ class UsersController extends Controller
        ->get();  
         return view('admin.payments.index', compact('payments'));
     }
+
+    public function payment_delete(Request $request, $id){
+         $payments = Payment::findOrFail($id); 
+        $payments->delete();
+        return redirect()->route('adminpayment')->with('success', 'Payment deleted successfully.');
+     }
 }

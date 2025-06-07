@@ -13,6 +13,8 @@ class Booking extends Model
         'size',
         'start_date',
         'end_date',
-        'total-days',
+        'total_days',
+        'user_id',
+        'room_id',
     ];
 }

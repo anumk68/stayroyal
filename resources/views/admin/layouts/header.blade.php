@@ -188,16 +188,17 @@
 <body>
 
 @if (session('success'))
-    <div class="alert alert-success">
+    <div class="alert alert-success text-center" style="margin: 80px auto 20px; max-width: 600px;">
         {{ session('success') }}
     </div>
 @endif
 
 @if (session('error'))
-    <div class="alert alert-error">
+    <div class="alert alert-danger text-center" style="margin: 80px auto 20px; max-width: 600px;">
         {{ session('error') }}
     </div>
 @endif
+
   <!--start wrapper-->
   <div class="wrapper">
     <!--start top header-->

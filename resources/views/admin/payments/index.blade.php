@@ -91,7 +91,7 @@
              
               <td>
                 <div class="d-flex align-items-center gap-3 fs-6">
-                  <a href="{{ url('/bookingdelete', $payment->id) }}" class="text-danger" title="Delete"><i class="bi bi-trash-fill"></i></a>
+                  <a href="{{ url('/paymentdelete', $payment->id) }}" class="text-danger" title="Delete"><i class="bi bi-trash-fill"></i></a>
                 </div>
               </td>
             </tr>

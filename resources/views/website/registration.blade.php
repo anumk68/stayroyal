@@ -133,30 +133,54 @@
 							<div class="booking-item">
         <!--              Personal detail  add        -->
 					<!-- Registration Form -->
-<div id="register-form" style="display:block;">
+   <div id="register-form" style="display: {{ session('show_login') ? 'none' : 'block' }};">
     <form action="{{ route('user.register') }}" method="POST" style="max-width:900px; margin:40px auto; background:#fff; box-shadow:0 10px 25px rgba(0,0,0,0.1); padding:30px 40px; border-radius:12px;">
         @csrf
         <div style="display:flex; gap:20px; flex-wrap:wrap;">
             <div style="flex:1; min-width:250px;">
                 <label for="user_name" style="font-weight:600; display:block; margin-bottom:6px; color:#333;">Name</label>
-                <input type="text" name="user_name" id="user_name" required
+                <input type="text" name="user_name" id="user_name" value="{{ old('user_name') }}" required
                     style="width:100%; padding:10px 15px; border-radius:8px; border:1px solid #ccc; height:45px; font-size:16px;">
             </div>
+			 @if ($errors->has('user_name'))
+                <div class="error-message" style="color: red; margin-top: 5px; text-align: left;">
+                 {{ $errors->first('user_name') }}
+              </div>
+             @endif
+
             <div style="flex:1; min-width:250px;">
                 <label for="email" style="font-weight:600; display:block; margin-bottom:6px; color:#333;">Email</label>
-                <input type="email" name="email" id="email" required
+                <input type="email" name="email" id="email" value="{{ old('email') }}"  required
                     style="width:100%; padding:10px 15px; border-radius:8px; border:1px solid #ccc; height:45px; font-size:16px;">
             </div>
+			@if ($errors->has('email'))
+                <div class="error-message" style="color: red; margin-top: 5px; text-align: left;">
+                 {{ $errors->first('email') }}
+              </div>
+             @endif
+
+			
             <div style="flex:1; min-width:250px;">
                 <label for="phone" style="font-weight:600; display:block; margin-bottom:6px; color:#333;">Phone</label>
-                <input type="tel" name="phone" id="phone" required
+                <input type="tel" name="phone" id="phone" value="{{ old('phone') }}"  required
                     style="width:100%; padding:10px 15px; border-radius:8px; border:1px solid #ccc; height:45px; font-size:16px;">
             </div>
+			@if ($errors->has('phone'))
+                <div class="error-message" style="color: red; margin-top: 5px; text-align: left;">
+                 {{ $errors->first('phone') }}
+              </div>
+             @endif
+
             <div style="flex:1; min-width:250px;">
                 <label for="address" style="font-weight:600; display:block; margin-bottom:6px; color:#333;">Address</label>
-                <input type="text" name="address" id="address" required
+                <input type="text" name="address" id="address" value="{{ old('address') }}" required 
                     style="width:100%; padding:10px 15px; border-radius:8px; border:1px solid #ccc; height:45px; font-size:16px;">
             </div>
+			@if ($errors->has('address'))
+                <div class="error-message" style="color: red; margin-top: 5px; text-align: left;">
+                 {{ $errors->first('address') }}
+              </div>
+             @endif
         </div>
 
         <div style="text-align:center; margin-top:30px;">
@@ -165,17 +189,15 @@
                 Register
             </button>
             <div style="margin-top:15px;">
-                <a href="javascript:void(0);" onclick="toggleForms()"
-                    style="color:#0d6efd; text-decoration:none; font-weight:500; font-size:14px;">
-                    Already have an account? Login
-                </a>
+				<a href="javascript:void(0)" onclick="showLoginForm()">Already have an account? Login</a>
+                
             </div>
         </div>
     </form>
 </div>
 
 <!-- Login Form (Hidden by default) -->
-<div id="login-form" style="display:none;">
+ <div id="login-form" style="display: {{ session('show_login') ? 'block' : 'none' }};">
     <form action="{{ route('user.login') }}" method="POST" style="max-width:600px; margin:40px auto; background:#fff; box-shadow:0 10px 25px rgba(0,0,0,0.1); padding:30px 40px; border-radius:12px;">
         @csrf
         <h3 style="text-align:center; margin-bottom:20px;">Login</h3>
@@ -184,22 +206,31 @@
             <input type="email" name="email" id="login_email" required
                 style="width:100%; padding:10px 15px; border-radius:8px; border:1px solid #ccc; height:45px; font-size:16px;">
         </div>
+	 	@if ($errors->has('email'))
+                <div class="error-message" style="color: red; margin-top: 5px; text-align: left;">
+                 {{ $errors->first('email') }}
+              </div>
+             @endif
+
         <div style="margin-bottom:20px;">
             <label for="login_password" style="font-weight:600; display:block; margin-bottom:6px; color:#333;">Password</label>
             <input type="password" name="password" id="login_password" required
                 style="width:100%; padding:10px 15px; border-radius:8px; border:1px solid #ccc; height:45px; font-size:16px;">
         </div>
+		@if ($errors->has('password'))
+                <div class="error-message" style="color: red; margin-top: 5px; text-align: left;">
+                 {{ $errors->first('password') }}
+              </div>
+             @endif
+
         <div style="text-align:center;">
             <button type="submit"
                 style="background-color:#0d6efd; color:#fff; border:none; padding:12px 30px; border-radius:8px; font-size:16px; cursor:pointer;">
                 Login
             </button>
             <div style="margin-top:15px;">
-                <a href="javascript:void(0);" onclick="toggleForms()"
-                    style="color:#0d6efd; text-decoration:none; font-weight:500; font-size:14px;">
-                    Don't have an account? Register
-                </a>
-            </div>
+				<a href="javascript:void(0)" onclick="showRegisterForm()">Don't have an account? Register</a>
+             </div>
         </div>
     </form>
 </div>
@@ -288,17 +319,24 @@
 <!--==================================================-->
 <!-- JavaScript to toggle forms -->
 <script>
-    function toggleForms() {
-        var regForm = document.getElementById('register-form');
-        var loginForm = document.getElementById('login-form');
-        if (regForm.style.display === 'none') {
-            regForm.style.display = 'block';
-            loginForm.style.display = 'none';
-        } else {
-            regForm.style.display = 'none';
-            loginForm.style.display = 'block';
-        }
+    function showLoginForm() {
+        document.getElementById('register-form').style.display = 'none';
+        document.getElementById('login-form').style.display = 'block';
     }
+
+    function showRegisterForm() {
+        document.getElementById('register-form').style.display = 'block';
+        document.getElementById('login-form').style.display = 'none';
+    }
+
+    // Show login form if validation failed during login
+    window.onload = function () {
+        @if(session('show_login'))
+            showLoginForm();
+        @else
+            showRegisterForm();
+        @endif
+    };
 </script>
 @endsection
 

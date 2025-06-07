@@ -15,18 +15,18 @@
 						</div>
 						<div class="footer-widget-contact-info">
 							<ul>
-								<li><i class="bi bi-telephone-fill"></i>+980 (1234) 567 220</li>
-								<li><i class="bi bi-envelope"></i>example@yahoo.com</li>
-								<li><i class="bi bi-geo-alt-fill"></i>102/B New Elephant Rd<br>Dhaka - 1212</li>
+								<li><i class="bi bi-telephone-fill"></i>+91 70060 22986</li>
+								<li><i class="bi bi-envelope"></i>royalstaybnbofficial@gmail.com</li>
+								<li><i class="bi bi-geo-alt-fill"></i>Villa 87, Sector 125, Jhungiyan, Kharar, Punjab 140301</li>
 							</ul>
 						</div>
 					</div>
 					<div class="footer-widget-social-icon">
 						<ul>
-							<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-							<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-							<li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-							<li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
+							<li><a href="https://www.facebook.com/royalstaybnb"><i class="fab fa-facebook-f"></i></a></li>
+							<li><a href="https://x.com/stayroyalbnb"><i class="fab fa-twitter"></i></a></li>
+							<li><a href="https://www.instagram.com/stayroyalbnb/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                             <li><a href="https://www.youtube.com/@stayroyalbnb" target="_blank"><i class="fab fa-youtube"></i></a></li>
 						</ul>
 					</div>
 				</div>
@@ -137,54 +137,54 @@
 
 
 	<!-- jQuery -->
-<script src="{{ asset('assets/js/vendor/jquery-3.6.2.min.js') }}"></script>
-<script src="{{ asset('assets/js/popper.min.js') }}"></script>
+<script src="{{ asset('public/assets/js/vendor/jquery-3.6.2.min.js') }}"></script>
+<script src="{{ asset('public/assets/js/popper.min.js') }}"></script>
 
 <!-- Bootstrap JS -->
-<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('public/assets/js/bootstrap.min.js') }}"></script>
 
 <!-- Carousel JS -->
-<script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('public/assets/js/owl.carousel.min.js') }}"></script>
 
 <!-- CounterUp JS -->
-<script src="{{ asset('assets/js/jquery.counterup.min.js') }}"></script>
+<script src="{{ asset('public/assets/js/jquery.counterup.min.js') }}"></script>
 
 <!-- Waypoints JS -->
-<script src="{{ asset('assets/js/waypoints.min.js') }}"></script>
+<script src="{{ asset('public/assets/js/waypoints.min.js') }}"></script>
 
 <!-- WOW JS -->
-<script src="{{ asset('assets/js/wow.js') }}"></script>
+<script src="{{ asset('public/assets/js/wow.js') }}"></script>
 
 <!-- ImagesLoaded JS -->
-<script src="{{ asset('assets/js/imagesloaded.pkgd.min.js') }}"></script>
+<script src="{{ asset('public/assets/js/imagesloaded.pkgd.min.js') }}"></script>
 
 <!-- Venobox JS -->
-<script src="{{ asset('venobox/venobox.js') }}"></script>
-<script src="{{ asset('venobox/venobox.min.js') }}"></script>
+<script src="{{ asset('public/venobox/venobox.js') }}"></script>
+<script src="{{ asset('public/venobox/venobox.min.js') }}"></script>
 
 <!-- Animated Text JS -->
-<script src="{{ asset('assets/js/animated-text.js') }}"></script>
+<script src="{{ asset('public/assets/js/animated-text.js') }}"></script>
 
 <!-- Isotope JS -->
-<script src="{{ asset('assets/js/isotope.pkgd.min.js') }}"></script>
+<script src="{{ asset('public/assets/js/isotope.pkgd.min.js') }}"></script>
 
 <!-- MeanMenu JS -->
-<script src="{{ asset('assets/js/jquery.meanmenu.js') }}"></script>
+<script src="{{ asset('public/assets/js/jquery.meanmenu.js') }}"></script>
 
 <!-- ScrollUp JS -->
-<script src="{{ asset('assets/js/jquery.scrollUp.js') }}"></script>
+<script src="{{ asset('public/assets/js/jquery.scrollUp.js') }}"></script>
 
 <!-- Theme JS -->
-<script src="{{ asset('assets/js/theme.js') }}"></script>
+<script src="{{ asset('public/assets/js/theme.js') }}"></script>
 
 <!-- Custom JS -->
-<script src="{{ asset('assets/js/coustom.js') }}"></script>
+<script src="{{ asset('public/assets/js/coustom.js') }}"></script>
 
 <!-- Barfiller JS -->
-<script src="{{ asset('assets/js/jquery.barfiller.js') }}"></script>
+<script src="{{ asset('public/assets/js/jquery.barfiller.js') }}"></script>
 
 <!-- ScrollCue JS -->
-<script src="{{ asset('assets/js/scrollCue.min.js') }}"></script>
+<script src="{{ asset('public/assets/js/scrollCue.min.js') }}"></script>
 
 </body>
 </html>
