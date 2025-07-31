@@ -11,7 +11,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+       $middleware->alias([
+            'admin' => \App\Http\Middleware\AdminAuthenticate::class, // ✅ Custom admin middleware
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

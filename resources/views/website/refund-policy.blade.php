@@ -11,7 +11,7 @@
 						<h4>Refund Policy</h4>
 					</div>
 					<ul>
-						<li><a href="index.html">Home</a></li>
+						<li><a href="{{ route('home') }}">Home</a></li>
 						<li>/</li>
 						<li>Refund Policy</li>
 					</ul>
@@ -32,54 +32,39 @@
 <!--==================================================-->
 <section class="privacy-policy">
 	<div class="container">
-		<div class="text-box">
-			<h2>Effective Date: [Insert Date]</h2>
-			<p>At [Your Hotel/Company Name], we strive to provide exceptional service and clarity regarding our booking and refund procedures. Please read our refund policy carefully before making a reservation.
-
-</p>
-			<h2>1. Cancellation Policy
+		<div class="text-box mb-5">
+			<h2>Refund Policy
 </h2>
-			<p>Guests may cancel their booking according to the following terms:
+			<span style="font-weight: 400;">We understand that plans change. Here's how refunds are handled at </span><b>Stay Royal</b><span style="font-weight: 400;">:</span>
+<h3><b>1. Cancellation by Guest:</b></h3>
+<ul>
+ 	<li style="font-weight: 400;" aria-level="1"><b>Full Refund</b><span style="font-weight: 400;">: If canceled </span><b>7+ days before check-in</b><b>
 
-</p>
-			<ul>
-				<li>Flexible Rate Bookings:
-</li>
-				<li>Non-Refundable Bookings:</li>
-				<li>No-Show Policy:</li>
-				
-			</ul>
-			<h2>2. How to Cancel a Booking</h2>
-			<p>To cancel your booking, please contact us via one of the following methods:</p>
-			<ul>
-				<li>📧 [Your Email Address]</li>
-				<li>📞 [Your Phone Number]</li>
-				
-			</ul>
-			<p>Please provide your booking reference number and full name.</p>
-			<h2>3. Refund Processing</h2>
-		
-			<ul>
-				<li>Approved refunds will be processed within [X] business days from the date of cancellation.</li>
-				<li>Refunds will be issued to the original method of payment used during booking.</li>
-				<li>Depending on your bank or card issuer, the refund may take additional time to reflect in your account.</li>
-			</ul>
-			<h2>4. Force Majeure</h2>
-			<p>In case of emergencies such as natural disasters, pandemics, or government-imposed restrictions, refund and cancellation terms may be adjusted at our discretion. We aim to be fair and transparent during such events.</p>
-		    <h2>5. Group or Long-Stay Bookings</h2>
-			<p>Custom terms may apply to group bookings or stays longer than [X] nights. These will be communicated at the time of booking and included in your confirmation.</p>
-		    <h2>6. Contact Us</h2>
-			<p>If you have any questions or concerns regarding this Refund Policy, feel free to reach out:</p>
-			<ul>
-				<li>📍 [Your Address]</li>
-				<li>📧 [Your Email Address]</li>
-				<li>📞 [Your Phone Number]</li>
-			
-				
-			</ul>
-			
-		
+</b></li>
+ 	<li style="font-weight: 400;" aria-level="1"><b>50% Refund</b><span style="font-weight: 400;">: If canceled </span><b>3–6 days before check-in</b><b>
+
+</b></li>
+ 	<li style="font-weight: 400;" aria-level="1"><b>No Refund</b><span style="font-weight: 400;">: If canceled </span><b>within 48 hours of check-in</b><b>
+
+</b></li>
+</ul>
+<i><span style="font-weight: 400;">Note: Processing fees (e.g., payment gateway charges) are non-refundable.</span></i>
+<h3><b>2. Cancellation by Host or Stay Royal:</b></h3>
+<span style="font-weight: 400;">In rare cases where the host cancels due to unforeseen reasons:</span>
+<ul>
+ 	<li style="font-weight: 400;" aria-level="1"><b>Full refund</b><span style="font-weight: 400;"> will be issued</span><span style="font-weight: 400;">
+
+</span></li>
+ 	<li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">We will assist you in finding alternative accommodation</span><span style="font-weight: 400;">
+
+</span></li>
+</ul>
+<h3><b>3. Refund Method:</b></h3>
+<span style="font-weight: 400;">Refunds will be processed to the original payment method within </span><b>5–10 business days</b><span style="font-weight: 400;">.</span>
+
+<span style="font-weight: 400;">For refund queries, contact: </span><b>royalstaybnbofficial@gmail.com</b>
 		</div>
+			
 	</div>
 </section>
 @endsection

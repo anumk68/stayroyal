@@ -1,55 +1,93 @@
 @extends('admin.layouts.layout')
 
 @section('content')
+    <main class="page-content">
+<div class="container py-4">
+    <h2 class="mb-4">Edit Blog</h2>
+    <form action="{{ route('blogs.update', $blog->id) }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        @method('PUT')
+        
+        {{-- Title --}}
+        <div class="mb-3">
+            <label class="form-label">Title</label>
+            <input type="text" name="title" class="form-control" value="{{ old('title', $blog->title) }}" required>
+        </div>
 
-<div class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
-  <div class="p-4 border rounded shadow" style="max-width: 500px; width: 100%;">
-    
-    <span class="close-btn float-end" id="closePopupBtn" style="cursor: pointer; font-size: 1.5rem;">&times;</span>
-    <h3 class="mb-4 text-center">Edit Blog</h3>
+        {{-- Slug --}}
+        <div class="mb-3">
+            <label class="form-label">Slug</label>
+            <input type="text" name="slug" class="form-control" value="{{ old('slug', $blog->slug) }}" required>
+        </div>
 
-    <form id="blogForm" action="{{ route('blog.update', ) }}" method="POST" enctype="multipart/form-data">
-      @csrf
-       <input type="hidden" id="id" name="id" value="{{ $blogs->id }}">
+        {{-- Category --}}
+        <div class="mb-3">
+            <label class="form-label">Category</label>
+            <select name="category_id" class="form-select" required>
+                <option value="" disabled>Select Category</option>
+                @foreach ($categories as $category)
+                    <option value="{{ $category->id }}" {{ $category->id == $blog->category_id ? 'selected' : '' }}>{{ $category->category_name }}</option>
+                @endforeach
+            </select>
+        </div>
 
-      <div class="mb-3">
-        <label for="title" class="form-label">Title :</label>
-        <input type="text" id="title" name="title" class="form-control" required
-               value="{{ old('title', $blogs->title) }}" />
-      </div>
+        {{-- Description --}}
+        <div class="mb-3">
+            <label class="form-label">Description</label>
+            <textarea name="description" class="form-control" id="editor" rows="4">{{ old('description', $blog->description) }}</textarea>
+        </div>
 
-      <div class="mb-3">
-        <label for="description" class="form-label">Description:</label>
-        <input type="text" id="description" name="description" class="form-control" required
-               value="{{ old('description', $blogs->description) }}" />
-      </div>
+        {{-- Short Description --}}
+        <div class="mb-3">
+            <label class="form-label">Short Description</label>
+            <textarea name="short_description" class="form-control" rows="2">{{ old('short_description', $blog->short_description) }}</textarea>
+        </div>
 
-      <!-- Dynamic Category Select -->
-      <div class="mb-3">
-        <label for="category_id" class="form-label">Category:</label>
-        <select id="category_id" name="category_id" class="form-select" required>
-          <option value="" disabled>Select a category</option>
-          @foreach($categories as $category)
-            <option value="{{ $category->id }}"
-              {{ old('category_id', $blogs->category_id) == $category->id ? 'selected' : '' }}>
-              {{ $category->category_name }}
-            </option>
-          @endforeach
-        </select>
-      </div>
+        {{-- Meta Title --}}
+        <div class="mb-3">
+            <label class="form-label">Meta Title</label>
+            <textarea name="meta_title" class="form-control">{{ old('meta_title', $blog->meta_title) }}</textarea>
+        </div>
 
-      <div class="mb-3">
-        <label for="image" class="form-label">Image</label>
-        <input type="file" id="image" name="image" class="form-control" />
-        @if ($blogs->image)
-          <img src="{{ asset('storage/' . $blogs->image) }}" alt="Current Image" class="img-thumbnail mt-2" style="max-width: 150px;">
-        @endif
-      </div>
+        {{-- Meta Description --}}
+        <div class="mb-3">
+            <label class="form-label">Meta Description</label>
+            <textarea name="meta_description" class="form-control">{{ old('meta_description', $blog->meta_description) }}</textarea>
+        </div>
 
-      <button type="submit" class="btn btn-primary w-100">Update Blog</button>
+        {{-- Meta Keyword --}}
+        <div class="mb-3">
+            <label class="form-label">Meta Keyword</label>
+            <input type="text" name="meta_keyword" class="form-control" value="{{ old('meta_keyword', $blog->meta_keyword) }}">
+        </div>
+
+        {{-- Image --}}
+        <div class="mb-3">
+            <label class="form-label">Blog Image</label>
+            @if($blog->image)
+                <div class="mb-2"><img src="{{ asset('storage/app/public/' . $blog->image) }}" width="100"></div>
+            @endif
+            <input type="file" name="image" class="form-control">
+        </div>
+
+        {{-- Meta Image --}}
+        <div class="mb-3">
+            <label class="form-label">Meta Image</label>
+            @if($blog->meta_image)
+                <div class="mb-2"><img src="{{ asset('storage/app/public/' . $blog->meta_image) }}" width="100"></div>
+            @endif
+            <input type="file" name="meta_image" class="form-control">
+        </div>
+
+        {{-- Image Alt --}}
+        <div class="mb-3">
+            <label class="form-label">Image Alt Text</label>
+            <input type="text" name="image_alt" class="form-control" value="{{ old('image_alt', $blog->image_alt) }}" required>
+        </div>
+
+        <button type="submit" class="btn btn-success">Update Blog</button>
+        <a href="{{ route('blogs.index') }}" class="btn btn-secondary">Cancel</a>
     </form>
-    
-  </div>
 </div>
-
+    </main>
 @endsection

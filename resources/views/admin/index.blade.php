@@ -2,121 +2,115 @@
 @extends('admin.layouts.layout')
 @section('content')
        <!--start content-->
-          <main class="page-content">
-           <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-4">
-              <div class="col">
-                <a href="{{ url('/bookinglist') }}" style="text-decoration: none;">
-                <div class="card radius-10">
-                  <div class="card-body">
-                      <div class="d-flex align-items-center">
-                          <div>
-                              <p class="mb-0 text-secondary">Total Booking</p>
-                              <h4 class="my-1">{{ $bookings->count() }}</h4>
-                              <p class="mb-0 font-13 text-success"><i class="bi bi-caret-up-fill"></i> 5% from last week</p>
-                          </div>
-                          <div class="widget-icon-large bg-gradient-purple text-white ms-auto"><i class="bi bi-basket2-fill"></i>
-                          </div>
-                      </div>
-                  </div>
-                </div>
-                </a>
-               </div>
-               <div class="col">
-                <a href="{{ url('/adminroom') }}" style="text-decoration: none;">
-                  <div class="card radius-10">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center">
-                            <div>
-                                <p class="mb-0 text-secondary">Total rooms</p>
-                                <h4 class="my-1">{{ $rooms->count() }}</h4>
-                                <p class="mb-0 font-13 text-success"><i class="bi bi-caret-up-fill"></i> 4.6 from last week</p>
-                            </div>
-                            <div class="widget-icon-large bg-gradient-success text-white ms-auto"><i class="bi bi-currency-exchange"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                </a>
-               </div>
-               <div class="col">
-                <a href="{{ url('/adminblogs') }}" style="text-decoration: none;">
-                <div class="card radius-10">
-                  <div class="card-body">
-                      <div class="d-flex align-items-center">
-                          <div>
-                              <p class="mb-0 text-secondary">Total Blogs</p>
-                              <h4 class="my-1">{{ $blogs->count() }}</h4>
-                              <p class="mb-0 font-13 text-danger"><i class="bi bi-caret-down-fill"></i> 2.7 from last week</p>
-                          </div>
-                          <div class="widget-icon-large bg-gradient-danger text-white ms-auto"><i class="bi bi-people-fill"></i>
-                          </div>
-                      </div>
-                  </div>
-               </div>
-               </a>
-               </div>
-               <div class="col">
-                
-                 <a href="{{ url('/adminenquery') }}" style="text-decoration: none;">
-                <div class="card radius-10">
-                  <div class="card-body">
-                      <div class="d-flex align-items-center">
-                          <div>
-                              <p class="mb-0 text-secondary">Total Enquery</p>
-                              <h4 class="my-1">{{ $enquiries->count() }}</h4>
-                              <p class="mb-0 font-13 text-success"><i class="bi bi-caret-up-fill"></i> 12.2% from last week</p>
-                          </div>
-                          <div class="widget-icon-large bg-gradient-info text-white ms-auto"><i class="bi bi-bar-chart-line-fill"></i>
-                          </div>
-                      </div>
-                  </div>
-                </div>
-                </a>
+        <main class="page-content">
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-4">
 
-               </div>
+    {{-- Total Booking --}}
+    <div class="col">
+      <a href="{{ route('bookinglist') }}" style="text-decoration: none;">
+        <div class="card radius-10">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div>
+                <p class="mb-0 text-secondary">Total Booking</p>
+                <h4 class="my-1">{{ $bookings->count() }}</h4>
+                <p class="mb-0 font-13 text-success"><i class="bi bi-caret-up-fill"></i> 5% from last week</p>
+              </div>
+              <div class="widget-icon-large bg-gradient-purple text-white ms-auto">
+                <i class="bi bi-basket2-fill"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
 
-                <div class="col">
-                <a href="" style="text-decoration: none;">
-                <div class="card radius-10">
-                  <div class="card-body">
-                      <div class="d-flex align-items-center">
-                          <div>
-                              <p class="mb-0 text-secondary">Total Subscriber</p>
-                              <h4 class="my-1">{{ $subscribers->count() }}</h4>
-                              <p class="mb-0 font-13 text-success"><i class="bi bi-caret-up-fill"></i> 12.2% from last week</p>
-                          </div>
-                          <div class="widget-icon-large bg-gradient-info text-white ms-auto"><i class="bi bi-bar-chart-line-fill"></i>
-                          </div>
-                      </div>
-                  </div>
-                </div>
-                </a>
-               </div>
+    {{-- Total Rooms --}}
+    <div class="col">
+      <a href="{{ route('adminroom') }}" style="text-decoration: none;">
+        <div class="card radius-10">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div>
+                <p class="mb-0 text-secondary">Total Rooms</p>
+                <h4 class="my-1">{{ $rooms->count() }}</h4>
+                <p class="mb-0 font-13 text-success"><i class="bi bi-caret-up-fill"></i> 4.6% from last week</p>
+              </div>
+              <div class="widget-icon-large bg-gradient-success text-white ms-auto">
+                <i class="bi bi-building"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
 
-                <div class="col">
-                  <a href="{{ url('/adminreview') }}" style="text-decoration: none;">
-                <div class="card radius-10">
-                  <div class="card-body">
-                      <div class="d-flex align-items-center">
-                          <div>
-                              <p class="mb-0 text-secondary">Total Reviews</p>
-                              <h4 class="my-1">{{ $reviews->count() }}</h4>
-                              <p class="mb-0 font-13 text-success"><i class="bi bi-caret-up-fill"></i> 12.2% from last week</p>
-                          </div>
-                          <div class="widget-icon-large bg-gradient-info text-white ms-auto"><i class="bi bi-bar-chart-line-fill"></i>
-                          </div>
-                      </div>
-                  </div>
-                </div>
-                </a>
-               </div>
+    {{-- Total Blogs --}}
+    <div class="col">
+      <a href="{{ route('blogs.index') }}" style="text-decoration: none;">
+        <div class="card radius-10">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div>
+                <p class="mb-0 text-secondary">Total Blogs</p>
+                <h4 class="my-1">{{ $blogs->count() }}</h4>
+                <p class="mb-0 font-13 text-danger"><i class="bi bi-caret-down-fill"></i> 2.7% from last week</p>
+              </div>
+              <div class="widget-icon-large bg-gradient-danger text-white ms-auto">
+                <i class="bi bi-journal-text"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
 
-               
+    {{-- Total Enquiry --}}
+    <div class="col">
+      <a href="{{ route('adminenquery') }}" style="text-decoration: none;">
+        <div class="card radius-10">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div>
+                <p class="mb-0 text-secondary">Total Enquiry</p>
+                <h4 class="my-1">{{ $enquiries->count() }}</h4>
+                <p class="mb-0 font-13 text-success"><i class="bi bi-caret-up-fill"></i> 12.2% from last week</p>
+              </div>
+              <div class="widget-icon-large bg-gradient-info text-white ms-auto">
+                <i class="bi bi-envelope-open"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
 
-            </div><!--end row-->
+    <!-- {{-- Total Subscribers --}}
+    <div class="col">
+      {{-- Assuming route is missing, use `#` or add route name if available --}}
+      <a href="#" style="text-decoration: none;">
+        <div class="card radius-10">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div>
+                <p class="mb-0 text-secondary">Total Subscriber</p>
+                <h4 class="my-1">{{ $subscribers->count() }}</h4>
+                <p class="mb-0 font-13 text-success"><i class="bi bi-caret-up-fill"></i> 12.2% from last week</p>
+              </div>
+              <div class="widget-icon-large bg-gradient-warning text-white ms-auto">
+                <i class="bi bi-person-lines-fill"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div> -->
 
+     
 
-         </main>
+  </div> <!-- end row -->
+</main>
+
        <!--end page main-->
 
        <!--start overlay-->

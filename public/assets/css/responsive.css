@@ -5525,7 +5525,7 @@ p.section-desc-2 {
 }
 
 .about-area.inner {
-    padding: 124px 0 132px;
+    padding: 57px 0 71px;
 }
 
 .about-area.inner .about-thumb {
@@ -5806,9 +5806,21 @@ p.room-detils-desc {
 
 
 }
+@media (max-width:992px) {
 
-
-
+.mainly_not_mobile {
+    display: none;
+}
+.maximum_rang {
+    display: flex;
+    gap: 21px;
+    align-items: center;
+}
+.inner.call-do-action-area {
+  
+    padding: 0px 0 5px;
+}
+}
 
 /*xl device min width*/
 @media screen and (min-width:992px) {

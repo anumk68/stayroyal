@@ -4,7 +4,7 @@
 
     // category List
     $('.hero-slider').owlCarousel({
-        loop: true,
+        loop: false,
         autoplay: true,
         smartSpeed:1500,
         autoplayTimeout: 10000,
@@ -35,7 +35,7 @@
 
     // Home 6
     $('.hero-slider-3').owlCarousel({
-        loop: true,
+        loop: false,
         autoplay: true,
         smartSpeed:1500,
         autoplayTimeout: 10000,
@@ -66,7 +66,7 @@
 
      // Hero List 2 Home Three
     $('.hero-slider-2').owlCarousel({
-        loop: true,
+        loop: false,
         autoplay: true,
         smartSpeed:1500,
         autoplayTimeout: 10000,
@@ -97,7 +97,7 @@
 
     // Room Active
     $('.room_list').owlCarousel({
-        loop: true,
+        loop: false,
         autoplay: true,
         autoplayTimeout: 9000,
         dots:true,
@@ -124,7 +124,7 @@
 
     // About Active
     $('.about_list').owlCarousel({
-        loop: true,
+        loop: false,
         autoplay: true,
         autoplayTimeout: 10000,
         dots: true,
@@ -151,7 +151,7 @@
 
     // Offers list
     $('.offers-list').owlCarousel({
-        loop: true,
+        loop: false,
         autoplay: true,
         autoplayTimeout: 10000,
         dots: false,
@@ -186,7 +186,7 @@
 
     // Offers list-2 Home-three
     $('.offers-list-2').owlCarousel({
-        loop: true,
+        loop: false,
         autoplay: true,
         autoplayTimeout: 10000,
         dots: false,
@@ -222,7 +222,7 @@
 
     // testimonial Active
     $('.testi-list').owlCarousel({
-        loop: true,
+        loop: false,
         autoplay: true,
         autoplayTimeout: 10000,
         dots: false,
@@ -649,6 +649,18 @@
         }
     })
 
+$(document).ready(function(){
+  $(".carousel_img_adding").owlCarousel({
+    items: 1,
+    loop: true,
+    margin: 0,
+    nav: false,
+    dots: true,
+    autoplay: true,
+    autoplayTimeout: 2000,
+    autoplayHoverPause: true
+  });
+});
 
 
 })(jQuery);

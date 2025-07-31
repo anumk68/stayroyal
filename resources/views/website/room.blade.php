@@ -1,251 +1,223 @@
 @extends('website.layouts.layout')
+ @section('meta_title', $metatitle)
+@section('meta_description', $metaDescription)
+
 @section('content')
-
-		
-
-		</div>
-
-	<!--==================================================-->
-<!-- Start Royella Breadcumb Area -->
-<div class="breadcumb-area d-flex align-items-center">
-	<div class="container">
-		<div class="row align-items-center">
-			<div class="col-md-12">
-				<div class="breacumb-content">
-					<div class="breadcum-title">
-						<h4>Rooms</h4>
-					</div>
-					<ul>
-						<li><a href="index.html">Home</a></li>
-						<li>/</li>
-						<li>Rooms</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!--==================================================-->
-<!-- End Royella Breadcumb Area -->
-<!--==================================================-->
-
-
-
-
-<!--==================================================-->
-<!-- Start Royella Room Area -->
-<!--==================================================-->
-<div class="room-area inner">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12 text-center">
-				<div class="section-title center inner" data-cue="zoomIn">
-					<div class="section-thumb">
-						<img src="assets/images/home-1/section-shape1.png" alt="">
-					</div>
-					<h1>Welcome to Stay Royal, a Luxurious BNB in the Heart of Mohali</h1>
-					<p class="section-desc-1">Discover elegant service at Stay Royal, where comfort and style Co-reside at an excellent spot in Mohali. We guarantee a memorable stay with our well-designed rooms, individualized services, and peaceful environment. Your elegant holiday is ideal for business as well as pleasure. Reserve now.
-
-</p>
-				</div>
-			</div>
-		</div>
-		<div class="row align-items-center">
-
-            @foreach($rooms as $room)
-		    <div class="col-lg-4 col-md-6">
-				<div class="room-single-box" data-cue="zoomIn">
-					<div class="room-thumb">
-						<img src="{{ asset('storage/' . $room->room_image) }}" alt="">
-						<div class="room-details-button">
-							<a href="{{ route('roomdetails', $room->id) }}">View Details<i class="bi bi-arrow-right"></i></a>
-						</div>
-					</div>
-					<div class="room-pricing">
-						<span class="dolar">$ #{{ $room->price }}</span>
-						<span>Night</span>
-					</div>
-                    <div class="room-content">
-                    	<span class="room-location">
-                            <i class="bi bi-geo-alt-fill"></i> {{ $room->location }}
-                                </span>
-	                    	<p>{{ $room->room_type }} </p>
-                    </div>
-                    <div class="room-bottom">
-                    	<div class="room-bottom-icon">
-                    	<span><img src="assets/images/home-1/room-bottom-icon.png" alt="">{{ $room->size }}</span>
-                    	</div>
-                    	<div class="coustomar-rating">
-                    		<ul>
-                    			<li><i class="bi bi-star-fill"></i></li>
-                    			<li><i class="bi bi-star-fill"></i></li>
-                    			<li><i class="bi bi-star-fill"></i></li>
-                    			<li><i class="bi bi-star-fill"></i></li>
-                    			<li><i class="bi bi-star-half"></i></li>
-                    		</ul>
-                    	</div>
-                    </div>
-				</div>
-			</div>			
-			@endforeach	
-	</div>
-</div>
-<!--==================================================-->
-<!-- End Royella Room Area -->
-<!--==================================================-->
-<!--==================================================-->
-<!-- Start Royella Contact Area Inner -->
-<!--==================================================-->
-<div class="contact-area style-two">
-	<div class="container">
-		<div class="row add-backgroun">
-			<div class="col-lg-6 col-md-12">
-				<div class="section-title two" data-cue="zoomIn">
-					<h4>Contact us</h4>
-					<h1>Contact With Us</h1>
-					<p class="section-desc-2">Rapidiously myocardinate cross-platform intellectual capital after the
-                       model. Appropriately create interactive infrastructures after maintance
-                       Holisticly facilitate stand-alone
-					</p>
-				</div>
-				<div class="single-contact-box" data-cue="zoomIn">
-					<div class="contact-icon">
-						<i class="bi bi-telephone-fill"></i>
-					</div>
-					<div class="contact-title">
-						<h4>Call Us Now</h4>
-						<p>+980 123 (4567) 890</p>
-					</div>
-				</div>				
-				<div class="single-contact-box" data-cue="zoomIn">
-					<div class="contact-icon">
-						<i class="bi bi-envelope"></i>
-					</div>
-					<div class="contact-title">
-						<h4>Sent Email</h4>
-						<p>example@gmail.com</p>
-					</div>
-				</div>					
-				<div class="single-contact-box" data-cue="zoomIn">
-					<div class="contact-icon">
-						<i class="bi bi-geo-alt-fill"></i>
-					</div>
-					<div class="contact-title">
-						<h4>Our Locations</h4>
-						<p>New elephant Road, Dhanmondi</br>Dhaka - 1212</p>
-					</div>
-				</div>	
-			</div>
-			<div class="col-lg-6 col-md-12">
-				 <form action="{{ route('user.enquery') }}" method="POST" id="dreamit-form">
-                @csrf
-              <div class="single-contact-form">
-            <div class="contact-content">
-              <h4>Get In Touch</h4>
-                 </div>
-
-                 <div class="single-input-box">
-              <input type="text" name="name" id="name" placeholder="Your Name" required>
-              <div class="error-msg text-danger" id="name-error"></div>
-               </div>
-                 @if ($errors->has('name'))
-               <div class="error-message" style="color: red; margin-top: 5px; text-align: left;">
-                 {{ $errors->first('name') }}
-              </div>
-             @endif
- 
-           <div class="single-input-box">
-               <input type="email" name="email" id="email" placeholder="Enter Your Email" required>
-                <div class="error-msg text-danger" id="email-error"></div>
-                </div>
-				  @if ($errors->has('email'))
-                <div class="error-message" style="color: red; margin-top: 5px; text-align: left;">
-                 {{ $errors->first('email') }}
-              </div>
-             @endif
-
-             <div class="single-input-box">
-             <select name="subject" id="subject">
-               <option value="">Select Subject</option>  <!-- value="" -->
-               <option value="Luxury Hotel">Luxury Hotel</option>
-              <option value="Room">Room</option>
-              <option value="Hotel">Hotel</option>
-              </select>
-          <div class="error-msg text-danger" id="subject-error"></div>
+    <div class="breadcumb-area"
+        style="background: linear-gradient(0deg, rgb(0 0 0 / 54%), rgb(0 0 0 / 34%)), url({{ asset('public/assets/images/room/about-b.jpg') }}); background-position: center; background-repeat: no-repeat; background-size: cover; ">
+        <div class="container">
+            <div class=" align-items-center breadcum-title">
+                <h1 style="color: rgb(255, 255, 255);">Rooms</h1>
             </div>
-			  @if ($errors->has('subject'))
-                 <div class="error-message" style="color: red; margin-top: 5px; text-align: left;">
-                 {{ $errors->first('subject') }}
-              </div>
-             @endif
+        </div>
+    </div>
 
-          <div class="single-input-box">
-            <textarea name="message" id="message" placeholder="Write Message" required></textarea>
-            <div class="error-msg text-danger" id="message-error"></div>
-         </div>
-		   @if ($errors->has('message'))
-                <div class="error-message" style="color: red; margin-top: 5px; text-align: left;">
-                 {{ $errors->first('message') }}
-              </div>
-             @endif
 
-         <div class="single-input-box">
-            <button type="submit">Send Message</button>
-         </div>
+    <section class="room room-area inner">
+        <!--room-area-->
+        <div class="room-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <div class="section-title center inner" data-cue="zoomIn">
+                            <div class="section-thumb">
+                                <img src="{{ asset('public/assets/images/inner/stay-logo.png') }}" alt="Mohali Rooms
+">
+                            </div>
+                            <h2>Welcome to Stay Royal – Best Mohali Rooms at Stay Royal</h2>
+                            <p class="section-desc-1">Welcome to Stay Royal, where comfort meets elegance in the heart of Mohali. Whether you're searching for premium rooms in Mohali or peaceful rooms in Kharar, our thoughtfully designed spaces offer the perfect blend of style, privacy, and convenience. Each room features tasteful interiors, modern amenities, and a calming ambiance tailored for both business and leisure travelers.
 
-         <div id="form-success" class="text-success mt-3"></div>
-         <div id="form-error" class="text-danger mt-3"></div>
-       </div>
-       </form>
-				<div id="status"></div>
-			</div>
-		</div>
-	</div>
-</div>
-<!--==================================================-->
-<!-- End Royella Contact Area Inner -->
-<!--==================================================-->
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="room_listowl-carousel row">
+                    @foreach ($rooms as $room)
+                        <div class="col-md-4 mb-3">
+                            <div class="room-single-box">
+                                <div class="room-thumb">
+                                    <div class="about_list owl-carousel sa">
+                                        @foreach (json_decode($room->room_images, true) as $img)
+                                            <div class="item"> <img src="{{ asset('storage/app/public/' . $img) }}"
+                                                    onerror="this.onerror=null; this.src='{{ asset('public/' . $img) }}';"
+                                                    alt="">
+                                            </div>
+                                        @endforeach
 
-<!--==================================================-->
-<!-- Start Royella Brand Area -->
-<!--==================================================-->
-<div class="brand-area" data-cue="zoomIn">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-4"></div>
-			<div class="col-lg-8">
-				<div class="row">
-					<div class="brand-list owl-carousel">
-					    <div class="col-lg-12">
-						    <div class="single-brand-box">
-							    <div class="brand-thumb">
-							    	<img src="assets/images/home-1/brand-1.png" alt="">
-							    </div>
-						    </div>
-					    </div>					   
-					    <div class="col-lg-12">
-						    <div class="single-brand-box">
-							    <div class="brand-thumb">
-							    	<img src="assets/images/home-1/brand-2.png" alt="">
-							    </div>
-						    </div>
-					    </div>					    
-					    <div class="col-lg-12">
-						    <div class="single-brand-box">
-							    <div class="brand-thumb">
-							    	<img src="assets/images/home-1/brand-3.png" alt="">
-							    </div>
-						    </div>
-					    </div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!--==================================================-->
-<!-- End Royella Brand Area -->
-<!--==================================================-->
+                                    </div>
+                                    <div class="room-details-button">
+                                            <a href="{{ route('roomdetails', $room->slug) }}">View Details<i
+                                                    class="bi bi-arrow-right"></i></a>
 
+                                    </div>
+                                </div>
+
+                                <div class="room-pricing">
+                                    <span class="dolar">Rs.{{ $room->price }}</span><span> Night</span>
+                                </div>
+
+                                <div class="room-content">
+                                    <p>Status:
+                                        @if ($room->is_booked)
+                                            <span style="color:red;">Booked</span>
+                                        @else
+                                            <span style="color:green;">Available</span>
+                                        @endif
+                                    </p>
+                                    <h4>Luxury Villa</h4>
+                                    <a href="{{ route('roomdetails', $room->slug) }}">{{ $room->roomType->room_type ?? 'N/A' }}
+                                    </a>
+                                    <p><i class="fa-solid fa-chart-area"></i> {{ $room->size }} SQ.FT</p>
+                                    <ul>
+                                        @foreach (json_decode($room->amenities, true) as $amenity)
+                                            <li><img src="{{ asset('storage/app/public/' . $amenity['icon']) }}"
+                                                    alt="">
+                                                {{ $amenity['text'] }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+
+                                <div class="room-bottom">
+                                    <div class="coustomar-rating">
+                                        <ul>
+                                            @php $stars = floor($room->rating); @endphp
+                                            @for ($i = 0; $i < 5; $i++)
+                                                <li><i class="bi bi-star{{ $i < $stars ? '-fill' : '' }}"></i></li>
+                                            @endfor
+                                        </ul>
+                                        <span>{{ $room->rating }} ({{ number_format($room->rating_count) }}k)</span>
+                                    </div>
+
+                                    <div class="cd">
+                                        <div class="room-bottom-icon">
+                                            <div class="tooltip">
+                                                <li><img src="{{ asset('public/assets/images/home-1/Wifi-1.png') }}"
+                                                        alt="rooms in kharar"></li>
+                                                <span class="tooltiptext"> Free Wi-Fi</span>
+                                            </div>
+                                            <div class="tooltip">
+                                                <li><img src="{{ asset('public/assets/images/home-1/Parking1.png') }}"
+                                                        alt="Rooms"></li>
+                                                <span class="tooltiptext">Parking</span>
+                                            </div>
+                                            <div class="tooltip">
+                                                <li><img src="{{ asset('public/assets/images/home-1/Refrigerator1.png') }}"
+                                                        alt="Mohali Rooms"></li>
+                                                <span class="tooltiptext"> Refrigerator</span>
+                                            </div>
+                                            <div class="tooltip">
+                                                <li><img src="{{ asset('public/assets/images/home-1/Self Key Unlocking1.png') }}"
+                                                        alt="Mohali Rooms"></li>
+                                                <span class="tooltiptext"> Self Key Unlocking</span>
+                                            </div>
+                                            <div class="tooltip">
+                                                <li><img src="{{ asset('public/assets/images/home-1/Toiletries1.png') }}"
+                                                        alt="rooms in mohali"></li>
+                                                <span class="tooltiptext"> Toiletries</span>
+                                            </div>
+                                            <div class="tooltip">
+                                                <li><img src="{{ asset('public/assets/images/home-1/Hair Dryer1.png') }}"
+                                                        alt="rooms in kharar"></li>
+                                                <span class="tooltiptext">Hair Dryer</span>
+                                            </div>
+
+                                        </div>
+
+                                        <!-- - -->
+                                        <div class="room-bottom-icon mt-2">
+
+                                            <div class="tooltip">
+                                                <li><img src="{{ asset('public/assets/images/home-1/Towel1.png') }}"
+                                                        alt="Rooms"></li>
+                                                <span class="tooltiptext">Towel</span>
+                                            </div>
+                                            <div class="tooltip">
+                                                <li><img src="{{ asset('public/assets/images/home-1/Washing Machine1.png') }}"
+                                                        alt="Mohali Rooms"></li>
+                                                <span class="tooltiptext">Washing Machine</span>
+                                            </div>
+                                            <div class="tooltip">
+                                                <li><img src="{{ asset('public/assets/images/home-1/Water Purifier1.png') }}"
+                                                        alt="Mohali Rooms"></li>
+                                                <span class="tooltiptext">Water Purifier</span>
+                                            </div>
+                                            <div class="tooltip">
+                                                <li><img src="{{ asset('public/assets/images/home-1/Electric Iron1.png') }}"
+                                                        alt=""></li>
+                                                <span class="tooltiptext">Electric Iron</span>
+                                            </div>
+                                            <div class="tooltip">
+                                                <li><img src="{{ asset('public/assets/images/home-1/electric kettle1.png') }}"
+                                                        alt=""></li>
+                                                <span class="tooltiptext">Electric kettle</span>
+                                            </div>
+                                            <div class="tooltip">
+                                                <li><i class="fa-solid fa-tv"></i></li>
+                                                <span class="tooltiptext">Smart Tv</span>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Exclusive Seasonal Deals at -->
+    <section class="seasonal">
+        <div class="container">
+            <div class="section-title two" data-cue="zoomIn">
+                <h2>Exclusive Seasonal deals for <span class="offer">1 Week</span> at stay Royal</h2>
+            </div>
+            <div class="row">
+                @foreach ($weekOffers as $offer)
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <div class="card-img-wrapper">
+                                <div class="about_list owl-carousel sa">
+                                      {{-- @foreach (json_decode($offer->room->room_images, true) ?: [] as $img)
+                                            <div class="item">
+                                                <img src="{{ asset('storage/app/public/' . $img) }}"
+                                                    onerror="this.onerror=null; this.src='{{ asset('public/' . $img) }}';"
+                                                    alt="">
+                                            </div>
+                                        @endforeach --}}
+                                    <div class="item"> <img src="{{ asset('public/assets/images/room/5.jpg') }}" alt="Rooms">
+                                    </div>
+                                    <div class="item"> <img src="{{ asset('public/assets/images/room/4.jpg') }}" alt="Rooms">
+                                    </div>
+                                    <div class="item"> <img src="{{ asset('public/assets/images/room/7.jpg') }}" alt="Rooms">
+                                    </div>
+                                    <div class="item"> <img src="{{ asset('public/assets/images/room/8.jpg') }}" alt="Rooms">
+                                    </div>
+                                </div>
+                                <div class="discount-badge">{{ $offer->offer_price }}% OFF</div>
+                            </div>
+                            <div class="card-body text-center">
+                                <h5 class="card-title">
+                                    {{ $offer->roomType->room_type ?? 'Room' }} - One Week Offer
+                                    <br>{{ $offer->offer_price }}% Off
+                                </h5>
+                                <div class="luxury-button card-d" data-cue="zoomIn">
+
+                                   <a href="{{ route('roomdetails', ['slug' => $offer->room->slug, 'offer_id' => $offer->slug]) }}">BOOK NOW</a>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+
+                @if ($weekOffers->isEmpty())
+                    <div class="col-12 text-center">
+                        <p>No 1-week offers available at the moment.</p>
+                    </div>
+                @endif
+            </div>
+        </div>
+    </section>
 @endsection
-

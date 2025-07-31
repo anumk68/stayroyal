@@ -101,7 +101,7 @@
 </head>
 <body>
     <div class="login-card">
-        <h2>Admin Login</h2>
+        <h2>Login Here</h2>
         @if ($errors->any())
             <div class="error">
                 <ul>
@@ -113,6 +113,7 @@
         @endif
         <form method="POST" action="{{ route('login.submit') }}">
             @csrf
+            <input type="hidden" name="role" value="admin">
             <input type="email" name="email" placeholder="Email address" required>
             <input type="password" name="password" placeholder="Password" required>
             <button type="submit">Login</button>

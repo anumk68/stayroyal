@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('enquiries', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->nullable();
             $table->string('email')->unique();
-            $table->string('subject');
+            $table->string('subject')->nullable();
             $table->string('message')->nullable();
             $table->string('Is_subscribe')->default(0);
             $table->timestamps();

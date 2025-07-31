@@ -9,5 +9,11 @@ class Roomtype extends Model
      protected $fillable = [
         'room_type',
         'status',
+        'slug'
     ];
+    public function rooms()
+{
+    return $this->hasMany(Room::class, 'room_type');
+}
+
 }

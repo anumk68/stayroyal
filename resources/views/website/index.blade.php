@@ -1,807 +1,874 @@
 @extends('website.layouts.layout')
+
+
+@section('meta_title', $metatitle)
+@section('meta_description', $metaDescription)
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 @section('content')
-
-<!--room-area-->
-
-
-
-
-<!--==================================================-->
-<!-- Start Royella Hero Area -->
-<!--==================================================-->
-<div class="hero-slider owl-carousel">
-	<div class="hero-area home-1 align-items-center d-flex">
-		<div class="container">
-			<div class="row align-items-center">
-				<div class="col-lg-12">
-					<div class="hotel-rating">
-						<ul>
-							<li><i class="bi bi-star-fill"></i></li>
-							<li><i class="bi bi-star-fill"></i></li>
-							<li><i class="bi bi-star-fill"></i></li>
-							<li><i class="bi bi-star-fill"></i></li>
-							<li><i class="bi bi-star-fill"></i></li>
-						</ul>
-					</div>
-					<div class="hero-content">
-						<h4>LUXURY STAY & RETREAT</h4>
-						<h1>The Best Luxury Stay <br>Royal BNB IN Mohali</h1>
-						
-					</div>
-					<div class="luxury-button">
-						<a href="about.html">BOOK NOW</a>
-					</div>
-					<div class="hero-contact">
-						<a href="#"><i class="bi bi-telephone-fill"></i>+980 123 4567 890</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>	
-	<div class="hero-area home-1 style-two align-items-center d-flex">
-		<div class="container">
-			<div class="row align-items-center">
-				<div class="col-lg-12">
-					<div class="hotel-rating">
-						<ul>
-							<li><i class="bi bi-star-fill"></i></li>
-							<li><i class="bi bi-star-fill"></i></li>
-							<li><i class="bi bi-star-fill"></i></li>
-							<li><i class="bi bi-star-fill"></i></li>
-							<li><i class="bi bi-star-fill"></i></li>
-						</ul>
-					</div>
-					<div class="hero-content">
-						<h4>STAY ROYAL IN MOHALI
-</h4>
-						<h1>The Best Luxury Hotel</h1>
-						<h1>In California</h1>
-					</div>
-					<div class="luxury-button">
-						<a href="about.html">Discover More</a>
-					</div>
-					<div class="hero-contact">
-						<a href="#"><i class="bi bi-telephone-fill"></i>+980 123 4567 890</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!--==================================================-->
-<!-- End Royella Hero Area -->
-<!--==================================================-->
-
-
-<!--==================================================-->
-<!-- Start Royella Booking Area -->
-<!--==================================================-->
-<div class="booking-area home-1">
-	<div class="container">
-		<form action="{{ route('booking.review') }}" method="POST" id="dreamit-form">
-			@csrf
-			<input type="hidden" id="session_id" name="session_id" value="1">
-			<div class="row add-bg align-items-center">
-				<div class="booking-input-box">
-                <h4>Check In</h4>
-            <input type="date" id="start_date" name="start_date" required>
-          </div>
-          <script>
-         // Get today's date in YYYY-MM-DD format
-           const today = new Date().toISOString().split('T')[0];
-          document.getElementById('start_date').setAttribute('min', today);
-          </script>
-
-				<div class="booking-input-box">
-					<h4>Check Out</h4>
-					<input type="date" id="end_date" name="end_date" required>
-				</div>
-				 <script>
-             const today = new Date().toISOString().split('T')[0];
-             document.getElementById('end_date').setAttribute('min', today);
-             </script>
-
-				<div class="booking-input-box">
-					<h4>Rooms</h4>
-					  <select id="room_type" name="room_type" required>
-                        <option value="" disabled selected>Select Room</option>
-                         @foreach ($roomtypes as $roomtype)
-                      <option value="{{ $roomtype->id }}">{{ $roomtype->room_type }}</option>
-                       @endforeach
-                      </select>
-
-				</div>
-				<div class="booking-input-box upper">
-					<h4>Guests</h4>
-					<select name="total_days" id="total_days" name="total_days">
-						<option value="saab">01 Adult</option>
-						<option value="opel">02 Adult</option>
-						<option value="audi">03 Adult</option>
-						<option value="audi">04 Adult</option>
-					</select>
-				</div>
-			    <div class="booking-button">
-					<button type="submit">Search Here</button>
-				</div>
-		    </div>
-		</form>
-		<div id="status"></div>
-	</div>
-</div>
-<!--==================================================-->
-<!-- End Royella Booking Area -->
-<!--==================================================-->
-
-
-
-<!--==================================================-->
-<!-- Start Royella Room Area -->
-<!--==================================================-->
-<div class="room-title-area">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12 text-center">
-				<div class="section-title center" data-cue="zoomIn">
-					<div class="section-thumb">
-						<img src="assets/images/home-1/section-shape1.png" alt="">
-					</div>
-					<h2>Welcome to Stay Royal – Royal BNB in the Heart of Mohali</h2>
-					<p class="section-desc-1">Discover a unique blend of comfort, elegance, and tranquility at Stay Royal, your private getaway in Mohali. Designed for travelers who appreciate finer details, our luxury villas and suites offer more than just a place to rest — they create a memorable stay experience.
-</p>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!--room-area-->
-<div class="room-area">
-	<div class="container">
-		<div class="row margin-top" data-cue="zoomIn">
-			<div class="room_list owl-carousel">
-				@foreach($roomtypes as $roomtype)
-			    <div class="col-lg-12">
-					<div class="room-single-box">
-						<div class="room-thumb">
-							<img src="{{ asset('storage/' . $roomtype->room_image) }}" alt="">
-							<div class="room-details-button">
-								<a href="{{ route('roomdetails', $roomtype->id) }}">View Details<i class="bi bi-arrow-right"></i></a>
-							</div>
-                          </div>
-						<div class="room-pricing">
-							<span class="dolar">$ #{{ $roomtype->price }}</span>
-							<span>Night</span>
-						</div>
-	                    <div class="room-content">
-	                    	<span class="room-location">
-                            <i class="bi bi-geo-alt-fill"></i> {{ $roomtype->location }}
-                                </span>
-	                    	<p>{{ $roomtype->room_type }} </p>
-	                    </div>
-	                    <div class="room-bottom">
-	                    	<div class="room-bottom-icon">
-	                    		<span><img src="assets/images/home-1/room-bottom-icon.png" alt="">{{ $roomtype->size }}</span>
-	                    	</div>
-	                    	<div class="coustomar-rating">
-	                    		<ul>
-	                    			<li><i class="bi bi-star-fill"></i></li>
-	                    			<li><i class="bi bi-star-fill"></i></li>
-	                    			<li><i class="bi bi-star-fill"></i></li>
-	                    			<li><i class="bi bi-star-fill"></i></li>
-	                    			<li><i class="bi bi-star-half"></i></li>
-	                    		</ul>
-	                    	</div>
-	                    </div>
-					</div>
-				</div>		
-				@endforeach
-				
-
-
+    <!-- Loader markup -->
+    <div id="loader">
+        <div class="spinner"></div>
+        <h1>StayRoyal</h1>
+    </div>
+    <div class="hero-slider owl-carousel">
+        <div class="hero-area home-1 align-items-center d-flex">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-12">
+                        <div class="hotel-rating">
+                            <ul>
+                                <li><i class="bi bi-star-fill"></i></li>
+                                <li><i class="bi bi-star-fill"></i></li>
+                                <li><i class="bi bi-star-fill"></i></li>
+                                <li><i class="bi bi-star-fill"></i></li>
+                                <li><i class="bi bi-star-fill"></i></li>
+                            </ul>
+                        </div>
+                        <div class="hero-content">
+                            <h4>LUXURY STAY & RETREAT</h4>
+                            <h1>BEST LUXURY STAY ROYAL<br> BNB IN MOHALI</h1>
+                        </div>
+                        <div class="luxury-button">
+                            <a href="{{ route('rooms') }}">BOOK NOW</a>
+                        </div>
+                        <div class="hero-contact">
+                            <a href="tel:+91 7006022986"><i class="bi bi-telephone-fill"></i>+91
+                                7006022986</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-		</div>
-	</div>
-</div>
-
-<!--==================================================-->
-<!-- End Royella Room Area -->
-<!--==================================================-->
-
-
-
-<!--==================================================-->
-<!-- Start Royella About Area -->
-<!--==================================================-->
-<div class="about-area">
-	<div class="container">
-		<div class="row align-items-center">
-			<div class="col-lg-6 col-md-12">
-				<div class="row" data-cue="zoomIn">
-	                <div class="about_list owl-carousel">
-	                 	<div class="col-md-12">
-	                 		<div class="about-thumb">
-					           <img src="assets/images/home-1/about1.jpg" alt="">
-			            	</div>
-	                 	</div>	                 	
-	                 	<div class="col-md-12">
-	                 		<div class="about-thumb">
-					           <img src="assets/images/home-1/about2.jpg" alt="">
-			            	</div>
-	                 	</div>
-	                </div>
-				</div>
-			</div>
-			<div class="col-lg-6 col-md-12  upper">
-				<div class="section-title two" data-cue="zoomIn">
-					<h4>STAY ROYAL IN MOHALI</h4>
-					<h2>Your Perfect Getaway Destination <br>in Mohali</h2>
-					
-					<p class="section-desc-2">Discover a premium living space where comfort meets elegance. Whether you're visiting for work or leisure, Stay Royal offers a unique experience with beautifully designed interiors, modern amenities, and a warm, welcoming atmosphere.
-</p>
-				</div>
-				<div class="about-conuter-box" data-cue="zoomIn">
-					<div class="about-counter-content">
-						<h4 class="counter">300</h4>
-						<span>+</span>
-						<p>Guests Hosted</p>
-					</div>
-				</div>				
-				<div class="about-conuter-box" data-cue="zoomIn">
-					<div class="about-counter-content">
-						<h4 class="counter">4.9</h4>
-						<p>Customer Rating.</p>
-					</div>
-				</div>
-				<div class="animation-bar" data-cue="zoomIn">
-				</div>
-				<div class="luxury-button" data-cue="zoomIn">
-					<a href="about.html">BOOK NOW</a>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!--==================================================-->
-<!-- End Royella About Area -->
-<!--==================================================-->
-
-
-
-<!--==================================================-->
-<!-- Start Royella Feature Area -->
-<!--==================================================-->
-<div class="feature-area">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12 text-center">
-				<div class="section-title center" data-cue="zoomIn">
-					<div class="section-thumb">
-						<img src="assets/images/home-1/section-shape1.png" alt="">
-					</div>
-					<h2>What Makes Your Stay Special at Stay Royal BNB in Mohali</h2>
-					<p class="section-desc-1">Looking for a cozy, stylish space to relax, unwind, and feel at home? At Stay Royal, we've got just what you need — and a little more.</p>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-lg-2 col-md-4 col-sm-6">
-				<div class="single-feature-box" data-cue="zoomIn">
-					<div class="feature-icon">
-						<img src="assets/images/home-1/feature-1.png" alt="">
-					</div>
-					<div class="feature-content">
-						<h4>Comfy & Clean Rooms</h4>
-					</div>
-				</div>
-			</div>			
-			<div class="col-lg-2 col-md-4 col-sm-6">
-				<div class="single-feature-box" data-cue="zoomIn">
-					<div class="feature-icon">
-						<img src="assets/images/home-1/feature-2.png" alt="">
-					</div>
-					<div class="feature-content">
-						<h4>Fast Wi-Fi</h4>
-					</div>
-				</div>
-			</div>			
-			<div class="col-lg-2 col-md-4 col-sm-6">
-				<div class="single-feature-box" data-cue="zoomIn">
-					<div class="feature-icon">
-						<img src="assets/images/home-1/feature-3.png" alt="">
-					</div>
-					<div class="feature-content">
-						<h4>Easy Self Check-In</h4>
-					</div>
-				</div>
-			</div>			
-			<div class="col-lg-2 col-md-4 col-sm-6">
-				<div class="single-feature-box" data-cue="zoomIn">
-					<div class="feature-icon">
-						<img src="assets/images/home-1/feature-4.png" alt="">
-					</div>
-					<div class="feature-content">
-						<h4>Light Breakfast</h4>
-					</div>
-				</div>
-			</div>			
-			<div class="col-lg-2 col-md-4 col-sm-6">
-				<div class="single-feature-box" data-cue="zoomIn">
-					<div class="feature-icon">
-						<img src="assets/images/home-1/feature-5.png" alt="">
-					</div>
-					<div class="feature-content">
-						<h4>Chill by the Pool</h4>
-					</div>
-				</div>
-			</div>			
-			<div class="col-lg-2 col-md-4 col-sm-6">
-				<div class="single-feature-box" data-cue="zoomIn">
-					<div class="feature-icon">
-						<img src="assets/images/home-1/feature-2.png" alt="">
-					</div>
-					<div class="feature-content">
-						<h4>Great Location</h4>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!--==================================================-->
-<!-- End Royella Feature Area -->
-<!--==================================================-->
-
-
-
-<!--==================================================-->
-<!-- Start Royella Call Do Action Area -->
-<!--==================================================-->
-<div class="call-do-action-area">
-	<div class="container">
-		<div class="row align-items-center call-do-action-bg">
-			<div class="col-lg-6 col-md-12">
-				<div class="section-title two footar" data-cue="zoomIn">
-					
-					<h2 style="color: white;">Your Perfect Escape <br>in Mohali</h2>
-				
-					<p class="section-desc-2" style="color: white;">Whether you're traveling solo, with family, or just looking for a weekend breather — we've crafted the perfect setting for you to relax, recharge, and feel at home.
-</p>
-					<div class="luxury-button" data-cue="zoomIn" data-show="true" style="animation-name: zoomIn; animation-duration: 2500ms; animation-timing-function: ease; animation-delay: 0ms; animation-direction: normal; animation-fill-mode: both;">
-					<a href="room.html">BOOK NOW</a>
-				</div>
-				</div>
-			
-			
-			</div>
-			<div class="col-lg-6 col-md-12">
-				<div class="call-do-action-video" data-cues="zoomIn">
-					<a class="video-vemo-icon venobox vbox-item" data-vbtype="youtube" data-autoplay="true" href="https://www.youtube.com/watch?v=e6R6VsgD8yQ&t=179s"><i class="bi bi-play"></i></a>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!--==================================================-->
-<!-- End Royella Call Do Action Area -->
-<!--==================================================-->
-
-
-
-
-<!--==================================================-->
-<!-- Start Royella Facilities Area -->
-<!--==================================================-->
-<!-- <div class="facilities-area">
-	<div class="container">
-		<div class="row align-items-center">
-			<div class="col-lg-6 col-md-12">
-				<div class="section-title two" data-cue="zoomIn">
-					<h4>Facilities</h4>
-					<h1>Enjoy Complete & Best</h1>
-					<h1>Quality Facilities</h1>
-				</div>
-			</div>
-			<div class="col-lg-6 col-md-12">
-				<div class="luxury-button" data-cue="zoomIn">
-					<a href="service.html">View More item</a>
-				</div>
-			</div>
-		</div>
-		<div class="row add-boder">
-			<div class="col-lg-6 col-md-6">
-				<div class="single-facilities-images-box" data-cue="zoomIn">
-					<div class="facilities-thumb">
-						<img src="assets/images/home-1/facilities-thumb-1.jpg" alt="">
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-6 col-md-6">
-				<div class="single-facilities-box" data-cue="zoomIn">
-					<div class="facilities-content">
-						<h4>Fitness</h4>
-					    <h1>Gym Training Grounds</h1>
-						<p>Rapidiously myocardinate cross-platform intellectual capital after
-						model. Appropriately create interactive infrastructures after are
-						Holisticly facilitate stand-alone</p>
-						<a class="facilities-button" href="services-details.html"><i class="bi bi-arrow-right"></i></a>
-					</div>
-					<div class="facilities-number">
-						<h1>01</h1>
-					</div>
-				</div>
-			</div>
-		</div>	
-
-		<div class="row add-boder">
-			<div class="col-lg-6 col-md-6">
-				<div class="single-facilities-box two" data-cue="zoomIn">
-					<div class="facilities-content">
-						<h4>Fitness</h4>
-					    <h1>Indoor Swimming Pool</h1>
-						<p>Rapidiously myocardinate cross-platform intellectual capital after
-						model. Appropriately create interactive infrastructures after are
-						Holisticly facilitate stand-alone</p>
-						<a class="facilities-button" href="services-details.html"><i class="bi bi-arrow-right"></i></a>
-					</div>
-					<div class="facilities-number two">
-						<h1>02</h1>
-					</div>
-
-				</div>
-			</div>
-			<div class="col-lg-6 col-md-6">
-				<div class="single-facilities-images-box" data-cue="zoomIn">
-					<div class="facilities-thumb">
-						<img src="assets/images/home-1/facilities-thumb-2.jpg" alt="">
-					</div>
-				</div>
-			</div>
-		</div>	
-
-		<div class="row add-boder">
-			<div class="col-lg-6 col-md-6">
-				<div class="single-facilities-images-box" data-cue="zoomIn">
-					<div class="facilities-thumb">
-						<img src="assets/images/home-1/facilities-thumb-3.jpg" alt="">
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-6 col-md-6">
-				<div class="single-facilities-box" data-cue="zoomIn">
-					<div class="facilities-content">
-						<h4>Fitness</h4>
-					    <h1>The Restaurent Center</h1>
-						<p>Rapidiously myocardinate cross-platform intellectual capital after
-						model. Appropriately create interactive infrastructures after are
-						Holisticly facilitate stand-alone</p>
-						<a class="facilities-button" href="services-details.html"><i class="bi bi-arrow-right"></i></a>
-					</div>
-					<div class="facilities-number">
-						<h1>03</h1>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="row add-boder">
-			<div class="col-lg-6 col-md-6">
-				<div class="single-facilities-box two" data-cue="zoomIn">
-					<div class="facilities-content">
-						<h4>Fitness</h4>
-					    <h1>SPA and Parlor Center</h1>
-						<p>Rapidiously myocardinate cross-platform intellectual capital after
-						model. Appropriately create interactive infrastructures after are
-						Holisticly facilitate stand-alone</p>
-						<a class="facilities-button" href="services-details.html"><i class="bi bi-arrow-right"></i></a>
-					</div>
-					<div class="facilities-number two">
-						<h1>04</h1>
-					</div>
-
-				</div>
-			</div>
-			<div class="col-lg-6 col-md-6">
-				<div class="single-facilities-images-box" data-cue="zoomIn">
-					<div class="facilities-thumb">
-						<img src="assets/images/home-1/facilities-thumb-4.jpg" alt="">
-					</div>
-				</div>
-			</div>
-		</div>	
-	</div>
-</div> -->
-<!--==================================================-->
-<!-- End Royella Facilities Area -->
-<!--==================================================-->
-
-
-
-<!--==================================================-->
-<!-- Start Royella Offers Area -->
-<!--==================================================-->
-<div class="offers-area">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-6">
-	    	    <div class="section-title two" data-cue="zoomIn">
-				   
-				    <h2>Exclusive Seasonal Deals at<br> Stay Royal</h2>
-				   
-			    </div>
-			</div>
-		</div>
-		<div class="row" data-cue="zoomIn">
-			<div class="offers-list owl-carousel">
-			    <div class="col-md-12">
-				    <div class="single-offers-box">
-					    <div class="offers-thumb">
-						    <img src="assets/images/home-1/1.jpg" alt="">
-					    </div>
-					    <div class="offers-content">
-					     	<a href="room-details.html">Delux Family Rooms</a>
-					    </div>
-					    <div class="offers-dollar">
-						   <h4>25% off</h4>
-					    </div>
-				    </div>
-			    </div>			
-			    <div class="col-md-12">
-				    <div class="single-offers-box">
-					   <div class="offers-thumb">
-						   <img src="assets/images/home-1/2.jpg" alt="">
-					    </div>
-				    	<div class="offers-content">
-						   <a href="room-details.html">Doubble Suite Room</a>
-					    </div>
-					    <div class="offers-dollar">
-						  <h4>25% off</h4>
-					    </div>
-				    </div>
-			    </div>			   
-			    <div class="col-md-12">
-				    <div class="single-offers-box">
-					   <div class="offers-thumb">
-						   <img src="assets/images/home-1/3.jpg" alt="">
-					    </div>
-				    	<div class="offers-content">
-						   <a href="room-details">Suprior Bed Room</a>
-					    </div>
-					    <div class="offers-dollar">
-						  <h4>25% off</h4>
-					    </div>
-				    </div>
-			    </div>			    
-			    <div class="col-md-12">
-				    <div class="single-offers-box">
-					   <div class="offers-thumb">
-						   <img src="assets/images/home-1/4.jpg" alt="">
-					    </div>
-				    	<div class="offers-content">
-						   <a href="room-details">Junior Suite Room</a>
-					    </div>
-					    <div class="offers-dollar">
-						  <h4>25% off</h4>
-					    </div>
-				    </div>
-			    </div>
-			</div>
-		</div>
-	</div>
-</div>
-<!--==================================================-->
-<!-- End Royella Offers Area -->
-<!--==================================================-->
-
-
-
-<!--==================================================-->
-<!-- Start Royella Testimonial Area -->
-<!--==================================================-->
-<div class="testimonial-area">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12 text-center">
-				<div class="section-title center" data-cue="zoomIn">
-					<div class="section-thumb">
-						<img src="assets/images/home-1/section-shape1.png" alt="">
-					</div>
-					<h2>What Our Guests Say</h2>
-					<p class="section-desc-1">At Stay Royal, we believe your comfort speaks louder than words. Our guests often share their experiences, and their kind words reflect the warmth and care they felt during their time with us. 
-</p>
-				</div>
-			</div>
-		</div>
-		<div class="row" data-cue="zoomIn">
-			<div class="testi-list owl-carousel">
-			    <div class="col-lg-12">
-				    <div class="single-testi-box">
-					    <div class="testi-quote-icon">
-						    <img src="assets/images/home-1/testi-quote.png" alt="">
-				    	</div>
-					    <div class="testi-rating">
-						    <ul>
-							    <li><i class="bi bi-star-fill"></i></li>
-							    <li><i class="bi bi-star-fill"></i></li>
-							    <li><i class="bi bi-star-fill"></i></li>
-							    <li><i class="bi bi-star-fill"></i></li>
-							    <li><i class="bi bi-star"></i></li>
-						    </ul>
-					    </div>    
-					    <div class="testi-content">
-							<h5>  A Truly Royal Experience
-</h5>
-					    	<p>"Stay Royal exceeded every expectation I had! The villa was not only beautifully designed but also incredibly comfortable. From the smooth self-check-in to the clean, cozy rooms and fast Wi-Fi, everything felt perfectly planned. I especially loved the pool area — a quiet spot to relax after a long day. If you're in Mohali and want something premium, this is it!"
-</p>
-					    </div>
-					    <div class="testi-author">
-					    	<!-- <div class="testi-author-thumb">
-					    		<img src="assets/images/home-1/testi-author.png" alt="">
-					    	</div> -->
-					    	<div class="testi-author-title">
-					    		<h4>— Ritika Sharma</h4>
-					    		<p>Business Traveler
-</p>
-					    	</div>
-					    </div>
-				    </div>
-			    </div>			   
-			     <div class="col-lg-12">
-				    <div class="single-testi-box">
-					    <div class="testi-quote-icon">
-						    <img src="assets/images/home-1/testi-quote.png" alt="">
-				    	</div>
-					    <div class="testi-rating">
-						    <ul>
-							    <li><i class="bi bi-star-fill"></i></li>
-							    <li><i class="bi bi-star-fill"></i></li>
-							    <li><i class="bi bi-star-fill"></i></li>
-							    <li><i class="bi bi-star-fill"></i></li>
-							    <li><i class="bi bi-star-half"></i></li>
-						    </ul>
-					    </div>    
-					    <div class="testi-content">
-							<h5>The Perfect Weekend Getaway
-</h5>
-					    	<p>"My family and I spent a weekend at Stay Royal, and we didn't want to leave. The location was ideal — peaceful yet accessible. The little touches, such as the light breakfast, elegant interiors, and warm ambiance, made our stay unforgettable. It's rare to find a place that feels like both a hotel and a home. Highly recommended!"
-</p>
-					    </div>
-					    <div class="testi-author">
-					    	<!-- <div class="testi-author-thumb">
-					    		<img src="assets/images/home-1/testi-author-2.png" alt="">
-					    	</div> -->
-					    	<div class="testi-author-title">
-					    		<h4>— Amanpreet Singh,</h4>
-					    		<p>Family Guest</p>
-					    	</div>
-					    </div>
-				    </div>
-			    </div>
-			</div>
-		</div>
-	</div>
-</div>
-<!--==================================================-->
-<!-- End Royella Testimonial Area -->
-<!--==================================================-->
-
-
-
-<!--==================================================-->
-<!-- Start Royella Blog Area -->
-<!--==================================================-->
-<!-- <div class="blog-area">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12 text-center" data-cue="zoomIn">
-				<div class="section-title center">
-					<div class="section-thumb">
-						<img src="assets/images/home-1/section-shape1.png" alt="">
-					</div>
-					<h1>Latest post from blog</h1>
-					<p class="section-desc-1">Proactively morph optimal infomediaries rather than accurate expertise. Intrinsicly
-                     progressive resources rather than resource-leveling</p>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-lg-4 col-md-6">
-				<div class="single-blog-box" data-cue="zoomIn">
-					<div class="single-blog-thumb">
-						<img src="assets/images/home-1/blog-1.jpg" alt="">
-					</div>
-                    <div class="blog-content">
-                       <div class="meta-blog">
-						  <span>August 10, 2023</span>
-						  <span>Interior</span>
-					    </div>
-                    	<a href="blog-details">Luxury Hotel for Travelling Spot USA, California</a>
+        <div class="hero-area home-1 style-two align-items-center d-flex">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-12">
+                        <div class="hotel-rating">
+                            <ul>
+                                <li><i class="bi bi-star-fill"></i></li>
+                                <li><i class="bi bi-star-fill"></i></li>
+                                <li><i class="bi bi-star-fill"></i></li>
+                                <li><i class="bi bi-star-fill"></i></li>
+                                <li><i class="bi bi-star-fill"></i></li>
+                            </ul>
+                        </div>
+                        <div class="hero-content">
+                            <h4>STAY ROYAL IN MOHALI
+                            </h4>
+                            <h1>The Best Luxury Hotel</h1>
+                            <h1>In Mohali</h1>
+                        </div>
+                        <div class="luxury-button">
+                            <a href="{{ route('about') }}">Discover More</a>
+                        </div>
+                        <div class="hero-contact">
+                            <a href="tel:+91 7006022986"><i class="bi bi-telephone-fill"></i>+91
+                                7006022986</a>
+                        </div>
                     </div>
-                    <div class="blog-button">
-                    	<a href="blog.html">Read More<span><i class="bi bi-arrow-right"></i></span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="booking-area home-1">
+        <div class="container">
+
+            <div id="status"></div> -->
+            <div class="form_bottom_home">
+                <form method="post" action="{{ route('booking.review') }}" id="dreamit-form">
+                    @csrf
+                    <input type="hidden" id="session_id" name="session_id" value="1">
+                    <input type="hidden" id="session_id" name="total_days" value="total_days">
+                    <div class="container-fluid form-wrapper">
+                        <div class="row g-3 align-items-center">
+                            <!-- Check In -->
+                            <div class="col-md-2 position-relative">
+                                <label for="checkin">Check In</label>
+                                <span>
+                                    <input type="date" class="form-control" id="checkin" name="start_date"
+                                        placeholder="mm/dd/yyyy " readonly>
+                                    <i class="fa fa-calendar input-icon"></i>
+                                </span>
+                            </div>
+                            <!-- Check Out -->
+                            <div class="col-md-2 position-relative">
+                                <label for="checkout">Check Out</label>
+                                <input type="date" class="form-control" id="checkout" name="end_date"
+                                    placeholder="mm/dd/yyyy" readonly>
+                                <i class="fa fa-calendar input-icon"></i>
+                            </div>
+                            <!-- Rooms -->
+                            <div class="col-md-3">
+                                <label for="room">Rooms</label>
+                                <select class="form-select form-s" id="room" name="room_type">
+                                    <option value disabled selected>Select
+                                        Room
+                                    </option>
+                                    @foreach ($roomtypes as $roomtype)
+                                        <option value="{{ $roomtype->id }}"
+                                            @if (isset($data['room_type']) && $data['room_type'] == $roomtype->id) selected @endif>
+                                            {{ $roomtype->room_type }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <!-- Guests -->
+                            <div class="col-md-3 position-relative">
+                                <label>Guests</label>
+                                <div id="guestToggle" class="guest-toggle">
+                                    <span id="guestSummary">1 Adult, 0
+                                        Children</span>
+                                    <i class="fa fa-chevron-down ms-2"></i>
+                                </div>
+                                <div id="guestDropdown" class="guest-dropdown">
+                                    <div class="guest-row">
+                                        <span>Adults</span>
+                                        <div class="guest-controls d-flex align-items-center gap-2">
+                                            <button type="button" class="guest-minus" data-type="adult">−</button>
+                                            <span id="adultCount">1</span>
+                                            <input type="hidden" name="adults" id="adultInput" value="1">
+                                            <button type="button" class="guest-plus" data-type="adult">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="guest-row">
+                                        <span>Children</span>
+                                        <div class="guest-controls d-flex align-items-center gap-2">
+                                            <button type="button" class="guest-minus" data-type="child">−</button>
+                                            <span id="childCount">0</span>
+                                            <input type="hidden" name="children" id="childInput" value="0">
+                                            <button type="button" class="guest-plus" data-type="child">+</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Search Button -->
+                            <div class="col-md-2">
+                                <div class="btn_form_boottom mt-4">
+                                    <button type="submit" class="btn btn-warning w-100">SEARCH
+                                        HERE</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-				</div>
-			</div>			
-			<div class="col-lg-4 col-md-6">
-				<div class="single-blog-box" data-cue="zoomIn">
-					<div class="single-blog-thumb">
-						<img src="assets/images/home-1/blog-2.jpg" alt="">
-					</div>
-                    <div class="blog-content">
-                       <div class="meta-blog">
-						  <span>August 10, 2023</span>
-						  <span>Interior</span>
-					    </div>
-                    	<a href="blog-details.html">Luxury Hotel for Travelling Spot USA, California</a>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="text pt-5 room-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div class="section-title center" data-cue="zoomIn">
+                        <div class="section-thumb">
+                            <img src="{{ asset('public/assets/images/inner/stay-logo.png') }}" alt>
+                        </div>
+                        <h2>Welcome to Stay Royal - Your Premium Luxury Villa in Mohali
+                        </h2>
+                        <p class="section-desc-1">Discover a unique blend of comfort, elegance, and tranquility at Stay
+                            Royal, a premium luxury villa in Mohali. Designed for travelers who appreciate finer details,
+                            our luxury villas and suites offer more than just a place to rest — they create a memorable stay
+                            experience.
+
+                        </p>
                     </div>
-                    <div class="blog-button">
-                    	<a href="blog.html">Read More<span><i class="bi bi-arrow-right"></i></span></a>
+                </div>
+            </div>
+            <div class="room-area">
+                <div class="room_listowl-carousel row">
+                    @foreach ($rooms as $room)
+                        <div class="col-md-4 mb-3">
+                            <div class="room-single-box">
+                                <div class="room-thumb">
+                                    <div class="about_list owl-carousel sa">
+                                        @foreach (json_decode($room->room_images, true) ?: [] as $img)
+                                            <div class="item">
+                                                <img src="{{ asset('storage/app/public/' . $img) }}"
+                                                    onerror="this.onerror=null; this.src='{{ asset('public/' . $img) }}';"
+                                                    alt="">
+                                            </div>
+                                        @endforeach
+
+                                    </div>
+                                    <div class="room-details-button">
+                                        <a href="{{ route('roomdetails', $room->slug) }}">View Details<i
+                                                class="bi bi-arrow-right"></i></a>
+                                    </div>
+                                </div>
+
+                                <div class="room-pricing">
+                                    <span class="dolar">Rs.{{ $room->price }}</span>
+                                    <span>Night</span>
+                                </div>
+
+                                <div class="room-content">
+                                    <h4>Luxury Villa</h4>
+                                    <a href="{{ route('roomdetails', $room->slug) }}">{{ $room->roomType->room_type ?? 'N/A' }}
+                                    </a>
+                                    <p><i class="fa-solid fa-chart-area"></i> {{ $room->size }} SQ.FT</p>
+                                    <ul>
+
+                                        @foreach (json_decode($room->amenities, true) as $amenity)
+                                            <li><img src="{{ asset('storage/app/public/' . $amenity['icon']) }}"
+                                                    alt="">
+                                                {{ $amenity['text'] }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+
+                                <div class="room-bottom">
+                                    <div class="coustomar-rating">
+                                        <ul>
+                                            @php $stars = floor($room->rating); @endphp
+                                            @for ($i = 0; $i < 5; $i++)
+                                                <li><i class="bi bi-star{{ $i < $stars ? '-fill' : '' }}"></i></li>
+                                            @endfor
+                                        </ul>
+                                        <span>{{ $room->rating }} ({{ number_format($room->rating_count) }}k)</span>
+                                    </div>
+
+                                    <div class="cd">
+                                        <div class="room-bottom-icon">
+                                            <div class="tooltip">
+                                                <li><img src="{{ asset('public/assets/images/home-1/Wifi-1.png') }}"
+                                                        alt=""></li>
+                                                <span class="tooltiptext"> Free Wi-Fi</span>
+                                            </div>
+                                            <div class="tooltip">
+                                                <li><img src="{{ asset('public/assets/images/home-1/Parking1.png') }}"
+                                                        alt=""></li>
+                                                <span class="tooltiptext">Parking</span>
+                                            </div>
+                                            <div class="tooltip">
+                                                <li><img src="{{ asset('public/assets/images/home-1/Refrigerator1.png') }}"
+                                                        alt=""></li>
+                                                <span class="tooltiptext"> Refrigerator</span>
+                                            </div>
+                                            <div class="tooltip">
+                                                <li><img src="{{ asset('public/assets/images/home-1/Self Key Unlocking1.png') }}"
+                                                        alt=""></li>
+                                                <span class="tooltiptext"> Self Key Unlocking</span>
+                                            </div>
+                                            <div class="tooltip">
+                                                <li><img src="{{ asset('public/assets/images/home-1/Toiletries1.png') }}"
+                                                        alt=""></li>
+                                                <span class="tooltiptext"> Toiletries</span>
+                                            </div>
+                                            <div class="tooltip">
+                                                <li><img src="{{ asset('public/assets/images/home-1/Hair Dryer1.png') }}"
+                                                        alt=""></li>
+                                                <span class="tooltiptext">Hair Dryer</span>
+                                            </div>
+
+                                        </div>
+
+                                        <!-- - -->
+                                        <div class="room-bottom-icon mt-2">
+
+                                            <div class="tooltip">
+                                                <li><img src="{{ asset('public/assets/images/home-1/Towel1.png') }}"
+                                                        alt=""></li>
+                                                <span class="tooltiptext">Towel</span>
+                                            </div>
+                                            <div class="tooltip">
+                                                <li><img src="{{ asset('public/assets/images/home-1/Washing Machine1.png') }}"
+                                                        alt=""></li>
+                                                <span class="tooltiptext">Washing Machine</span>
+                                            </div>
+                                            <div class="tooltip">
+                                                <li><img src="{{ asset('public/assets/images/home-1/Water Purifier1.png') }}"
+                                                        alt=""></li>
+                                                <span class="tooltiptext">Water Purifier</span>
+                                            </div>
+                                            <div class="tooltip">
+                                                <li><img src="{{ asset('public/assets/images/home-1/Electric Iron1.png') }}"
+                                                        alt=""></li>
+                                                <span class="tooltiptext">Electric Iron</span>
+                                            </div>
+                                            <div class="tooltip">
+                                                <li><img src="{{ asset('public/assets/images/home-1/electric kettle1.png') }}"
+                                                        alt=""></li>
+                                                <span class="tooltiptext">Electric kettle</span>
+                                            </div>
+                                            <div class="tooltip">
+                                                <li><img src="{{ asset('public/assets/images/icon-image/Smart tv (1).png') }}"
+                                                        alt=""></li>
+                                                <span class="tooltiptext">Smart Tv</span>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="feature-area mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div class="section-title center" data-cue="zoomIn">
+                        <div class="section-thumb">
+                            <img src="{{ asset('public/assets/images/inner/stay-logo.png') }}" alt>
+                        </div>
+                        <h2 class="macke">Experience the Top-Rated Homestay in Mohali – Stay Royal BNB
+                        </h2>
+                        <p class="section-desc-1 text-white mt-3">Looking for a comfortable, stylish place to relax and
+                            feel at home? Stay Royal is a perfect homestay in Mohali, offering comfort, elegance and
+                            personal touches that make it one of the best homestays for families, couples and solo
+                            travelers.
+                        </p>
                     </div>
-				</div>
-			</div>			
-			<div class="col-lg-4 col-md-6">
-				<div class="single-blog-box" data-cue="zoomIn">
-					<div class="single-blog-thumb">
-						<img src="assets/images/home-1/blog-3.jpg" alt="">
-					</div>
-                    <div class="blog-content">
-                       <div class="meta-blog">
-						  <span>August 10, 2023</span>
-						  <span>Interior</span>
-					    </div>
-                    	<a href="blog-details.html">Luxury Hotel for Travelling Spot USA, California</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2 col-md-4 col-sm-6">
+                    <div class="single-feature-box" data-cue="zoomIn">
+                        <div class="feature-icon">
+                            <img src="{{ asset('public/assets/images/home-1/Comfy & Clean Rooms.png') }}" alt="">
+                        </div>
+                        <div class="feature-content new-f">
+                            <h4>Comfy & Clean Rooms</h4>
+                        </div>
                     </div>
-                    <div class="blog-button">
-                    	<a href="blog.html">Read More<span><i class="bi bi-arrow-right"></i></span></a>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6">
+                    <div class="single-feature-box" data-cue="zoomIn">
+                        <div class="feature-icon ">
+                            <img src="{{ asset('public/assets/images/home-1/Fast Wi-Fi.png') }}" alt="">
+                        </div>
+                        <div class="feature-content new-f">
+                            <h4>Fast Wi-Fi</h4>
+                        </div>
                     </div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div> -->
-<!--==================================================-->
-<!-- End Royella Blog Area -->
-<!--==================================================-->
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6">
+                    <div class="single-feature-box" data-cue="zoomIn">
+                        <div class="feature-icon ">
+                            <img src="{{ asset('public/assets/images/home-1/Easy Self Check-In.png') }}" alt="">
+                        </div>
+                        <div class="feature-content new-f">
+                            <h4>Easy Self Check-In</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6">
+                    <div class="single-feature-box" data-cue="zoomIn">
+                        <div class="feature-icon ">
+                            <img src="{{ asset('public/assets/images/home-1/Smart tv.png') }}" alt="">
+                        </div>
+                        <div class="feature-content new-f">
+                            <h4>Smart Tv</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6">
+                    <div class="single-feature-box" data-cue="zoomIn">
+                        <div class="feature-icon">
+                            <img src="{{ asset('public/assets/images/home-1/Free Parking.png') }}" alt>
+                        </div>
+                        <div class="feature-content  new-f">
+                            <h4>Free Parking</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6">
+                    <div class="single-feature-box" data-cue="zoomIn">
+                        <div class="feature-icon ">
+                            <img src="{{ asset('public/assets/images/home-1/Great Location.png') }}" alt>
+                        </div>
+                        <div class="feature-content new-f">
+                            <h4>Great Location</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- secont row -->
+                <div class="col-lg-2 col-md-4 col-sm-6">
+                    <div class="single-feature-box" data-cue="zoomIn">
+                        <div class="feature-icon ">
+                            <img src="{{ asset('public/assets/images/home-1/Washing Machine.png') }}" alt>
+                        </div>
+                        <div class="feature-content new-f">
+                            <h4>Washing Machine</h4>
+                        </div>
+                    </div>
+                </div>
+                <!--  -->
+                <div class="col-lg-2 col-md-4 col-sm-6">
+                    <div class="single-feature-box" data-cue="zoomIn">
+                        <div class="feature-icon ">
+                            <img src="{{ asset('public/assets/images/home-1/Food Order Facility.png') }}" alt>
+                        </div>
+                        <div class="feature-content new-f">
+                            <h4>Food Order Facility</h4>
+                        </div>
+                    </div>
+                </div>
+                <!--  -->
+                <div class="col-lg-2 col-md-4 col-sm-6">
+                    <div class="single-feature-box" data-cue="zoomIn">
+                        <div class="feature-icon ">
+                            <img src="{{ asset('public/assets/images/home-1/Independent Villa.png') }}" alt>
+                        </div>
+                        <div class="feature-content new-f">
+                            <h4>Independent Villa</h4>
+                        </div>
+                    </div>
+                </div>
+                <!--  -->
+                <div class="col-lg-2 col-md-4 col-sm-6">
+                    <div class="single-feature-box" data-cue="zoomIn">
+                        <div class="feature-icon ">
+                            <img src="{{ asset('public/assets/images/home-1/Towel.png') }}" alt>
+                        </div>
+                        <div class="feature-content new-f">
+                            <h4>Towel</h4>
+                        </div>
+                    </div>
+                </div>
+                <!--  -->
+                <div class="col-lg-2 col-md-4 col-sm-6">
+                    <div class="single-feature-box" data-cue="zoomIn">
+                        <div class="feature-icon ">
+                            <img src="{{ asset('public/assets/images/home-1/Toiletries.png') }}" alt>
+                        </div>
+                        <div class="feature-content new-f">
+                            <h4>Toiletries</h4>
+                        </div>
+                    </div>
+                </div>
+                <!--  -->
+                <div class="col-lg-2 col-md-4 col-sm-6">
+                    <div class="single-feature-box" data-cue="zoomIn">
+                        <div class="feature-icon ">
+                            <img src="{{ asset('public/assets/images/home-1/Gyser.png') }}" alt>
+                        </div>
+                        <div class="feature-content new-f">
+                            <h4>Gyser</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row align-items-center call-do-action-bg">
+            <div class="col-lg-6 col-md-12">
+                <div class="section-title two footar" data-cue="zoomIn">
+                    <h2 style="color: rgb(0, 0, 0);">Your Perfect Escape <br>in
+                        Mohali
+                    </h2>
+                    <p class="section-desc-2" style="color: rgb(0, 0, 0);">Whether you're traveling
+                        solo, with family, or
+                        just looking for a weekend breather — we've crafted the
+                        perfect setting for you to relax,
+                        recharge, and feel at home.
+                    </p>
+                    <div class="luxury-button" data-cue="zoomIn" data-show="true"
+                        style="animation-name: zoomIn; animation-duration: 2500ms; animation-timing-function: ease; animation-delay: 0ms; animation-direction: normal; animation-fill-mode: both;">
+                        <a href="{{ route('rooms') }}">BOOK NOW</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <div class="container text-center my-4">
+                    <div class="containing_modal">
+                        <!-- <div class="video-thumbnail" data-bs-toggle="modal" data-bs-target="#videoModal">
+                                <img src="{{ asset('public/assets/images/home-1/baner.jpg') }}" alt>
+                                <span class="play-icon">&#9658;</span>
+                            </div> -->
+                        <div class="about-video">
+
+                            <video controls autoplay muted loop width="100%" height="auto">
+                                <source src="{{ asset('public/assets/video/MicrosoftTeams-video.mp4') }}"
+                                    type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="modal fade" id="videoModal" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                            <div class="modal-content bg-dark">
+                                <div class="modal-body p-0">
+                                    <button type="button"
+                                        class="btn-close position-absolute top-0 end-0 m-2 bg-white rounded-circle p-2"
+                                        data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+                                    <div class="ratio ratio-16x9">
+                                        <iframe id="youtubeVideo"
+                                            src="{{ asset('public/assets/video/MicrosoftTeams-video.mp4') }}"
+                                            title="YouTube video" allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <section class="seasonal">
+        <div class="container">
+            <div class="section-title two" data-cue="zoomIn">
+                <h2>Exclusive Seasonal deals for <span class="offer">1 Week</span> at stay Royal</h2>
+            </div>
+            <div class="row">
+                @foreach ($weekOffers as $offer)
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <div class="card-img-wrapper">
+                                <div class="about_list owl-carousel sa">
+                                    <div class="item"> <img src="{{ asset('public/assets/images/room/6.jpg') }}" alt>
+                                    </div>
+                                    <div class="item"> <img src="{{ asset('public/assets/images/room/5.jpg') }}" alt>
+                                    </div>
+                                    <div class="item"> <img src="{{ asset('public/assets/images/room/4.jpg') }}" alt>
+                                    </div>
+                                    <div class="item"> <img src="{{ asset('public/assets/images/room/7.jpg') }}" alt>
+                                    </div>
+                                    <div class="item"> <img src="{{ asset('public/assets/images/room/8.jpg') }}" alt>
+                                    </div>
+                                </div>
+                                <div class="discount-badge">{{ $offer->offer_price }}% OFF</div>
+                            </div>
+                            <div class="card-body text-center">
+                                <h5 class="card-title">
+                                    {{ $offer->roomType->room_type ?? 'Room' }} - {{ $offer->offer_valid_time }}
+                                    <br>{{ $offer->offer_price }}% Off
+                                </h5>
+                                <div class="luxury-button card-d" data-cue="zoomIn">
+                                    <a
+                                        href="{{ route('roomdetails', ['slug' => $offer->room->slug, 'offer_id' => $offer->slug]) }}">BOOK
+                                        NOW</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+
+                @if ($weekOffers->isEmpty())
+                    <div class="col-12 text-center">
+                        <p>No 1-week offers available at the moment.</p>
+                    </div>
+                @endif
+            </div>
+        </div>
+    </section>
+    <section class="seasonal f-days">
+        <div class="container">
+            <div class="section-title two" data-cue="zoomIn">
+                <h2> Exclusive Seasonal deals for <span class="offer">15 Days </span>at stay Royal</h2>
+            </div>
+            <div class="row">
+                @forelse ($fifteenDayOffers as $offer)
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <div class="card-img-wrapper">
+                                <div class="about_list owl-carousel sa">
+                                    <div class="item"> <img src="{{ asset('public/assets/images/room/room-s1.jpg') }}"
+                                            alt></div>
+                                    <div class="item"> <img src="{{ asset('public/assets/images/room/8.jpg') }}" alt>
+                                    </div>
+                                    <div class="item"> <img src="{{ asset('public/assets/images/room/7.jpg') }}" alt>
+                                    </div>
+                                    <div class="item"> <img src="{{ asset('public/assets/images/room/5.jpg') }}" alt>
+                                    </div>
+                                    <div class="item"> <img src="{{ asset('public/assets/images/room/4.jpg') }}" alt>
+                                    </div>
+                                </div>
+                                <div class="discount-badge">{{ $offer->offer_price }}% OFF</div>
+                            </div>
+                            <div class="card-body text-center">
+                                <h5 class="card-title">
+                                    {{ $offer->roomType->room_type ?? 'Room' }} - 15 Days Offer
+                                    <br>{{ $offer->offer_price }}% Off
+                                </h5>
+                                <div class="luxury-button card-d" data-cue="zoomIn">
+
+                                    <a
+                                        href="{{ route('roomdetails', ['slug' => $offer->room->slug, 'offer_id' => $offer->slug]) }}">BOOK
+                                        NOW</a>
 
 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @empty
+                    <div class="col-12 text-center">
+                        <p>No 15-day offers available at the moment.</p>
+                    </div>
+                @endforelse
+            </div>
+        </div>
+    </section>
+    <section class="seasonal t-day">
+        <div class="container">
+            <div class="section-title two" data-cue="zoomIn">
+                <h2> Exclusive Seasonal deals for <span class="offer">30 Days </span>at stay Royal</h2>
+            </div>
+            <div class="row">
+                @forelse ($thirtyDayOffers as $index => $offer)
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <div class="card-img-wrapper">
+                                <div class="about_list owl-carousel sa">
+                                    @if ($index === 0)
+                                        <div class="item"> <img
+                                                src="{{ asset('public/assets/images/room/room-s1.jpg') }}" alt></div>
+                                        <div class="item"> <img src="{{ asset('public/assets/images/room/6.jpg') }}"
+                                                alt></div>
+                                        <div class="item"> <img src="{{ asset('public/assets/images/room/4.jpg') }}"
+                                                alt></div>
+                                        <div class="item"> <img src="{{ asset('public/assets/images/room/7.jpg') }}"
+                                                alt></div>
+                                        <div class="item"> <img src="{{ asset('public/assets/images/room/5.jpg') }}"
+                                                alt></div>
+                                    @elseif ($index === 1)
+                                        <div class="item"> <img
+                                                src="{{ asset('public/assets/images/room/rooms2.jpg') }}" alt></div>
+                                        <div class="item"> <img src="{{ asset('public/assets/images/room/5.jpg') }}"
+                                                alt></div>
+                                        <div class="item"> <img src="{{ asset('public/assets/images/room/7.jpg') }}"
+                                                alt></div>
+                                        <div class="item"> <img src="{{ asset('public/assets/images/room/4.jpg') }}"
+                                                alt></div>
+                                        <div class="item"> <img src="{{ asset('public/assets/images/room/6.jpg') }}"
+                                                alt></div>
+                                    @else
+                                        <div class="item"> <img
+                                                src="{{ asset('public/assets/images/room/rooms3.jpg') }}" alt></div>
+                                        <div class="item"> <img src="{{ asset('public/assets/images/room/4.jpg') }}"
+                                                alt></div>
+                                        <div class="item"> <img src="{{ asset('public/assets/images/room/5.jpg') }}"
+                                                alt></div>
+                                        <div class="item"> <img src="{{ asset('public/assets/images/room/7.jpg') }}"
+                                                alt></div>
+                                        <div class="item"> <img src="{{ asset('public/assets/images/room/6.jpg') }}"
+                                                alt></div>
+                                    @endif
+                                </div>
+                                <div class="discount-badge">{{ $offer->offer_price }}% OFF</div>
+                            </div>
+                            <div class="card-body text-center">
+                                <h5 class="card-title">
+                                    {{ $offer->roomType->room_type ?? 'Room' }} - 30 Days Offer
+                                    <br>{{ $offer->offer_price }}% Off
+                                </h5>
+                                <div class="luxury-button card-d" data-cue="zoomIn">
 
-<!--==================================================-->
-<!-- Start Royella Brand Area -->
-<!--==================================================-->
-<div class="brand-area" data-cue="zoomIn">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-4"></div>
-			<div class="col-lg-8">
-				<div class="row">
-					<div class="brand-list owl-carousel">
-					    <div class="col-lg-12">
-						    <div class="single-brand-box">
-							    <div class="brand-thumb">
-							    	<img src="assets/images/home-1/brand-1.png" alt="">
-							    </div>
-						    </div>
-					    </div>					   
-					    <div class="col-lg-12">
-						    <div class="single-brand-box">
-							    <div class="brand-thumb">
-							    	<img src="assets/images/home-1/brand-2.png" alt="">
-							    </div>
-						    </div>
-					    </div>					    
-					    <div class="col-lg-12">
-						    <div class="single-brand-box">
-							    <div class="brand-thumb">
-							    	<img src="assets/images/home-1/brand-3.png" alt="">
-							    </div>
-						    </div>
-					    </div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!--==================================================-->
-<!-- End Royella Brand Area -->
-<!--==================================================-->
+                                    <a
+                                        href="{{ route('roomdetails', ['slug' => $offer->room->slug, 'offer_id' => $offer->slug]) }}">BOOK
+                                        NOW</a>
 
-
-@endsection
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @empty
+                    <div class="col-12 text-center">
+                        <p>No 30-day offers available at the moment.</p>
+                    </div>
+                @endforelse
+            </div>
+        </div>
+    </section>
+    <section class="gallery py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Our Gallery</h2>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+                <!-- Gallery Item -->
+                <div class="col-md-3">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#zoomModal"
+                        data-img="{{ asset('public/assets/images/room/gallery1.jpg') }}" data-caption="Luxury Suite">
+                        <img src="{{ asset('public/assets/images/room/gallery1.jpg') }}" alt="Luxury Suite">
+                        <div class="overlay">
+                            <i class="bi bi-zoom-in"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- Repeat for images -->
+                <div class="col-md-6">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#zoomModal"
+                        data-img="{{ asset('public/assets/images/room/gallery2s.jpg') }}" data-caption="Cozy Lobby">
+                        <img src="{{ asset('public/assets/images/room/gallery2s.jpg') }}" alt="Cozy Lobby">
+                        <div class="overlay">
+                            <i class="bi bi-zoom-in"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#zoomModal"
+                        data-img="{{ asset('public/assets/images/room/gallery2.jpg') }}" data-caption="Rooftop Pool">
+                        <img src="{{ asset('public/assets/images/room/gallery2.jpg') }}" alt="Rooftop Pool">
+                        <div class="overlay">
+                            <i class="bi bi-zoom-in"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#zoomModal"
+                        data-img="{{ asset('public/assets/images/room/gallery3s.jpg') }}" data-caption="Rooftop Pool">
+                        <img src="{{ asset('public/assets/images/room/gallery3s.jpg') }}" alt="Rooftop Pool">
+                        <div class="overlay">
+                            <i class="bi bi-zoom-in"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#zoomModal"
+                        data-img="{{ asset('public/assets/images/room/gallery3.jpg') }}" data-caption="Rooftop Pool">
+                        <img src="{{ asset('public/assets/images/room/gallery3.jpg') }}" alt="Rooftop Pool">
+                        <div class="overlay">
+                            <i class="bi bi-zoom-in"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#zoomModal"
+                        data-img="{{ asset('public/assets/images/room/gallery4.jpg') }}" data-caption="Rooftop Pool">
+                        <img src="{{ asset('public/assets/images/room/gallery4.jpg') }}" alt="Rooftop Pool">
+                        <div class="overlay">
+                            <i class="bi bi-zoom-in"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <section class="client-logo-section">
+            <div class="container-fluid">
+                <div class="owl-carousel client-logo-slider">
+                    <div class="client-logo"><img src="{{ asset('public/assets/images/home-1/booking-com.svg') }}"
+                            alt="Logo 1"></div>
+                    <div class="client-logo"><img src="{{ asset('public/assets/images/home-1/Airbnb.png') }}"
+                            alt="Logo 2"></div>
+                    <div class="client-logo"><img src="{{ asset('public/assets/images/home-1/agoda.svg') }}"
+                            alt="Logo 3"></div>
+                    <div class="client-logo"><img src="{{ asset('public/assets/images/home-1/Expedia.png') }}"
+                            alt="Logo 4"></div>
+                    <div class="client-logo"><img src="{{ asset('public/assets/images/home-1/MakeMyTrip_Logo.png') }}"
+                            alt="Logo 5"></div>
+                    <!-- Add more logos as needed -->
+                </div>
+            </div>
+        </section>
+        <div class="modal fade" id="zoomModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+                <div class="modal-content bg-transparent border-0">
+                    <div class="modal-body p-0 text-center">
+                        <img src="" id="modalImage" class="img-fluid rounded" alt="Zoomed">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="testimonial-area inner">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-12">
+                        <div class="section-title two" data-cue="zoomIn">
+                            <h4>Luxury Hotel And Resort</h4>
+                            <h2 style="color: white;">Hear From Our Happy Guests</h2>
+                            <p class="section-desc-2 at">At Stay Royal – BNB, guest satisfaction is our top priority.
+                                Here's
+                                what our valued travelers and tourists have to say about their luxurious experiences with
+                                us.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row border-add" data-cue="zoomIn">
+                    <div class="testi-list-inner owl-carousel">
+                        <div class="col-md-12">
+                            <div class="single-testimonial-box">
+                                <div class="testimonial-content">
+                                    <p>"Staying at Stay Royal was beyond amazing. The comfort, ambiance, and service were
+                                        truly
+                                        royal. Highly recommended!"
+                                    </p>
+                                    <div class="testi-reating">
+                                        <ul>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                        </ul>
+                                    </div>
+                                    <div class="testi-quote">
+                                        <img src="{{ asset('public/assets/images/inner/testi-quote.png') }}"alt="">
+                                    </div>
+                                </div>
+                                <div class="testi-author">
+                                    <div class="testi-title">
+                                        <h4>Mukul Sharma</h4>
+                                        <p>Traveller</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="single-testimonial-box">
+                                <div class="testimonial-content">
+                                    <p>"The attention to detail and the warm hospitality made my stay unforgettable.
+                                        Everything
+                                        was perfect!"
+                                    </p>
+                                    <div class="testi-reating">
+                                        <ul>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                        </ul>
+                                    </div>
+                                    <div class="testi-quote">
+                                        <img src="{{ asset('public/assets/images/inner/testi-quote.png') }}"alt="">
+                                    </div>
+                                </div>
+                                <div class="testi-author">
+                                    <div class="testi-title">
+                                        <h4>Deepak Rana</h4>
+                                        <p>Traveler</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="single-testimonial-box">
+                                <div class="testimonial-content">
+                                    <p>"I travel often, but this was by far the best BNB experience. From the interiors to
+                                        the
+                                        staff, everything felt five-star."
+                                    </p>
+                                    <div class="testi-reating">
+                                        <ul>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                        </ul>
+                                    </div>
+                                    <div class="testi-quote">
+                                        <img src="public/assets/images/inner/testi-quote.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="testi-author">
+                                    <div class="testi-title">
+                                        <h4>Vishal Thakur</h4>
+                                        <p>Tourist</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endsection
