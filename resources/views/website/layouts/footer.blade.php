@@ -4,8 +4,8 @@
             <div class="col-lg-4 col-md-6 col-sm-6">
                 <div class="footer-widget-contact">
                     <div class="footer-widget-logo" style="padding: 5px; display: inline-block;">
-                        <a href="https://stayroyal.in/"><img src="{{ asset('public/assets/images/inner/stay-logo.png') }}"
-                                alt="Logo"></a>
+                        <a href="https://stayroyal.in/"><img loading="lazy"
+                                src="{{ asset('public/assets/images/inner/stay-logo.png') }}" alt="Logo"></a>
                     </div>
                     <div class="footer-widget-content">
                         <div class="footer-widget-title">
@@ -42,8 +42,7 @@
                     </div>
                     <div class="footer-widget-menu">
                         <ul>
-                            <!-- <li><a href="{{ url('/') }}">Home</a></li>
-                         <li><a href="{{ url('/about') }}">About Hotel</a></li> -->
+
                             <li><a href="{{ route('rooms') }}">Rooms</a></li>
                             <li><a href="{{ route('blogs') }}">Blog</a></li>
                             <li><a href="{{ route('contacts') }}">Contact</a></li>
@@ -59,78 +58,77 @@
                     <div class="footer-widget-title">
                         <h4>Gallery</h4>
                     </div>
-                    <!-- <div class="footer-widget-gallery">
-                        <a class="g"><img src="{{ asset('public/assets/images/home-1/1fg.webp') }}"
-                                alt=""></a>
-                        <a class="g"><img src="{{ asset('public/assets/images/home-1/2fg.webp') }}"
-                                alt=""></a>
-                        <a class="g"><img src="{{ asset('public/assets/images/home-1/3fg.webp') }}"
-                                alt=""></a>
-                        <a class="g"><img src="{{ asset('public/assets/images/home-1/4fg.webp') }}"
-                                alt=""></a>
-                        <a class="g"><img src="{{ asset('public/assets/images/home-1/5fg.webp') }}"
-                                alt=""></a>
-                        <a class="g"><img src="{{ asset('public/assets/images/home-1/5fg.webp') }}"
-                                alt=""></a>
-                    </div> -->
-                      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
-                <!-- Gallery Item -->
-                <div class="col-md-4">
-                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#zoomModal"
-                        data-img="{{ asset('public/assets/images/room/5footer-g.jpg') }}" data-caption="Luxury Suite">
-                        <img src="{{ asset('public/assets/images/room/5footer-g.jpg') }}" alt="Luxury Suite">
-                        <div class="overlay">
-                            <i class="bi bi-zoom-in"></i>
+
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+                        <!-- Gallery Item -->
+                        <div class="col-md-4 col-6">
+                            <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#zoomModal"
+                                data-img="{{ asset('public/assets/images/room/5footer-g.jpg') }}"
+                                data-caption="Luxury Suite">
+                                <img src="{{ asset('public/assets/images/room/5footer-g.jpg') }}" alt="Luxury Suite"
+                                    loading="lazy">
+                                <div class="overlay">
+                                    <i class="bi bi-zoom-in"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Repeat for images -->
+                        <div class="col-md-4 col-6">
+                            <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#zoomModal"
+                                data-img="{{ asset('public/assets/images/room/1footer-g.jpg') }}"
+                                data-caption="Cozy Lobby">
+                                <img src="{{ asset('public/assets/images/room/1footer-g.jpg') }}" alt="Cozy Lobby"
+                                    loading="lazy">
+                                <div class="overlay">
+                                    <i class="bi bi-zoom-in"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6">
+                            <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#zoomModal"
+                                data-img="{{ asset('public/assets/images/room/2footer-g.jpg') }}"
+                                data-caption="Rooftop Pool">
+                                <img src="{{ asset('public/assets/images/room/2footer-g.jpg') }}" alt="Rooftop Pool"
+                                    loading="lazy">
+                                <div class="overlay">
+                                    <i class="bi bi-zoom-in"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6">
+                            <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#zoomModal"
+                                data-img="{{ asset('public/assets/images/room/3footer-g.jpg') }}"
+                                data-caption="Rooftop Pool">
+                                <img src="{{ asset('public/assets/images/room/3footer-g.jpg') }}" alt="Rooftop Pool"
+                                    loading="lazy">
+                                <div class="overlay">
+                                    <i class="bi bi-zoom-in"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6">
+                            <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#zoomModal"
+                                data-img="{{ asset('public/assets/images/room/4footer-g.jpg') }}"
+                                data-caption="Rooftop Pool">
+                                <img src="{{ asset('public/assets/images/room/5footer-g.jpg') }}" alt="Rooftop Pool"
+                                    loading="lazy">
+                                <div class="overlay">
+                                    <i class="bi bi-zoom-in"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6">
+                            <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#zoomModal"
+                                data-img="{{ asset('public/assets/images/room/6footer-g.jpg') }}"
+                                data-caption="Rooftop Pool">
+                                <img src="{{ asset('public/assets/images/room/6footer-g.jpg') }}" alt="Rooftop Pool"
+                                    loading="lazy">
+                                <div class="overlay">
+                                    <i class="bi bi-zoom-in"></i>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!-- Repeat for images -->
-                <div class="col-md-4">
-                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#zoomModal"
-                        data-img="{{ asset('public/assets/images/room/1footer-g.jpg') }}" data-caption="Cozy Lobby">
-                        <img src="{{ asset('public/assets/images/room/1footer-g.jpg') }}" alt="Cozy Lobby">
-                        <div class="overlay">
-                            <i class="bi bi-zoom-in"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#zoomModal"
-                        data-img="{{ asset('public/assets/images/room/2footer-g.jpg') }}" data-caption="Rooftop Pool">
-                        <img src="{{ asset('public/assets/images/room/2footer-g.jpg') }}" alt="Rooftop Pool">
-                        <div class="overlay">
-                            <i class="bi bi-zoom-in"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#zoomModal"
-                        data-img="{{ asset('public/assets/images/room/3footer-g.jpg') }}" data-caption="Rooftop Pool">
-                        <img src="{{ asset('public/assets/images/room/3footer-g.jpg') }}" alt="Rooftop Pool">
-                        <div class="overlay">
-                            <i class="bi bi-zoom-in"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#zoomModal"
-                        data-img="{{ asset('public/assets/images/room/4footer-g.jpg') }}" data-caption="Rooftop Pool">
-                        <img src="{{ asset('public/assets/images/room/5footer-g.jpg') }}" alt="Rooftop Pool">
-                        <div class="overlay">
-                            <i class="bi bi-zoom-in"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#zoomModal"
-                        data-img="{{ asset('public/assets/images/room/6footer-g.jpg') }}" data-caption="Rooftop Pool">
-                        <img src="{{ asset('public/assets/images/room/6footer-g.jpg') }}" alt="Rooftop Pool">
-                        <div class="overlay">
-                            <i class="bi bi-zoom-in"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
 
                 </div>
@@ -142,15 +140,15 @@
                     </div>
                     <p>Subscribe our Newsletter</p>
                     <form id="subscribe-form" method="POST">
-    @csrf
-    <input type="hidden" name="is_subscribe" value="1">
-    <div class="single-newsletter-box">
-        <input type="email" name="email" placeholder="Enter E-Mail">
-        <button type="submit">Subscribe Now</button>
-        <div id="error-message" style="color: red; margin-top: 5px;"></div>
-        <div id="success-message" style="color: green; margin-top: 5px;"></div>
-    </div>
-</form>
+                        @csrf
+                        <input type="hidden" name="is_subscribe" value="1">
+                        <div class="single-newsletter-box">
+                            <input type="email" name="email" placeholder="Enter E-Mail">
+                            <button type="submit">Subscribe Now</button>
+                            <div id="error-message" style="color: red; margin-top: 5px;"></div>
+                            <div id="success-message" style="color: green; margin-top: 5px;"></div>
+                        </div>
+                    </form>
 
 
                 </div>
@@ -172,6 +170,49 @@
 </div>
 <div class="curser"></div>
 <div class="curser2"></div>
+<!-- WhatsApp Floating Icon -->
+<style>
+    .whatsapp-icon {
+        position: fixed;
+        bottom: 80px;
+        /* 20px se badha kar 80px kar diya - thoda upar aa jayega */
+        right: 25px;
+        z-index: 1000;
+        transition: all 0.3s ease;
+    }
+
+    .whatsapp-icon img {
+        width: 65px;
+        height: 65px;
+        border-radius: 50%;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .whatsapp-icon:hover img {
+        transform: scale(1.1);
+        box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+    }
+
+    /* Mobile responsive adjustment */
+    @media (max-width: 768px) {
+        .whatsapp-icon img {
+            width: 55px;
+            height: 55px;
+        }
+
+        .whatsapp-icon {
+            bottom: 70px;
+            right: 15px;
+        }
+    }
+</style>
+
+<a href="https://api.whatsapp.com/send?phone=917006022986&text=Hello, I want to make a booking" target="_blank" class="whatsapp-icon" aria-label="Chat on WhatsApp">
+    <img src="{{ asset('public/assets/images/whatsapp.png') }}" alt="Chat on WhatsApp">
+</a>
+
+
 <div class="prgoress_indicator active-progress">
     <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
         <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
@@ -179,14 +220,16 @@
         </path>
     </svg>
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-{{-- <script src="{{ asset('public/assets/js/bootstrap.min.js') }}"></script> --}}
+{{--
+<script src="{{ asset('public/assets/js/bootstrap.min.js') }}"></script> --}}
 <script src="{{ asset('public/assets/js/vendor/jquery-3.6.2.min.js') }}"></script>
 <script src="{{ asset('public/assets/js/popper.min.js') }}"></script>
 <script src="{{ asset('public/assets/js/owl.carousel.min.js') }}"></script>
 <script src="{{ asset('public/assets/js/jquery.counterup.min.js') }}"></script>
 <script src="{{ asset('public/assets/js/waypoints.min.js') }}"></script>
-<script src="{{ asset('public/assets/js/wow.js') }}"></script>
+{{-- <script src="{{ asset('public/assets/js/wow.js') }}"></script> --}}
 <script src="{{ asset('public/assets/js/imagesloaded.pkgd.min.js') }}"></script>
 <script src="{{ asset('public/venobox/venobox.js') }}"></script>
 <script src="{{ asset('public/venobox/venobox.min.js') }}"></script>
@@ -211,14 +254,14 @@
     integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         var modal = new bootstrap.Modal(document.getElementById('mustLoginModal'));
         modal.show();
     });
 </script>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         const today = new Date().toISOString().split('T')[0];
 
         const startDateInput = document.getElementById('start_date');
@@ -265,13 +308,13 @@
     });
 </script>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
 
-        document.querySelectorAll('.has-sub').forEach(function(item) {
-            item.addEventListener('mouseenter', function() {
+        document.querySelectorAll('.has-sub').forEach(function (item) {
+            item.addEventListener('mouseenter', function () {
                 item.classList.add('open');
             });
-            item.addEventListener('mouseleave', function() {
+            item.addEventListener('mouseleave', function () {
                 item.classList.remove('open');
             });
         });
@@ -279,13 +322,13 @@
 
         var toggleBtn = document.querySelector('.toggle-btn');
         var navUl = document.querySelector('.navbar ul');
-        toggleBtn.addEventListener('click', function() {
+        toggleBtn.addEventListener('click', function () {
             navUl.classList.toggle('show');
         });
 
 
-        document.querySelectorAll('.has-sub > a').forEach(function(link) {
-            link.addEventListener('click', function(e) {
+        document.querySelectorAll('.has-sub > a').forEach(function (link) {
+            link.addEventListener('click', function (e) {
                 if (window.innerWidth <= 768) {
                     e.preventDefault();
                     link.parentElement.classList.toggle('open');
@@ -305,126 +348,9 @@
         });
     });
 </script>
-<!-- 
+
 <script>
-    $(document).ready(function() {
-        const today = new Date();
-
-        // Init flatpickr for checkin
-        flatpickr("#checkin", {
-            minDate: today,
-            dateFormat: "m/d/Y",
-            onChange: function(selectedDates) {
-                if (selectedDates[0]) {
-                    checkoutCalendar.set("minDate", selectedDates[0]);
-                }
-            }
-        });
-
-        // Init flatpickr for checkout
-        const checkoutCalendar = flatpickr("#checkout", {
-            minDate: today,
-            dateFormat: "m/d/Y"
-        });
-
-        // Guest count logic
-        let adults = 1,
-            children = 0;
-
-        function getTotalGuests() {
-            return adults + children;
-        }
-
-        function updateGuestSummary() {
-            $('#adultCount').text(adults);
-            $('#childCount').text(children);
-            $('#adultInput').val(adults);
-            $('#childInput').val(children);
-            $('#guestSummary').text(`${adults} Adult${adults > 1 ? 's' : ''}, ${children} Children`);
-        }
-
-        $('.guest-plus').on('click', function() {
-            const type = $(this).data('type');
-            const total = getTotalGuests();
-
-            if (total >= 10) {
-                alert("You cannot select more than 10 guests in total.");
-                return;
-            }
-
-            if (type === 'adult') {
-                adults++;
-            } else {
-                if (adults === 0) {
-                    alert("Please select at least 1 adult before adding children.");
-                    return;
-                }
-                children++;
-            }
-            updateGuestSummary();
-        });
-
-        $('.guest-minus').on('click', function() {
-            const type = $(this).data('type');
-
-            if (type === 'adult') {
-                if (adults > 1) {
-                    adults--;
-                }
-                // If adults reduced to 0, reset children
-                if (adults === 0) {
-                    children = 0;
-                }
-            }
-
-            if (type === 'child') {
-                if (children > 0) {
-                    children--;
-                }
-            }
-
-            updateGuestSummary();
-        });
-
-        // Toggle dropdown on summary click only
-        $('#guestToggle').on('click', function(e) {
-            e.stopPropagation();
-            $('#guestDropdown').toggleClass('active');
-        });
-
-        // Prevent closing when clicking inside dropdown
-        $('#guestDropdown').on('click', function(e) {
-            e.stopPropagation();
-        });
-
-        // Close when clicking outside
-        $(document).on('click', function() {
-            $('#guestDropdown').removeClass('active');
-        });
-
-        // Init on load
-        updateGuestSummary();
-    });
-</script> -->
-
-
-
-
-<!-- <script>
-    const videoModal = document.getElementById('videoModal');
-    const videoFrame = document.getElementById('youtubeVideo');
-    const videoURL = "https://stayroyal.in/public/assets/video/MicrosoftTeams-video.mp4";
-
-    videoModal.addEventListener('show.bs.modal', () => {
-        videoFrame.src = videoURL;
-    });
-
-    videoModal.addEventListener('hidden.bs.modal', () => {
-        videoFrame.src = "";
-    });
-</script> -->
-<script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('.client-logo-slider').owlCarousel({
             loop: true,
             margin: 20,
@@ -447,7 +373,7 @@
     });
 </script>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('.about_list.owl-carousel').owlCarousel({
             items: 1,
             loop: true,
@@ -462,7 +388,7 @@
     })
 </script>
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
         const currentUrl = window.location.href;
         const links = document.querySelectorAll(".nav-link");
 
@@ -471,7 +397,7 @@
                 links.forEach(l => l.classList.remove("active"));
                 link.classList.add("active");
             }
-            link.addEventListener("click", function() {
+            link.addEventListener("click", function () {
                 links.forEach(l => l.classList.remove("active"));
                 this.classList.add("active");
             });
@@ -484,7 +410,7 @@
         const menu = document.getElementById("userDropdownMenu");
         menu.style.display = menu.style.display === "block" ? "none" : "block";
     }
-    document.addEventListener('click', function(event) {
+    document.addEventListener('click', function (event) {
         const dropdown = document.querySelector('.user-dropdown');
         const menu = document.getElementById("userDropdownMenu");
         if (dropdown && !dropdown.contains(event.target)) {
@@ -497,7 +423,7 @@
         const menu = document.getElementById("mobileDropdownMenu");
         menu.style.display = menu.style.display === "block" ? "none" : "block";
     }
-    document.addEventListener('click', function(event) {
+    document.addEventListener('click', function (event) {
         const dropdown = document.querySelector('.user-dropdown-mobile');
         const menu = document.getElementById("mobileDropdownMenu");
         if (dropdown && !dropdown.contains(event.target)) {
@@ -507,7 +433,7 @@
 </script>
 
 <script>
-    window.addEventListener('load', function() {
+    window.addEventListener('load', function () {
         const loader = document.getElementById('loader');
         const content = document.getElementById('main-content');
         loader.classList.add('hidden');
@@ -516,7 +442,7 @@
     });
 </script>
 <!-- subscribe   -->
- <script>
+<script>
     $(document).ready(function () {
         $('#subscribe-form').on('submit', function (e) {
             e.preventDefault();
@@ -559,6 +485,85 @@
         });
     });
 </script>
+
+<?php
+// WebPage Schema
+echo <<<JSON
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Stay Royal Homepage",
+  "url": "https://stayroyal.in/",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Stay Royal",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://stayroyal.in/public/assets/images/inner/stay-logo.png"
+    }
+  },
+  "hasPart": [
+    {
+      "@type": "WebPage",
+      "url": "https://stayroyal.in/about"
+    },
+    {
+      "@type": "WebPage",
+      "url": "https://stayroyal.in/rooms"
+    },
+    {
+      "@type": "WebPage",
+      "url": "https://stayroyal.in/2bhk-luxury-villa-1st-floor"
+    },
+    {
+      "@type": "WebPage",
+      "url": "https://stayroyal.in/4bhk-luxury-villa-complete-villa"
+    },
+    {
+      "@type": "WebPage",
+      "url": "https://stayroyal.in/2bhk-luxury-villa-ground-floor"
+    },
+    {
+      "@type": "WebPage",
+      "url": "https://stayroyal.in/contacts"
+    },
+    {
+      "@type": "WebPage",
+      "url": "https://stayroyal.in/blogs"
+    }
+  ]
+}
+</script>
+JSON;
+
+// Corporation Schema
+echo <<<JSON
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Corporation",
+  "name": "Stay Royal",
+  "url": "https://stayroyal.in/",
+  "logo": "https://stayroyal.in/public/assets/images/inner/stay-logo.png",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+917006022986",
+    "contactType": "support",
+    "areaServed": ["IN"],
+    "availableLanguage": "en"
+  },
+  "sameAs": [
+    "https://www.facebook.com/royalstaybnb",
+    "https://x.com/stayroyalbnb",
+    "https://www.instagram.com/stayroyalbnb/",
+    "https://www.youtube.com/@stayroyalbnb",
+    "https://stayroyal.in/"
+  ]
+}
+</script>
+JSON;
+?>
 
 
 </body>

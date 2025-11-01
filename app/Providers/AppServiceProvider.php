@@ -4,7 +4,9 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Models\Room;
+use App\Models\RoomCategory;
 use App\Models\Roomtype;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -20,18 +22,21 @@ class AppServiceProvider extends ServiceProvider
      */
 
 
+
+
     public function boot(): void
     {
         view()->composer('*', function ($view) {
-          
-            $roomtypes = Roomtype::where('status', 0)->get();
-           $rooms = Room::where('status', 1)->with('roomType')->get();
+            // Get categories with room types and rooms
+            $categories = RoomCategory::with(['roomTypes.rooms' => function ($q) {
+                $q->where('status', 1);
+            }])
+                ->where('status', 1)
+                ->get();
+
             $view->with([
-                'header_rooms' => $rooms,
-                'header_roomtypes' => $roomtypes
-                
+                'header_categories' => $categories
             ]);
         });
     }
-
 }

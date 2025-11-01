@@ -158,7 +158,7 @@ class BlogsController extends Controller
  public function blog_details($slug)
  {
     $blog = Blog::where('slug', $slug)->firstOrFail();
-    $recentBlogs = Blog::latest()->take(6)->get(); // Fetch some recent blogs for sidebar
+    $recentBlogs = Blog::latest()->take(6)->get(); 
     return view('website.blog-details', compact('blog', 'recentBlogs'));
   }
 }

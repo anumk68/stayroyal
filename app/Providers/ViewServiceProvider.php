@@ -13,7 +13,7 @@ class ViewServiceProvider extends ServiceProvider
         // Attach data to 'layouts.header' view
         View::composer('admin.layouts.header', function ($view) {
             $meta = Meta::first(); // Or however you fetch from DB
-             $view->with([
+            $view->with([
                 'metaTitle' => $meta->title ?? 'Default Title',
                 'metaDescription' => $meta->value ?? 'Default Description',
                 // 'metaTags' => $meta->tags ?? 'default,keywords',

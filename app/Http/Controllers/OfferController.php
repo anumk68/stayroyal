@@ -29,7 +29,7 @@ public function update(Request $request, $id)
         'offer_price' => 'required|numeric|min:1|max:100',
         'offer_valid_time' => 'required|string|max:100',
         'status' => 'required|boolean',
-           'slug' => 'required|string',
+           'slug' => 'nullable|string',
 
     ]);
 
@@ -72,7 +72,7 @@ public function store(Request $request)
         'room_type_id' => 'required|exists:roomtypes,id',
         'offer_price' => 'required|numeric|min:0|max:100',
         'offer_valid_time' => 'required|string',
-         'slug' => 'required|string|unique:offers,slug',
+         'slug' => 'nullable',
     ]);
 
     $room = Room::where('room_type', $request->room_type_id)->first();

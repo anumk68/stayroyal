@@ -8,7 +8,6 @@
                         <div class="breadcum-title">
                             <h4>Account</h4>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -80,7 +79,7 @@
                                             <tr>
                                                 <td>{{ $index + 1 }}</td>
                                                 <td>#{{ $booking->id }}</td>
-                                              <td>{{ ucwords(str_replace('-', ' ', $booking->room->slug)) }}</td>
+                                                <td>{{ ucwords(str_replace('-', ' ', $booking->room->slug)) }}</td>
 
                                                 <td>{{ \Carbon\Carbon::parse($booking->start_date)->format('d, M Y') }}</td>
                                                 <td>₹{{ number_format($booking->price, 2) }}</td>

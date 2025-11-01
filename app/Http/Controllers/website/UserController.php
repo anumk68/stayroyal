@@ -137,9 +137,11 @@ class UserController extends Controller
   // ///////////      Blog Section   ////////
   public function view_blogs()
   {
-    $blogs = Blog::join('blogcategories', 'blogs.category_id', '=', 'blogcategories.id')
-      ->select('blogs.*', 'blogcategories.category_name')
-      ->get();
+$blogs = Blog::join('blogcategories', 'blogs.category_id', '=', 'blogcategories.id')
+    ->select('blogs.*', 'blogcategories.category_name')
+    ->orderBy('blogs.id', 'desc')
+    ->paginate(9);
+
     return view("website.blog", compact('blogs'));
   }
 

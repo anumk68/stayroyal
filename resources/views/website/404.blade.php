@@ -1,33 +1,80 @@
+@extends('website.layouts.layout')
 
+@section('content')
+    <style>
+        .error-section {
+            padding: 100px 0;
+            /* top & bottom spacing */
+            text-align: center;
+            background: #fff;
+        }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>404 – Page Lost</title>
-  <style>
-    body { margin: 0; font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #fdfbfb, #ebedee); display: flex; align-items: center; justify-content: center; height: 100vh; }
-    .abstract { position: relative; width: 360px; padding: 40px; background: #fff; border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); text-align: center; }
-    .abstract::before, .abstract::after { content: ''; position: absolute; border-radius: 50%; }
-    .abstract::before { width: 120px; height: 120px; background: rgba(183,154,101,0.2); top: -60px; left: -60px; }
-    .abstract::after { width: 80px; height: 80px; background: rgba(183,154,101,0.2); bottom: -40px; right: -40px; }
-    .abstract h1 { font-size: 72px; margin: 0; color: #b79a65 ; }
-    .abstract p { margin: 16px 0; font-size: 18px; color: #333; }
-    .abstract a { display: inline-block; margin-top: 20px; padding: 12px 28px; background: #b79a65 ; color: #fff; text-decoration: none; border-radius: 8px; }
-  </style>
-</head>
-<body>
-  <div class="abstract">
-    <h1>404</h1>
-	<h4>Oops! Page Not Found
+        .error-content {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
 
-</h4>
-<p>Sorry, we can’t find the page you’re looking for.
+        .error-content h1 {
+            font-size: 140px;
+            font-weight: 800;
+            color: #b79a65;
+            margin-bottom: 10px;
+            line-height: 1;
+        }
 
-</p>
-    <a href="https://stayroyal.in/">Take Me Home</a>
-  </div>
-</body>
-</html>
+        .error-content h4 {
+            font-size: 28px;
+            font-weight: 600;
+            color: #222;
+            margin-bottom: 10px;
+        }
 
+        .error-content p {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        .error-content a {
+            display: inline-block;
+            padding: 12px 35px;
+            background: #b79a65;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .error-content a:hover {
+            background: #a3874c;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .error-content h1 {
+                font-size: 100px;
+            }
+
+            .error-content h4 {
+                font-size: 22px;
+            }
+
+            .error-section {
+                padding: 70px 0;
+            }
+        }
+    </style>
+
+    <section class="error-section">
+        <div class="container">
+            <div class="error-content">
+                <h1>404</h1>
+                <h4>Oops! Page Not Found</h4>
+                <p>Sorry, we can’t find the page you’re looking for. It might have been moved or deleted.</p>
+                <a href="{{ url('/') }}">Go To Home</a>
+            </div>
+        </div>
+    </section>
+@endsection

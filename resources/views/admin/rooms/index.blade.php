@@ -33,9 +33,32 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
+
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <button id="delete-selected" class="btn btn-danger btn-sm" disabled>Delete Selected</button>
+
+                            <div class="dropdown">
+                                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button"
+                                    id="selectOptionsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Select Options
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="selectOptionsDropdown">
+                                    <li><a class="dropdown-item" href="#" id="select-all-action">Select All</a></li>
+                                    <li><a class="dropdown-item" href="#" id="deselect-all-action">Deselect All</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+
                         <table class="table align-middle mb-0" id="room_table">
                             <thead class="table-light">
                                 <tr>
+                                    <!-- Inside your table header -->
+                                    <th>
+                                        <input type="checkbox" id="select-all" class="form-check-input custom-checkbox">
+                                    </th>
+
                                     <th>#ID</th>
                                     <th>Room type</th>
                                     <th>Price</th>
@@ -47,6 +70,7 @@
                             <tbody>
                                 @foreach ($rooms as $room)
                                     <tr id="room-row-{{ $room->id }}">
+                                        <td><input type="checkbox" class="select-room" value="{{ $room->id }}"></td>
                                         <td>{{ $room->id }}</td>
                                         <td>
                                             <div class="d-flex align-items-center gap-3">
@@ -90,6 +114,7 @@
                                         </td>
                                     </tr>
                                 @endforeach
+
                                 <tr id="no-results" style="display:none;">
                                     <td colspan="5" class="text-center">No Rooms records found.</td>
                                 </tr>
@@ -254,6 +279,12 @@
                     <label for="slug" class="form-label">Slug:</label>
                     <input type="text" name="slug" class="form-control" required value="{{ old('slug') }}">
                 </div>
+                   <div class="mb-3">
+                        <label for="schema_seo" class="form-label">Seo Schema:</label>
+                        <textarea name="schema_seo" id="schema_seo" class="form-control" rows="6">
+                                    {{ old('schema_seo') }}
+                                </textarea>
+                    </div>
 
                 <!-- Submit -->
                 <div class="form-group text-end mt-4">
@@ -355,5 +386,78 @@
             wrapper.appendChild(div);
             amenityIndex++;
         }
+    </script>
+
+
+    {{-- bulk delete script  --}}
+    <script>
+        // Master checkbox toggle
+        $('#select-all').on('click', function() {
+            $('.select-room').prop('checked', this.checked);
+            toggleDeleteButton();
+        });
+
+        // Individual checkbox change
+        $(document).on('change', '.select-room', function() {
+            const allChecked = $('.select-room').length === $('.select-room:checked').length;
+            $('#select-all').prop('checked', allChecked);
+            toggleDeleteButton();
+        });
+
+        // Toggle Delete Button Enable/Disable
+        function toggleDeleteButton() {
+            const anyChecked = $('.select-room:checked').length > 0;
+            $('#delete-selected').prop('disabled', !anyChecked);
+        }
+
+        // Bulk Delete Action
+        $('#delete-selected').on('click', function() {
+            const ids = $('.select-room:checked').map(function() {
+                return $(this).val();
+            }).get();
+
+            if (ids.length === 0) return;
+
+            if (!confirm('Are you sure you want to delete the selected rooms?')) return;
+
+            $.ajax({
+                url: '{{ route('room.bulkDelete') }}',
+                type: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    ids: ids
+                },
+                success: function(response) {
+                    ids.forEach(id => {
+                        $('#room-row-' + id).remove();
+                    });
+
+                    alert(response.message);
+                    toggleDeleteButton();
+
+                    // Uncheck master checkbox if list becomes empty
+                    $('#select-all').prop('checked', false);
+                },
+                error: function() {
+                    alert('Something went wrong. Please try again.');
+                }
+            });
+        });
+
+        // Dropdown - Select All
+        $('#select-all-action').on('click', function(e) {
+            e.preventDefault();
+            $('.select-room').prop('checked', true);
+            $('#select-all').prop('checked', true);
+            toggleDeleteButton();
+        });
+
+        // Dropdown - Deselect All
+        $('#deselect-all-action').on('click', function(e) {
+            e.preventDefault();
+            $('.select-room').prop('checked', false);
+            $('#select-all').prop('checked', false);
+            toggleDeleteButton();
+        });
     </script>
 @endsection

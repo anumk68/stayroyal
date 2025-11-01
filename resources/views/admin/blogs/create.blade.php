@@ -81,9 +81,14 @@
                         value="{{ old('image_alt') }}">
                 </div>
 
-                {{-- Submit --}}
-                <button type="submit" class="btn btn-success">Add Blog</button>
-                <a href="{{ route('blogs.index') }}" class="btn btn-secondary">Cancel</a>
+                 <div class="d-flex justify-content-end gap-3 mt-4">
+                        <a href="{{ route('blogs.index') }}" class="btn btn-outline-secondary px-4">
+                            <i class="bi bi-x-circle me-1"></i> Cancel
+                        </a>
+                        <button type="submit" class="btn btn-success px-4">
+                            <i class="bi bi-save me-1"></i> Add Blog
+                        </button>
+                    </div>
             </form>
         </div>
     </main>

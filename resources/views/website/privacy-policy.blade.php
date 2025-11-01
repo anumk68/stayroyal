@@ -1,4 +1,6 @@
 @extends('website.layouts.layout')
+<meta name="robots" content="noindex, nofollow">
+
 @section('content')
 <!--==================================================-->
 <!-- Start Royella Breadcumb Area -->

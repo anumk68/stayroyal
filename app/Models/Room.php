@@ -11,12 +11,23 @@ class Room extends Model
         'location',
         'price',
         'size',
-        'room_image','slug','description'
+        'room_image',
+        'slug',
+        'description',
+        'schema_seo'
     ];
 
     public function roomType()
-{
-    return $this->belongsTo(Roomtype::class, 'room_type');
-}
+    {
+        return $this->belongsTo(Roomtype::class, 'room_type');
+    }
+    public function room()
+    {
+        return $this->belongsTo(Roomtype::class, 'room_type');
+    }
 
+    public function roomCategory()
+    {
+        return $this->belongsTo(RoomCategory::class, 'category_id');
+    }
 }

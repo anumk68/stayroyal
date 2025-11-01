@@ -1,4 +1,4 @@
-<!-- resources/views/admin/layouts/layout.blade.php -->
+ 
 @include('website.layouts.header')
 
 

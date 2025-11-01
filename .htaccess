@@ -1,25 +1,106 @@
 <IfModule mod_rewrite.c>
-    <IfModule mod_negotiation.c>
-        Options -MultiViews -Indexes
-    </IfModule>
-
     RewriteEngine On
 
-    # Handle Authorization Header
+    # Disable Directory Browsing
+    Options -Indexes
+
+    # Block hidden & sensitive files
+    <FilesMatch "^\.">
+        Require all denied
+    </FilesMatch>
+    <FilesMatch "\.(env|git|log|sql|yml|ini|bak|config|md)$">
+        Require all denied
+    </FilesMatch>
+    <FilesMatch "^(artisan|composer\.(json|lock))$">
+        Require all denied
+    </FilesMatch>
+    RedirectMatch 404 ^/(app|bootstrap|config|database|resources|routes)/
+
+    <IfModule mod_expires.c>
+        ExpiresActive On
+        ExpiresByType image/webp "access plus 1 year"
+        ExpiresByType image/jpg "access plus 1 year"
+        ExpiresByType image/jpeg "access plus 1 year"
+        ExpiresByType image/png "access plus 1 year"
+        ExpiresByType image/gif "access plus 1 year"
+        ExpiresByType image/svg+xml "access plus 1 year"
+        ExpiresByType text/css "access plus 1 month"
+        ExpiresByType text/javascript "access plus 1 month"
+        ExpiresByType application/javascript "access plus 1 month"
+        ExpiresByType application/json "access plus 1 month"
+        ExpiresByType application/font-woff2 "access plus 1 year"
+        ExpiresByType application/font-woff "access plus 1 year"
+        ExpiresByType font/ttf "access plus 1 year"
+        ExpiresByType font/otf "access plus 1 year"
+        ExpiresDefault "access plus 7 days"
+    </IfModule>
+
+    # ✅ Compression (Brotli > Gzip)
+    <IfModule mod_brotli.c>
+        AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/css text/javascript application/javascript application/json application/xml application/font-woff application/font-woff2 image/svg+xml
+    </IfModule>
+    <IfModule mod_deflate.c>
+        AddOutputFilterByType DEFLATE text/html text/plain text/css text/javascript application/javascript application/json application/xml application/font-woff application/font-woff2 image/svg+xml
+        # Remove browser bugs
+        BrowserMatch ^Mozilla/4 gzip-only-text/html
+        BrowserMatch ^Mozilla/4\.0[678] no-gzip
+        BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+    </IfModule>
+
+    # ✅ Remove ETags
+    FileETag None
+    <IfModule mod_headers.c>
+        Header unset ETag
+    </IfModule>
+
+    # ✅ Keep-Alive
+    <IfModule mod_headers.c>
+        Header set Connection keep-alive
+    </IfModule>
+
+    # ✅ Security Headers
+    <IfModule mod_headers.c>
+        Header always set X-Content-Type-Options "nosniff"
+        Header always set X-Frame-Options "SAMEORIGIN"
+        Header always set Referrer-Policy "strict-origin-when-cross-origin"
+        Header always set X-XSS-Protection "1; mode=block"
+        Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+        Header set Cache-Control "public, max-age=31536000"
+    </IfModule>
+
+    # ===============================
+    # 🌐 LARAVEL RULES
+    # ===============================
+
+    # Handle Auth & CSRF headers
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-
-    # Handle X-XSRF-Token Header
     RewriteCond %{HTTP:x-xsrf-token} .
     RewriteRule .* - [E=HTTP_X_XSRF_TOKEN:%{HTTP:X-XSRF-Token}]
 
-    # Redirect Trailing Slashes If Not A Folder...
+    # Redirect Trailing Slashes If Not A Folder
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_URI} (.+)/$
     RewriteRule ^ %1 [L,R=301]
 
-    # Send Requests To Front Controller...
+    # Send Requests To Front Controller
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
+
+    # ===============================
+    # 🔹 Additional Performance Tweaks
+    # ===============================
+
+    # Disable ETag + Enable Cache-Control for all static resources
+    <FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf|woff|woff2|ttf|svg)$">
+        Header set Cache-Control "max-age=31536000, public"
+        Header unset ETag
+    </FilesMatch>
+
+    # Leverage browser prefetch / preload
+    <IfModule mod_headers.c>
+        Header set Link "</public/assets/css/bootstrap.min.css>; rel=preload; as=style" env=IS_HTML
+        Header set Link "</public/assets/js/theme.js>; rel=preload; as=script" env=IS_HTML
+    </IfModule>
 </IfModule>

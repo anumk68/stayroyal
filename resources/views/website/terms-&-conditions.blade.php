@@ -1,4 +1,6 @@
 @extends('website.layouts.layout')
+<meta name="robots" content="noindex, nofollow">
+
 @section('content')
 <!--==================================================-->
 <!-- Start Royella Breadcumb Area -->
@@ -10,11 +12,6 @@
 					<div class="breadcum-title">
 						<h4>Terms & Conditions</h4>
 					</div>
-					<!-- <ul>
-						<li><a href="{{ route('home') }}">Home</a></li>
-						<li>/</li>
-						<li>Terms & Conditions</li>
-					</ul> -->
 				</div>
 			</div>
 		</div>

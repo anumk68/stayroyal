@@ -2,25 +2,28 @@
 @section('meta_title', $metatitle)
 @section('meta_description', $metaDescription)
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
 @section('content')
     <!--==================================================-->
     <!-- Start Royella Breadcumb Area -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+
     <div class="breadcumb-area"
         style="background: linear-gradient(0deg, rgb(0 0 0 / 54%), rgb(0 0 0 / 34%)), url({{ asset('public/assets/images/room/about-b.jpg') }}); background-position: center; background-repeat: no-repeat; background-size: cover; ">
         <div class="container">
             <div class=" align-items-center breadcum-title">
                 @if ($details)
                     <h1 style="color: rgb(255, 255, 255);">
-                        {{ ucwords(str_replace('-', ' ', $details->slug)) }}
+                        @if (!empty($details->slug) && !empty($offer->slug))
+                            {{ ucwords(str_replace('-', ' ', $details->slug . ' / ' . $offer->slug)) }}
+                        @elseif(!empty($details->slug))
+                            {{ ucwords(str_replace('-', ' ', $details->slug)) }}
+                        @endif
                     </h1>
                 @else
                     <h1 style="color: red;">Luxury Villa - Ground Floor</h1>
                 @endif
 
 
-                <!-- - 2BHK Luxury Villa - Ground Floor -->
-                </h1>
             </div>
         </div>
     </div>
@@ -35,7 +38,7 @@
                                 <div class="swiper-slide">
                                     <img src="{{ asset('storage/app/public/' . $img) }}"
                                         onerror="this.onerror=null; this.src='{{ asset('public/' . $img) }}';"
-                                        alt="Rooms">
+                                        alt="First Floor 2BHK Villa Mohali">
                                 </div>
                             @endforeach
                         </div>
@@ -48,7 +51,7 @@
                                 <div class="swiper-slide">
                                     <img src="{{ asset('storage/app/public/' . $img) }}"
                                         onerror="this.onerror=null; this.src='{{ asset('public/' . $img) }}';"
-                                        alt="Mohali Rooms">
+                                        alt="Stay Royal Villa Mohali">
                                 </div>
                             @endforeach
                         </div>
@@ -74,33 +77,35 @@
                                         whiteboard alternative
                                     </p>
 
-                                <div class="room-details-check-box" data-cue="zoomIn">
-                                    <div class="room-details-check-content">
-                                        <span><img src="{{ asset('public/assets/images/inner/room-details-1.png') }}"
-                                                alt="">Check In</span>
-                                        <p class="check-item"><i class="bi bi-check2"></i>Check-in from 9:00 AM – Anytime
-                                        </p>
-                                        <p class="check-item"><i class="bi bi-check2"></i>Early check-in available (subject
-                                            to availability)
-                                        </p>
+                                    <div class="room-details-check-box" data-cue="zoomIn">
+                                        <div class="room-details-check-content">
+                                            <span><img src="{{ asset('public/assets/images/inner/room-details-1.png') }}"
+                                                    alt="Stay Royal Villa Mohali">Check In</span>
+                                            <p class="check-item"><i class="bi bi-check2"></i>Check-in from 9:00 AM –
+                                                Anytime
+                                            </p>
+                                            <p class="check-item"><i class="bi bi-check2"></i>Early check-in available
+                                                (subject
+                                                to availability)
+                                            </p>
 
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="room-details-check-box upper" data-cue="zoomIn">
-                                    <div class="room-details-check-content">
-                                        <span><img src="{{ asset('public/assets/images/inner/room-details-2.png') }}"
-                                                alt="">Check Out</span>
-                                        <p class="check-item"><i class="bi bi-check2"></i>Standard check-out by 12:00 PM
-                                            (noon)
-                                        </p>
-                                        <p class="check-item"><i class="bi bi-check2"></i>Late check-out up to 9:00 AM –
-                                            Anytime, based on availability
+                                    <div class="room-details-check-box upper" data-cue="zoomIn">
+                                        <div class="room-details-check-content">
+                                            <span><img src="{{ asset('public/assets/images/inner/room-details-2.png') }}"
+                                                    alt="Stay Royal Villa Mohali">Check Out</span>
+                                            <p class="check-item"><i class="bi bi-check2"></i>Standard check-out by 12:00 PM
+                                                (noon)
+                                            </p>
+                                            <p class="check-item"><i class="bi bi-check2"></i>Late check-out up to 9:00 AM –
+                                                Anytime, based on availability
 
-                                        </p>
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
-                                 @endif
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -327,8 +332,8 @@
                                                         <i class="bi bi-check2"></i>
                                                         @if (!empty($amenity['icon']))
                                                             <img src="{{ asset('storage/app/public/' . $amenity['icon']) }}"
-                                                                alt="" width="20" height="20"
-                                                                style="margin-right: 8px;">
+                                                                alt="3BHK Luxury Villa Aerocity" width="20"
+                                                                height="20" style="margin-right: 8px;">
                                                         @endif
                                                         {{ $amenity['text'] ?? '' }}
                                                     </li>
@@ -347,13 +352,16 @@
             </div>
         </div>
     </div>
+
+
     <section class="room ">
         <!--room-area-->
         <div class="room-area room-d">
             <div class="container">
                 <div class="section-title center text-center" data-cue="zoomIn">
                     <div class="section-thumb text-center">
-                        <img src="{{ asset('public/assets/images/inner/stay-logo.png') }}" alt>
+                        <img src="{{ asset('public/assets/images/inner/stay-logo.png') }}"
+                            alt="3BHK Luxury Villa Aerocity">
                     </div>
                     <h2>Ground Floor, First Floor or Complete Villa – Luxury That Fits Your Stay
                     </h2>
@@ -376,7 +384,7 @@
                                                 <div class="item">
                                                     <img src="{{ asset('storage/app/public/' . $img) }}"
                                                         onerror="this.onerror=null; this.src='{{ asset('public/' . $img) }}';"
-                                                        alt="">
+                                                        alt="3BHK Luxury Villa Aerocity">
                                                 </div>
                                             @endforeach
 
@@ -400,12 +408,10 @@
                                         <ul>
                                             @foreach (json_decode($room->amenities, true) as $amenity)
                                                 <li><img src="{{ asset('storage/app/public/' . $amenity['icon']) }}"
-                                                        alt="">
+                                                        alt="3BHK Luxury Villa Aerocity">
                                                     {{ $amenity['text'] }}</li>
                                             @endforeach
                                         </ul>
-
-
                                     </div>
 
                                     <div class="room-bottom">
@@ -423,34 +429,34 @@
                                             <div class="room-bottom-icon">
                                                 <div class="tooltip">
                                                     <li><img src="{{ asset('public/assets/images/home-1/Wifi-1.png') }}"
-                                                            alt="">
+                                                            alt="Stay Royal Villa Mohali">
                                                     </li>
                                                     <span class="tooltiptext"> Free Wi-Fi</span>
                                                 </div>
                                                 <div class="tooltip">
                                                     <li><img src="{{ asset('public/assets/images/home-1/Parking1.png') }}"
-                                                            alt="">
+                                                            alt="Stay Royal Villa Mohali">
                                                     </li>
                                                     <span class="tooltiptext">Parking</span>
                                                 </div>
                                                 <div class="tooltip">
                                                     <li><img src="{{ asset('public/assets/images/home-1/Refrigerator1.png') }}"
-                                                            alt=""></li>
+                                                            alt="Stay Royal Villa Mohali"></li>
                                                     <span class="tooltiptext"> Refrigerator</span>
                                                 </div>
                                                 <div class="tooltip">
                                                     <li><img src="{{ asset('public/assets/images/home-1/Self Key Unlocking1.png') }}"
-                                                            alt=""></li>
+                                                            alt="Stay Royal Villa Mohali"></li>
                                                     <span class="tooltiptext"> Self Key Unlocking</span>
                                                 </div>
                                                 <div class="tooltip">
                                                     <li><img src="{{ asset('public/assets/images/home-1/Toiletries1.png') }}"
-                                                            alt=""></li>
+                                                            alt="Stay Royal Villa Mohali"></li>
                                                     <span class="tooltiptext"> Toiletries</span>
                                                 </div>
                                                 <div class="tooltip">
                                                     <li><img src="{{ asset('public/assets/images/home-1/Hair Dryer1.png') }}"
-                                                            alt=""></li>
+                                                            alt="Stay Royal Villa Mohali"></li>
                                                     <span class="tooltiptext">Hair Dryer</span>
                                                 </div>
 
@@ -459,28 +465,28 @@
 
                                                 <div class="tooltip">
                                                     <li><img src="{{ asset('public/assets/images/home-1/Towel1.png') }}"
-                                                            alt="">
+                                                            alt="First Floor 2BHK Villa Mohali">
                                                     </li>
                                                     <span class="tooltiptext">Towel</span>
                                                 </div>
                                                 <div class="tooltip">
                                                     <li><img src="{{ asset('public/assets/images/home-1/Washing Machine1.png') }}"
-                                                            alt=""></li>
+                                                            alt="First Floor 2BHK Villa Mohali"></li>
                                                     <span class="tooltiptext">Washing Machine</span>
                                                 </div>
                                                 <div class="tooltip">
                                                     <li><img src="{{ asset('public/assets/images/home-1/Water Purifier1.png') }}"
-                                                            alt=""></li>
+                                                            alt="First Floor 2BHK Villa Mohali"></li>
                                                     <span class="tooltiptext">Water Purifier</span>
                                                 </div>
                                                 <div class="tooltip">
                                                     <li><img src="{{ asset('public/assets/images/home-1/Electric Iron1.png') }}"
-                                                            alt=""></li>
+                                                            alt="First Floor 2BHK Villa Mohali"></li>
                                                     <span class="tooltiptext">Electric Iron</span>
                                                 </div>
                                                 <div class="tooltip">
                                                     <li><img src="{{ asset('public/assets/images/home-1/electric kettle1.png') }}"
-                                                            alt=""></li>
+                                                            alt="First Floor 2BHK Villa Mohali"></li>
                                                     <span class="tooltiptext">Electric kettle</span>
                                                 </div>
                                                 <div class="tooltip">
@@ -501,19 +507,24 @@
                                     <div class="card-img-wrapper">
                                         <div class="about_list owl-carousel sa">
                                             <div class="item"> <img
-                                                    src="{{ asset('public/assets/images/room/6.jpg') }}" alt>
+                                                    src="{{ asset('public/assets/images/room/6.jpg') }}"
+                                                    alt="Luxury Living Room">
                                             </div>
                                             <div class="item"> <img
-                                                    src="{{ asset('public/assets/images/room/5.jpg') }}" alt>
+                                                    src="{{ asset('public/assets/images/room/5.jpg') }}"
+                                                    alt="Luxury Living Room">
                                             </div>
                                             <div class="item"> <img
-                                                    src="{{ asset('public/assets/images/room/4.jpg') }}" alt>
+                                                    src="{{ asset('public/assets/images/room/4.jpg') }}"
+                                                    alt="Luxury Living Room">
                                             </div>
                                             <div class="item"> <img
-                                                    src="{{ asset('public/assets/images/room/7.jpg') }}" alt>
+                                                    src="{{ asset('public/assets/images/room/7.jpg') }}"
+                                                    alt="Luxury Living Room">
                                             </div>
                                             <div class="item"> <img
-                                                    src="{{ asset('public/assets/images/room/8.jpg') }}" alt>
+                                                    src="{{ asset('public/assets/images/room/8.jpg') }}"
+                                                    alt="Luxury Living Room">
                                             </div>
                                         </div>
                                         <div class="discount-badge">{{ $offer->offer_price }}% OFF</div>
@@ -534,6 +545,54 @@
                             </div>
                         @endforeach
                     @endif
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script type="application/ld+json">
+        {!! $details->schema_seo !!}
+    </script>
+    <section class="faq-section py-5">
+        <div class="container">
+            <div class="row align-items-center g-4">
+
+                <!-- Left: Image -->
+                <div class="col-md-6 text-center">
+                    <img src="{{ asset('public/assets/images/question-mark-query-information-support-service-graphic.webp') }}"
+                        alt="FAQ" class="img-fluid rounded shadow">
+                </div>
+
+                <!-- Right: FAQ -->
+                <div class="col-md-6">
+                    <h2 class="mb-4 fw-bold text-uppercase text-gold">Frequently Asked Questions</h2>
+
+                    <div class="accordion" id="faqAccordion">
+                        @forelse($faqs as $index => $faq)
+                            @php
+                                $collapseId = 'collapse' . $index;
+                                $headingId = 'heading' . $index;
+                            @endphp
+
+                            <div class="accordion-item border-0 mb-2">
+                                <h2 class="accordion-header" id="{{ $headingId }}">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#{{ $collapseId }}" aria-expanded="false"
+                                        aria-controls="{{ $collapseId }}">
+                                        {{ $index + 1 }}. {{ $faq->question }}
+                                    </button>
+                                </h2>
+                                <div id="{{ $collapseId }}" class="accordion-collapse collapse"
+                                    aria-labelledby="{{ $headingId }}" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        {{ $faq->answer }}
+                                    </div>
+                                </div>
+                            </div>
+                        @empty
+                            <p class="text-muted">No FAQs found.</p>
+                        @endforelse
+                    </div>
                 </div>
             </div>
         </div>
@@ -694,14 +753,21 @@
                     extraMax: 4,
                     extraBedFee: 1000,
                     childExtraFee: 1000
+                },
+                '3bhk': {
+                    adultMax: 6,
+                    childMax: 3,
+                    childFreeLimit: 1,
+                    infantMax: 3,
+                    extraMax: 3,
+                    extraBedFee: 1500,
+                    childExtraFee: 1500
                 }
             };
 
             function getRoomType() {
                 return roomSelect.selectedOptions[0].getAttribute('data-roomtype'); // '2bhk' or '4bhk'
             }
-
-
 
             function showAlert(msg) {
                 alert(msg);
@@ -737,16 +803,15 @@
                 if (guestCounts.child > rules.childFreeLimit) {
                     if (
                         (roomType === '2bhk' && guestCounts.adult === rules.adultMax) ||
-                        (roomType === '4bhk' && guestCounts.adult >= rules.adultMax)
+                        (roomType === '4bhk' && guestCounts.adult >= rules.adultMax) ||
+                        (roomType === '3bhk' && guestCounts.adult >= rules.adultMax)
                     ) {
                         extraCharge += rules.childExtraFee;
-                        feeMessages.push("₹1000 extra for additional child.");
+                        feeMessages.push(`₹${rules.childExtraFee} extra for additional child.`);
+
                     }
                 }
 
-                // Extra bed charge
-                // Extra bed charge (offer duration ke hisaab se multiply)
-                // Extra bed charge (always per day × days; offer days preferred, else date-diff)
                 if (guestCounts.extra > 0) {
                     // 1) Try to read offer days from hidden input
                     const raw = (document.getElementById('total_days')?.value || '').trim();

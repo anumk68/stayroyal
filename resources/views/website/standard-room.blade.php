@@ -10,12 +10,7 @@
 					<div class="breadcum-title">
 						<h4>Room Details </h4>
 					</div>
-					<!-- <ul>
-						<li><a href="{{ route('home') }}">Home</a></li>
-						<li>/</li>
-						<li>Room Details</li>
-					</ul> -->
-				</div>
+						</div>
 			</div>
 		</div>
 	</div>

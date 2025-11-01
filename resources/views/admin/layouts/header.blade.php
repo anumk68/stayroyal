@@ -37,7 +37,10 @@
     <link href="{{ asset('public/admin/assets/css/light-theme.css') }}" rel="stylesheet" />
     <link href="{{ asset('public/admin/assets/css/semi-dark.css') }}" rel="stylesheet" />
     <title>{{ 'Stayroyal' . Route::currentRouteName() }}</title>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
 
     <style>
         /* Reset some basics */
@@ -200,29 +203,6 @@
 </head>
 
 <body>
-
-    @if (session('success'))
-        <div class="alert alert-success text-center" style="margin: 80px auto 20px; max-width: 600px;">
-            {{ session('success') }}
-        </div>
-    @endif
-
-    @if (session('error'))
-        <div class="alert alert-danger text-center" style="margin: 80px auto 20px; max-width: 600px;">
-            {{ session('error') }}
-        </div>
-    @endif
-
-    @if ($errors->any())
-        <div class="alert alert-danger text-center" style="margin: 80px auto 20px; max-width: 600px;">
-            <ul class="mb-0">
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
     <!--start wrapper-->
     <div class="wrapper">
         <!--start top header-->
@@ -310,8 +290,8 @@
         <aside class="sidebar-wrapper" data-simplebar="true">
             <div class="sidebar-header">
                 <div>
-                    <img src="{{ asset('public/assets/images/inner/stay-logo.png') }}" height="45" class="logo-icon"
-                        alt="logo icon"
+                    <img src="{{ asset('public/assets/images/inner/stay-logo.png') }}" height="45"
+                        class="logo-icon" alt="logo icon"
                         style="background-color: black; border-radius: 50%; width: 45px; object-fit: cover;">
                 </div>
                 <div>
@@ -330,9 +310,9 @@
                 </li>
 
                 <li>
-                    <a href="{{ url('/adminroom') }}">
-                        <div class="parent-icon"><i class="bi bi-door-open"></i></div>
-                        <div class="menu-title">Rooms</div>
+                    <a href="{{ route('room-cateogry') }}">
+                        <div class="parent-icon"><i class="bi bi-bookmark-star-fill"></i></div>
+                        <div class="menu-title">Room Category</div>
                     </a>
                 </li>
 
@@ -340,6 +320,19 @@
                     <a href="{{ url('/adminroomtype') }}">
                         <div class="parent-icon"><i class="bi bi-grid-3x3-gap"></i></div>
                         <div class="menu-title">Room Type</div>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ url('/adminroom') }}">
+                        <div class="parent-icon"><i class="bi bi-door-open"></i></div>
+                        <div class="menu-title">Rooms</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('faq.index') }}">
+                        <div class="parent-icon"><i class="bi bi-question-circle"></i></div>
+                        <div class="menu-title">FAQ</div>
                     </a>
                 </li>
 
@@ -404,3 +397,55 @@
         </aside>
         <!--end sidebar -->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+        <script>
+            $(document).ready(function() {
+                toastr.options = {
+                    "closeButton": true,
+                    "progressBar": true,
+                    "positionClass": "toast-top-right",
+                    "timeOut": "4000"
+                };
+
+                @if (session('success'))
+                    toastr.success("{{ session('success') }}");
+                @endif
+
+                @if (session('error'))
+                    toastr.error("{{ session('error') }}");
+                @endif
+
+                @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                        toastr.error("{{ $error }}");
+                    @endforeach
+                @endif
+            });
+        </script>
+
+        <script>
+            $(document).ready(function() {
+                $('.datatable').DataTable({
+                    processing: true,
+                    pageLength: 10,
+                    order: [
+                        [0, 'asc']
+                    ],
+                    language: {
+                        search: "_INPUT_",
+                        searchPlaceholder: "Search FAQ...",
+                        lengthMenu: "Show _MENU_ entries per page",
+                        zeroRecords: "No matching FAQs found",
+                        info: "Showing _START_ to _END_ of _TOTAL_ FAQs",
+                        infoEmpty: "No FAQs available",
+                        infoFiltered: "(filtered from _MAX_ total FAQs)"
+                    },
+                    columnDefs: [{
+                        orderable: false,
+                        targets: [5, 6]
+                    }]
+                });
+            });
+        </script>

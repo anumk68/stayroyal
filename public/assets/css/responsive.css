@@ -1612,7 +1612,35 @@ a.place-box-button {
 
 
 }
-
+/* Tablet desktop :768px. */
+@media (max-width: 768px) {
+    .inner.testimonial-area .row.border-add:before {
+   
+    top: 38px !important;
+ 
+}
+.luxury-button {
+   
+    text-align: center;
+}
+.inner.feature-area {
+    background-color: #f8f6f3;
+    padding: 45px 0 123px;
+}
+.room-details {
+    padding: 50px 0 52px;
+}
+.room-area.room-d {
+    padding: 41px 0;
+   
+}
+.google-map {
+    margin-bottom: 100px;
+}
+.style-two.contact-area {
+    padding: 35px 0 40px;
+}
+}
 
 /* Tablet desktop :768px. */
 @media (min-width: 768px) and (max-width: 991px) {

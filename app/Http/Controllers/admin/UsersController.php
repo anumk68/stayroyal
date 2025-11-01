@@ -10,6 +10,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 use App\Models\Subscription;
 use App\Models\Enquiry;
+use Illuminate\Support\Facades\Log;
+
 class UsersController extends Controller
 {
     public function customer_review(){
@@ -60,7 +62,7 @@ public function subscribe(Request $request)
         ]);
 
     } catch (\Exception $e) {
-        \Log::error('Subscription failed: ' . $e->getMessage());
+        Log::error('Subscription failed: ' . $e->getMessage());
 
         // Return JSON error with 500 code
         return response()->json([
@@ -106,7 +108,7 @@ public function subscribe(Request $request)
         return back()->with('status', 'Your enquiry has been sent successfully. We’ll get back to you shortly.');
     } catch (\Exception $e) {
         // You can log the error if needed
-        \Log::error('Enquiry failed: ' . $e->getMessage());
+        Log::error('Enquiry failed: ' . $e->getMessage());
 
         return back()->with('error', 'Something went wrong. Please try again later.');
     }

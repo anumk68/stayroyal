@@ -1,119 +1,190 @@
 @extends('admin.layouts.layout')
 @section('content')
-  <main class="page-content">
+    <main class="page-content">
 
-    <div class="card radius-10">
-    <div class="card-header bg-transparent">
-      <div class="row g-3 align-items-center">
-      <div class="col">
-        <h5 class="mb-0">Enquery</h5>
-      </div>
-      <div class="col">
-        <div class="d-flex align-items-center justify-content-end gap-3 cursor-pointer">
-        <div class="dropdown">
-          <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"
-          aria-expanded="false">
-          <i class="bx bx-dots-horizontal-rounded font-22 text-option"></i>
-          </a>
-          <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="javascript:;">Action</a></li>
-          <li><a class="dropdown-item" href="javascript:;">Another action</a></li>
-          <li>
-            <hr class="dropdown-divider">
-          </li>
-          <li><a class="dropdown-item" href="javascript:;">Something else here</a></li>
-          </ul>
+        <div class="card radius-10">
+            <div class="card-header bg-transparent">
+                <div class="row g-3 align-items-center">
+                    <div class="col">
+                        <h5 class="mb-0">Enquery</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <button id="delete-selected" class="btn btn-danger btn-sm" disabled>Delete Selected</button>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button"
+                                id="selectOptionsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                Select Options
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="selectOptionsDropdown">
+                                <li><a class="dropdown-item" href="#" id="select-all-action">Select All</a></li>
+                                <li><a class="dropdown-item" href="#" id="deselect-all-action">Deselect All</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <table class="table align-middle mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>
+                                    <input type="checkbox" id="select-all" class="form-check-input custom-checkbox">
+                                </th>
+                                <th>#ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Subject</th>
+                                <th>Message</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($enquries as $enqury)
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="form-check-input select-roomtype custom-checkbox"
+                                            value="{{ $enqury->id }}">
+                                    </td>
+                                    <td>#{{ $enqury->id }}</td>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-3">
+                                            <div class="product-info">
+                                                <h6 class="product-name mb-1">{{ $enqury->name }}</h6>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-3">
+                                            <div class="product-info">
+                                                <h6 class="product-name mb-1">{{ $enqury->email }}</h6>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-3">
+                                            <div class="product-info">
+                                                <h6 class="product-name mb-1">{{ $enqury->subject }}</h6>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-3">
+                                            <div class="product-info">
+                                                <h6 class="product-name mb-1">{{ $enqury->message }}</h6>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <div class="d-flex align-items-center gap-3 fs-6">
+                                            <a href="{{ url('/enquirydelete', $enqury->id) }}" class="text-danger"
+                                                title="Delete"
+                                                onclick="return confirm('Are you sure you want to delete this enquiry?');">
+                                                <i class="bi bi-trash-fill"></i>
+                                            </a>
+                                        </div>
+
+                                    </td>
+                                </tr>
+                            @endforeach
+
+                            @if ($enquries->isEmpty())
+                                <tr>
+                                    <td colspan="5" class="text-center">No Enquery found.</td>
+                                </tr>
+                            @endif
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-        </div>
-      </div>
-      </div>
+
+
+
+    </main>
+    <!--end page main-->
+
+    <!--start overlay-->
+    <div class="overlay nav-toggle-icon"></div>
+    <!--end overlay-->
+
+    <!--Start Back To Top Button-->
+    <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
+    <!--End Back To Top Button-->
+
+
+
     </div>
-
-    <div class="card-body">
-      <div class="table-responsive">
-      <table class="table align-middle mb-0">
-        <thead class="table-light">
-        <tr>
-          <th>#ID</th>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Subject</th>
-          <th>Message</th>
-          <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach ($enquries as $enqury)
-      <tr>
-        <td>#{{ $enqury->id }}</td>
-        <td>
-        <div class="d-flex align-items-center gap-3">
-        <div class="product-info">
-        <h6 class="product-name mb-1">{{ $enqury->name }}</h6>
-        </div>
-        </div>
-        </td>
-        <td>
-        <div class="d-flex align-items-center gap-3">
-        <div class="product-info">
-        <h6 class="product-name mb-1">{{ $enqury->email }}</h6>
-        </div>
-        </div>
-        </td>
-        <td>
-        <div class="d-flex align-items-center gap-3">
-        <div class="product-info">
-        <h6 class="product-name mb-1">{{ $enqury->subject }}</h6>
-        </div>
-        </div>
-        </td>
-        <td>
-        <div class="d-flex align-items-center gap-3">
-        <div class="product-info">
-        <h6 class="product-name mb-1">{{ $enqury->message }}</h6>
-        </div>
-        </div>
-        </td>
-
-        <td>
-        <div class="d-flex align-items-center gap-3 fs-6">
-        <a href="{{ url('/enquirydelete', $enqury->id) }}" class="text-danger" title="Delete"
-        onclick="return confirm('Are you sure you want to delete this enquiry?');">
-        <i class="bi bi-trash-fill"></i>
-        </a>
-        </div>
-
-        </td>
-      </tr>
-      @endforeach
-
-        @if ($enquries->isEmpty())
-      <tr>
-        <td colspan="5" class="text-center">No Enquery found.</td>
-      </tr>
-      @endif
-        </tbody>
-      </table>
-      </div>
-    </div>
-    </div>
+    <!--end wrapper-->
 
 
+    {{-- bulk delete script  --}}
 
-  </main>
-  <!--end page main-->
+    <script>
+        // Master checkbox toggle
+        $('#select-all').on('click', function() {
+            $('.select-roomtype').prop('checked', this.checked);
+            toggleDeleteButton();
+        });
 
-  <!--start overlay-->
-  <div class="overlay nav-toggle-icon"></div>
-  <!--end overlay-->
+        $(document).on('change', '.select-roomtype', function() {
+            const allChecked = $('.select-roomtype').length === $('.select-roomtype:checked').length;
+            $('#select-all').prop('checked', allChecked);
+            toggleDeleteButton();
+        });
 
-  <!--Start Back To Top Button-->
-  <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
-  <!--End Back To Top Button-->
+        function toggleDeleteButton() {
+            const anyChecked = $('.select-roomtype:checked').length > 0;
+            $('#delete-selected').prop('disabled', !anyChecked);
+        }
 
+        $('#delete-selected').on('click', function() {
+            const ids = $('.select-roomtype:checked').map(function() {
+                return $(this).val();
+            }).get();
 
+            if (ids.length === 0) return;
 
-  </div>
-  <!--end wrapper-->
+            if (!confirm('Are you sure you want to delete the selected Enquiry?')) return;
 
+            $.ajax({
+                url: '{{ route('customer_inquery.bulkDelete') }}',
+                type: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    ids: ids
+                },
+                success: function(response) {
+                    ids.forEach(id => {
+                        $('#roomtype-row-' + id).remove();
+                        location.reload();
+                    });
+
+                    alert(response.message);
+                    toggleDeleteButton();
+                    $('#select-all').prop('checked', false);
+                },
+                error: function() {
+                    alert('Something went wrong. Please try again.');
+                }
+            });
+        });
+
+        // Dropdown select/deselect
+        $('#select-all-action').on('click', function(e) {
+            e.preventDefault();
+            $('.select-roomtype').prop('checked', true);
+            $('#select-all').prop('checked', true);
+            toggleDeleteButton();
+        });
+
+        $('#deselect-all-action').on('click', function(e) {
+            e.preventDefault();
+            $('.select-roomtype').prop('checked', false);
+            $('#select-all').prop('checked', false);
+            toggleDeleteButton();
+        });
+    </script>
 @endsection

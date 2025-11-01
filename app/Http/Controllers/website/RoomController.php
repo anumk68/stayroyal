@@ -1,9 +1,11 @@
 <?php
+
 namespace App\Http\Controllers\website;
 
 use App\Http\Controllers\Controller;
 use App\Mail\WelcomeMail;
 use App\Models\Booking;
+use App\Models\FAQ;
 use App\Models\Meta;
 use App\Models\Offer;
 use App\Models\Payment;
@@ -172,8 +174,17 @@ class RoomController extends Controller
                 'total_days' => '',
             ]);
 
-            $metatitle       = Meta::where('meta_title', 'title_2bhk-luxury-villa-ground-floor')->value('value');
-            $metaDescription = Meta::where('meta_title', 'description_2bhk-luxury-villa-ground-floor')->value('value');
+            if ($offer_id == null) {
+                $metatitle       = Meta::where('meta_title', 'title-' . $details->slug)->value('value');
+                $metaDescription = Meta::where('meta_title', 'description-' . $details->slug)->value('value');
+            } else {
+                $metatitle       = Meta::where('meta_title', 'title-' . $details->slug . '/' . $offer_id)->value('value');
+                $metaDescription = Meta::where('meta_title', 'description-' . $details->slug . '/' . $offer_id)->value('value');
+            }
+           
+
+            $faqs = FAQ::where('room_id', $details->id)->where('status', 1)->get();
+            // dd($faq);
             return view('website.ground-floor', compact(
                 'details',
                 'roomtypes',
@@ -182,10 +193,12 @@ class RoomController extends Controller
                 'offer',
                 'metatitle',
                 'metaDescription',
-                'weekOffers'
+                'weekOffers',
+                'faqs'
             ));
         } else {
             return redirect()->back();
+            // return redirect()->route('home');
         }
     }
 
@@ -218,7 +231,6 @@ class RoomController extends Controller
             return back()->withErrors([
                 'booking_error' => 'This room is not available for the selected dates. <span style="color: green;">Available starting - ' . $nextAvailableDate . '</span>',
             ])->withInput();
-
         }
 
         $user     = Auth::user();
@@ -314,13 +326,15 @@ class RoomController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         }
-
         // Register user
         User::create([
             'user_name' => $request->user_name,
             'email'     => $request->email,
             'phone'     => $request->phone,
             'address'   => $request->address,
+            'role'   => 'user',
+            'status'   => '1',
+            'email_verified_at'   => now(),
             'password'  => Hash::make($request->password),
         ]);
         return redirect()->route('user.login')->with('success', 'Your account has been created. Please log in.');
@@ -436,5 +450,4 @@ class RoomController extends Controller
 
         return "❌ Payment Failed or Cancelled.";
     }
-
 }

@@ -17,9 +17,25 @@
 
             <div class="card-body">
                 <div class="table-responsive">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <button id="delete-selected" class="btn btn-danger btn-sm" disabled>Delete Selected</button>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button"
+                                id="selectOptionsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                Select Options
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="selectOptionsDropdown">
+                                <li><a class="dropdown-item" href="#" id="select-all-action">Select All</a></li>
+                                <li><a class="dropdown-item" href="#" id="deselect-all-action">Deselect All</a></li>
+                            </ul>
+                        </div>
+                    </div>
                     <table class="table align-middle mb-0">
                         <thead class="table-light">
                             <tr>
+                                  <th>
+                                    <input type="checkbox" id="select-all" class="form-check-input custom-checkbox">
+                                </th>
                                 <th>#ID</th>
                                 <th>Room Type</th>
                                 <th>Offer (%)</th>
@@ -32,6 +48,10 @@
                         <tbody>
                             @foreach ($offers as $offer)
                                 <tr>
+                                    <td>
+                                        <input type="checkbox" class="form-check-input select-roomtype custom-checkbox"
+                                            value="{{ $offer->id }}">
+                                    </td>
                                     <td>{{ $offer->id }}</td>
                                     <td>{{ $offer->roomType->room_type ?? 'N/A' }}</td>
                                     <td>{{ $offer->offer_price }}%</td>
@@ -73,4 +93,71 @@
             </div>
         </div>
     </main>
+     {{-- bulk delete script  --}}
+
+    <script>
+        // Master checkbox toggle
+        $('#select-all').on('click', function() {
+            $('.select-roomtype').prop('checked', this.checked);
+            toggleDeleteButton();
+        });
+
+        $(document).on('change', '.select-roomtype', function() {
+            const allChecked = $('.select-roomtype').length === $('.select-roomtype:checked').length;
+            $('#select-all').prop('checked', allChecked);
+            toggleDeleteButton();
+        });
+
+        function toggleDeleteButton() {
+            const anyChecked = $('.select-roomtype:checked').length > 0;
+            $('#delete-selected').prop('disabled', !anyChecked);
+        }
+
+        $('#delete-selected').on('click', function() {
+            const ids = $('.select-roomtype:checked').map(function() {
+                return $(this).val();
+            }).get();
+
+            if (ids.length === 0) return;
+
+            if (!confirm('Are you sure you want to delete the selected offer?')) return;
+
+            $.ajax({
+                url: '{{ route('offer.bulkDelete') }}',
+                type: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    ids: ids
+                },
+                success: function(response) {
+                    ids.forEach(id => {
+                        $('#roomtype-row-' + id).remove();
+                        location.reload();
+                    });
+
+                    alert(response.message);
+                    toggleDeleteButton();
+                    $('#select-all').prop('checked', false);
+                },
+                error: function() {
+                    alert('Something went wrong. Please try again.');
+                }
+            });
+        });
+
+        // Dropdown select/deselect
+        $('#select-all-action').on('click', function(e) {
+            e.preventDefault();
+            $('.select-roomtype').prop('checked', true);
+            $('#select-all').prop('checked', true);
+            toggleDeleteButton();
+        });
+
+        $('#deselect-all-action').on('click', function(e) {
+            e.preventDefault();
+            $('.select-roomtype').prop('checked', false);
+            $('#select-all').prop('checked', false);
+            toggleDeleteButton();
+        });
+    </script>
 @endsection

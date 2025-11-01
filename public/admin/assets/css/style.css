@@ -7,7 +7,7 @@ File: style.css
 */
 
 
-/*
+/* 
 - General
 - Header
 - Sidebar
@@ -83,7 +83,7 @@ a {
     right: 2rem;
     opacity: 0.5;
     cursor: pointer;
-
+ 
  }
 
 .top-header .navbar .searchbar .form-control {
@@ -111,7 +111,7 @@ a {
 
 .top-header .navbar .searchbar .search-icon,
 .top-header .navbar .dropdown-searchbar .search-icon {
-
+  
     opacity: 0.5;
 
 }
@@ -224,7 +224,7 @@ a {
 }
 
 .top-header .navbar .dropdown-item .setting-text {
-
+   
     font-size: 16px;
     font-weight: 500;
 }
@@ -314,7 +314,7 @@ a {
 
 
 .top-header .navbar .nav-link .notify-badge {
-
+      
     position: absolute;
     top: -2px;
     right: -5px;
@@ -771,28 +771,28 @@ a {
 	cursor: pointer;
 	background-color: #ffffff;
  }
-
+ 
  .best-product-item {
 	 background-color: #ffffff;
 	 cursor: pointer;
 	 border-radius: 10px;
 	 padding: .5rem;
  }
-
+ 
  .best-product-item:hover {
 	 background-color: #f5f5f5;
  }
-
+ 
  .product-box img {
 	 width: 100%;
  }
-
+ 
  .best-product {
 	 position: relative;
 	 height: 460px;
  }
-
-
+ 
+ 
 
 .chart-container1 {
     position: relative;
@@ -868,7 +868,7 @@ a {
 }
 
 .productlist .product-title {
-
+    
     color: rgb(25, 27, 34);
 
 }
@@ -892,7 +892,7 @@ a {
 }
 
 .orderlist .product-title {
-
+    
     color: rgb(25, 27, 34);
 
 }
@@ -916,7 +916,7 @@ a {
 
 
 .iconmenu .ps__rail-x {
-
+	
 	height: 0px;
 }
 
@@ -1556,14 +1556,14 @@ a {
 
 
   @media screen and (max-width:1025px) {
-
-
+      
+    
     .sidebar-wrapper {
-
+    
         left: -300px;
     }
 
-
+  
     .page-content {
 
         margin-left: 0px;
@@ -1571,7 +1571,7 @@ a {
     }
 
     .top-header .navbar{
-
+      
         left: 0px;
     }
 
@@ -1579,11 +1579,11 @@ a {
 
 
    .wrapper.toggled .sidebar-wrapper{
-
+    
         left: 0px;
     }
 
-
+    
     .wrapper.toggled .page-content {
 
         margin-left: 0px;
@@ -1591,7 +1591,7 @@ a {
     }
 
     .wrapper.toggled .top-header .navbar{
-
+      
         left: 0px;
     }
 
@@ -1610,7 +1610,7 @@ a {
 		transition: all .2s ease-out
 	}
 
-
+    
 .top-header .navbar .full-searchbar {
 
     position: absolute;
@@ -1629,7 +1629,7 @@ a {
     padding: 0 1rem;
     -webkit-animation: .6s cubic-bezier(.25, .8, .25, 1) 0s normal forwards 1 animdropdown;
 	animation: .6s cubic-bezier(.25, .8, .25, 1) 0s normal forwards 1 animdropdown
-
+ 
   }
 
 .email-header {
@@ -1660,7 +1660,7 @@ a {
     cursor: move;
     transition: all .3s ease-out
 }
-
+   
 .compose-mail-popup {
     width: auto;
     position: fixed;
@@ -1706,7 +1706,7 @@ a {
 
 
 
-
+  
 }
 
 
@@ -1743,16 +1743,3 @@ a {
 		display: none
 	}
 }
-
-
-
- .add-room-modal{
-            border: 1px solid #f5f5f5;
-    padding: 20px;
-    border-radius: 7px;
-    box-shadow: 0 0 2px #0000003b;
-    margin-top: 80px;
-    overflow: hidden;
-    overflow-y: scroll;
-    height: 650px;
-        }
