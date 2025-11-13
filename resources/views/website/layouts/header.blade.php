@@ -272,7 +272,7 @@
         <div class="container">
             <a href="https://stayroyal.in/" class="navbar-brand">
                 <div class="header-logo">
-                    <img src="{{ asset('public/assets/images/inner/stay-logo.png') }}" alt="Logo">
+                    <img src="{{ asset('public/assets/images/inner/stay-logo.webp') }}" alt="Logo">
                 </div>
             </a>
             <div class="maximum_rang">

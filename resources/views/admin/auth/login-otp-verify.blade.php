@@ -125,7 +125,7 @@
     <div class="otp-container">
     <!-- Logo centered -->
     <div style="margin-bottom: 20px;">
-        <img src="{{ asset('public/assets/images/inner/stay-logo.png') }}" alt="Stay Royal Logo" style="width: 120px;">
+        <img src="{{ asset('public/assets/images/inner/stay-logo.webp') }}" alt="Stay Royal Logo" style="width: 120px;">
     </div>
 
     <h3>Enter OTP to Verify Admin Login</h3>

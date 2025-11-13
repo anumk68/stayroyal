@@ -360,7 +360,7 @@
             <div class="container">
                 <div class="section-title center text-center" data-cue="zoomIn">
                     <div class="section-thumb text-center">
-                        <img src="{{ asset('public/assets/images/inner/stay-logo.png') }}"
+                        <img src="{{ asset('public/assets/images/inner/stay-logo.webp') }}"
                             alt="3BHK Luxury Villa Aerocity">
                     </div>
                     <h2>Ground Floor, First Floor or Complete Villa – Luxury That Fits Your Stay

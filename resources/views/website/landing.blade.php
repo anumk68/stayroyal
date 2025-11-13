@@ -32,7 +32,7 @@
       <!-- LOGO -->
       <a class="navbar-brand" href="#">
         <!-- Replace with your logo path -->
-        <img src="public/img/stay-logo.png" alt="Stay Royal">
+        <img src="public/img/stay-logo.webp" alt="Stay Royal">
       </a>
 
       <!-- Mobile quick call + toggler -->
@@ -734,7 +734,7 @@
             <div class="row g-4">
                <div class="col-md-5">
                       <div class="logo-footer">
-                        <img src="public/img/stay-logo.png" class="img-fluide" alt="logo" >
+                        <img src="public/img/stay-logo.webp" class="img-fluide" alt="logo" >
                       </div>
                   <p
                      class="mt-2 mb-3">Your private luxury villa near<br>

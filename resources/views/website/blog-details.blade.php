@@ -112,7 +112,6 @@
                         <h5 class="fw-bold mb-3 d-flex align-items-center">
                             <i class="bi bi-journal-text me-2 text-primary"></i> Recent Blogs
                         </h5>
-
                         @foreach ($recentBlogs as $recent)
                             <div class="blog-item d-flex align-items-center mb-3 border-bottom pb-2">
                                 <a href="{{ route('blog.details', $recent->slug) }}"
@@ -134,8 +133,6 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div>
 </section>
@@ -193,8 +190,4 @@
         handleScroll();
     });
 </script>
-
-
-
-
 @endsection

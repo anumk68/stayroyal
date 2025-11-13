@@ -104,7 +104,7 @@
 
 <div class="otp-container">
     <div class="logo">
-        <img src="{{ asset('public/assets/images/inner/stay-logo.png') }}" alt="Logo"> {{-- Adjust path --}}
+        <img src="{{ asset('public/assets/images/inner/stay-logo.webp') }}" alt="Logo"> {{-- Adjust path --}}
     </div>
 
     <h2>Enter OTP</h2>

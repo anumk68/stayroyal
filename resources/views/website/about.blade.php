@@ -53,7 +53,7 @@
                 <div class="col-md-12 text-center">
                     <div class="section-title center inner" data-cue="zoomIn">
                         <div class="section-thumb">
-                            <img src="{{ asset('public/assets/images/inner/stay-logo.png') }}"
+                            <img src="{{ asset('public/assets/images/inner/stay-logo.webp') }}"
                                 alt="Luxury Villas in Mohali">
                         </div>
                         <h2>Our Amenities</h2>
@@ -66,7 +66,7 @@
                 <div class="col-lg-2 col-md-4 col-sm-6 col-6">
                     <div class="single-feature-box" data-cue="zoomIn">
                         <div class="feature-icon">
-                            <img src="{{ asset('public/assets/images/home-1/Comfy & Clean Rooms.png') }}"
+                            <img src="{{ asset('public/assets/images/home-1/Comfy & Clean Rooms.webp') }}"
                                 alt="Villa Stay Offers Mohali">
                         </div>
                         <div class="feature-content new-f">
@@ -77,7 +77,7 @@
                 <div class="col-lg-2 col-md-4 col-sm-6 col-6">
                     <div class="single-feature-box" data-cue="zoomIn">
                         <div class="feature-icon ">
-                            <img src="{{ asset('public/assets/images/home-1/Fast Wi-Fi.png') }}"
+                            <img src="{{ asset('public/assets/images/home-1/Fast Wi-Fi.webp') }}"
                                 alt="Villa Stay Offers Mohali">
                         </div>
                         <div class="feature-content new-f">
@@ -88,7 +88,7 @@
                 <div class="col-lg-2 col-md-4 col-sm-6 col-6">
                     <div class="single-feature-box" data-cue="zoomIn">
                         <div class="feature-icon ">
-                            <img src="{{ asset('public/assets/images/home-1/Easy Self Check-In.png') }}"
+                            <img src="{{ asset('public/assets/images/home-1/Easy Self Check-In.webp') }}"
                                 alt="Luxury Villas in Mohali">
                         </div>
                         <div class="feature-content new-f">
@@ -99,7 +99,7 @@
                 <div class="col-lg-2 col-md-4 col-sm-6 col-6">
                     <div class="single-feature-box" data-cue="zoomIn">
                         <div class="feature-icon ">
-                            <img src="{{ asset('public/assets/images/home-1/Smart tv.png') }}"
+                            <img src="{{ asset('public/assets/images/home-1/Smart tv.webp') }}"
                                 alt="Luxury Villas in Mohali">
                         </div>
                         <div class="feature-content new-f">
@@ -110,7 +110,7 @@
                 <div class="col-lg-2 col-md-4 col-sm-6 col-6">
                     <div class="single-feature-box" data-cue="zoomIn">
                         <div class="feature-icon">
-                            <img src="{{ asset('public/assets/images/home-1/Free Parking.png') }}"
+                            <img src="{{ asset('public/assets/images/home-1/Free Parking.webp') }}"
                                 alt="Luxury Villas in Mohali">
                         </div>
                         <div class="feature-content  new-f">
@@ -121,7 +121,7 @@
                 <div class="col-lg-2 col-md-4 col-sm-6 col-6">
                     <div class="single-feature-box" data-cue="zoomIn">
                         <div class="feature-icon ">
-                            <img src="{{ asset('public/assets/images/home-1/Great Location.png') }}"
+                            <img src="{{ asset('public/assets/images/home-1/Great Location.webp') }}"
                                 alt="Luxury Villas in Mohali">
                         </div>
                         <div class="feature-content new-f">
@@ -133,7 +133,7 @@
                 <div class="col-lg-2 col-md-4 col-sm-6 col-6">
                     <div class="single-feature-box" data-cue="zoomIn">
                         <div class="feature-icon ">
-                            <img src="{{ asset('public/assets/images/home-1/Washing Machine.png') }}"
+                            <img src="{{ asset('public/assets/images/home-1/Washing_Machine.webp') }}"
                                 alt="Luxury Villas in Mohali">
                         </div>
                         <div class="feature-content new-f">
@@ -145,7 +145,7 @@
                 <div class="col-lg-2 col-md-4 col-sm-6 col-6">
                     <div class="single-feature-box" data-cue="zoomIn">
                         <div class="feature-icon ">
-                            <img src="{{ asset('public/assets/images/home-1/Food Order Facility.png') }}"
+                            <img src="{{ asset('public/assets/images/home-1/Food Order Facility.webp') }}"
                                 alt="Luxury Living Room">
                         </div>
                         <div class="feature-content new-f">
@@ -157,7 +157,7 @@
                 <div class="col-lg-2 col-md-4 col-sm-6 col-6">
                     <div class="single-feature-box" data-cue="zoomIn">
                         <div class="feature-icon ">
-                            <img src="{{ asset('public/assets/images/home-1/Independent Villa.png') }}"
+                            <img src="{{ asset('public/assets/images/home-1/Independent Villa.webp') }}"
                                 alt="Luxury Living Room">
                         </div>
                         <div class="feature-content new-f">
@@ -169,7 +169,7 @@
                 <div class="col-lg-2 col-md-4 col-sm-6 col-6">
                     <div class="single-feature-box" data-cue="zoomIn">
                         <div class="feature-icon ">
-                            <img src="{{ asset('public/assets/images/home-1/Towel.png') }}" alt="Luxury Living Room">
+                            <img src="{{ asset('public/assets/images/home-1/Towel.webp') }}" alt="Luxury Living Room">
                         </div>
                         <div class="feature-content new-f">
                             <h4>Towel</h4>
@@ -180,7 +180,7 @@
                 <div class="col-lg-2 col-md-4 col-sm-6 col-6">
                     <div class="single-feature-box" data-cue="zoomIn">
                         <div class="feature-icon ">
-                            <img src="{{ asset('public/assets/images/home-1/Toiletries.png') }}"
+                            <img src="{{ asset('public/assets/images/home-1/Toiletries.webp') }}"
                                 alt="Luxury Living Room">
                         </div>
                         <div class="feature-content new-f">
@@ -192,7 +192,7 @@
                 <div class="col-lg-2 col-md-4 col-sm-6 col-6">
                     <div class="single-feature-box" data-cue="zoomIn">
                         <div class="feature-icon ">
-                            <img src="{{ asset('public/assets/images/home-1/Gyser.png') }}" alt="Luxury Living Room">
+                            <img src="{{ asset('public/assets/images/home-1/Gyser.webp') }}" alt="Luxury Living Room">
                         </div>
                         <div class="feature-content new-f">
                             <h4>Gyser</h4>

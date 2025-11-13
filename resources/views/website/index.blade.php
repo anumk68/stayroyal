@@ -181,7 +181,7 @@
             <div class="col-md-12 text-center">
                 <div class="section-title center" data-cue="zoomIn">
                     <div class="section-thumb">
-                        <img loading="lazy" src="{{ asset('public/assets/images/inner/stay-logo.png') }}" alt="Luxury Villas in Mohali">
+                        <img loading="lazy" src="{{ asset('public/assets/images/inner/stay-logo.webp') }}" alt="Luxury Villas in Mohali">
                     </div>
                     <h2>Welcome to Stay Royal - Your Premium Luxury Villa in Mohali
                     </h2>
@@ -405,7 +405,7 @@
             <div class="col-md-12 text-center">
                 <div class="section-title center" data-cue="zoomIn">
                     <div class="section-thumb">
-                        <img loading="lazy" src="{{ asset('public/assets/images/inner/stay-logo.png') }}" alt="Luxury Villas in Mohali">
+                        <img loading="lazy" src="{{ asset('public/assets/images/inner/stay-logo.webp') }}" alt="Luxury Villas in Mohali">
                     </div>
                     <h2 class="macke">Experience the Top-Rated Homestay in Mohali – Stay Royal BNB
                     </h2>
@@ -421,7 +421,7 @@
             <div class="col-lg-2 col-md-4 col-sm-6 col-6">
                 <div class="single-feature-box" data-cue="zoomIn">
                     <div class="feature-icon">
-                        <img loading="lazy" src="{{ asset('public/assets/images/home-1/Comfy & Clean Rooms.png') }}" alt="Luxury Villas in Mohali">
+                        <img loading="lazy" src="{{ asset('public/assets/images/home-1/Comfy & Clean Rooms.webp') }}" alt="Luxury Villas in Mohali">
                     </div>
                     <div class="feature-content new-f">
                         <h4>Comfy & Clean Rooms</h4>
@@ -431,7 +431,7 @@
             <div class="col-lg-2 col-md-4 col-sm-6 col-6">
                 <div class="single-feature-box" data-cue="zoomIn">
                     <div class="feature-icon ">
-                        <img loading="lazy" src="{{ asset('public/assets/images/home-1/Fast Wi-Fi.png') }}" alt="Luxury Villas in Mohali">
+                        <img loading="lazy" src="{{ asset('public/assets/images/home-1/Fast Wi-Fi.webp') }}" alt="Luxury Villas in Mohali">
                     </div>
                     <div class="feature-content new-f">
                         <h4>Fast Wi-Fi</h4>
@@ -441,7 +441,7 @@
             <div class="col-lg-2 col-md-4 col-sm-6 col-6">
                 <div class="single-feature-box" data-cue="zoomIn">
                     <div class="feature-icon ">
-                        <img loading="lazy" src="{{ asset('public/assets/images/home-1/Easy Self Check-In.png') }}" alt="Luxury Villas in Mohali">
+                        <img loading="lazy" src="{{ asset('public/assets/images/home-1/Easy Self Check-In.webp') }}" alt="Luxury Villas in Mohali">
                     </div>
                     <div class="feature-content new-f">
                         <h4>Easy Self Check-In</h4>
@@ -451,7 +451,7 @@
             <div class="col-lg-2 col-md-4 col-sm-6 col-6">
                 <div class="single-feature-box" data-cue="zoomIn">
                     <div class="feature-icon ">
-                        <img loading="lazy" src="{{ asset('public/assets/images/home-1/Smart tv.png') }}" alt="Luxury Villas in Mohali">
+                        <img loading="lazy" src="{{ asset('public/assets/images/home-1/Smart tv.webp') }}" alt="Luxury Villas in Mohali">
                     </div>
                     <div class="feature-content new-f">
                         <h4>Smart Tv</h4>
@@ -461,7 +461,7 @@
             <div class="col-lg-2 col-md-4 col-sm-6 col-6">
                 <div class="single-feature-box" data-cue="zoomIn">
                     <div class="feature-icon">
-                        <img loading="lazy" src="{{ asset('public/assets/images/home-1/Free Parking.png') }}" alt="Luxury Villas in Mohali">
+                        <img loading="lazy" src="{{ asset('public/assets/images/home-1/Free Parking.webp') }}" alt="Luxury Villas in Mohali">
                     </div>
                     <div class="feature-content  new-f">
                         <h4>Free Parking</h4>
@@ -471,7 +471,7 @@
             <div class="col-lg-2 col-md-4 col-sm-6 col-6">
                 <div class="single-feature-box" data-cue="zoomIn">
                     <div class="feature-icon ">
-                        <img loading="lazy" src="{{ asset('public/assets/images/home-1/Great Location.png') }}" alt="Luxury Villas in Mohali">
+                        <img loading="lazy" src="{{ asset('public/assets/images/home-1/Great Location.webp') }}" alt="Luxury Villas in Mohali">
                     </div>
                     <div class="feature-content new-f">
                         <h4>Great Location</h4>
@@ -482,7 +482,7 @@
             <div class="col-lg-2 col-md-4 col-sm-6 col-6">
                 <div class="single-feature-box" data-cue="zoomIn">
                     <div class="feature-icon ">
-                        <img loading="lazy" src="{{ asset('public/assets/images/home-1/Washing Machine.png') }}" alt="Luxury Villas in Mohali">
+                        <img loading="lazy" src="{{ asset('public/assets/images/home-1/Washing_Machine.webp') }}" alt="Luxury Villas in Mohali">
                     </div>
                     <div class="feature-content new-f">
                         <h4>Washing Machine</h4>
@@ -493,7 +493,7 @@
             <div class="col-lg-2 col-md-4 col-sm-6 col-6">
                 <div class="single-feature-box" data-cue="zoomIn">
                     <div class="feature-icon ">
-                        <img loading="lazy" src="{{ asset('public/assets/images/home-1/Food Order Facility.png') }}" alt="Luxury Villas in Mohali">
+                        <img loading="lazy" src="{{ asset('public/assets/images/home-1/Food Order Facility.webp') }}" alt="Luxury Villas in Mohali">
                     </div>
                     <div class="feature-content new-f">
                         <h4>Food Order Facility</h4>
@@ -504,7 +504,7 @@
             <div class="col-lg-2 col-md-4 col-sm-6 col-6">
                 <div class="single-feature-box" data-cue="zoomIn">
                     <div class="feature-icon ">
-                        <img loading="lazy" src="{{ asset('public/assets/images/home-1/Independent Villa.png') }}" alt="Luxury Villas in Mohali">
+                        <img loading="lazy" src="{{ asset('public/assets/images/home-1/Independent Villa.webp') }}" alt="Luxury Villas in Mohali">
                     </div>
                     <div class="feature-content new-f">
                         <h4>Independent Villa</h4>
@@ -515,7 +515,7 @@
             <div class="col-lg-2 col-md-4 col-sm-6 col-6">
                 <div class="single-feature-box" data-cue="zoomIn">
                     <div class="feature-icon ">
-                        <img loading="lazy" src="{{ asset('public/assets/images/home-1/Towel.png') }}" alt="Luxury Villas in Mohali">
+                        <img loading="lazy" src="{{ asset('public/assets/images/home-1/Towel.webp') }}" alt="Luxury Villas in Mohali">
                     </div>
                     <div class="feature-content new-f">
                         <h4>Towel</h4>
@@ -526,7 +526,7 @@
             <div class="col-lg-2 col-md-4 col-sm-6 col-6">
                 <div class="single-feature-box" data-cue="zoomIn">
                     <div class="feature-icon ">
-                        <img loading="lazy" src="{{ asset('public/assets/images/home-1/Toiletries.png') }}" alt="Luxury Villas in Mohali">
+                        <img loading="lazy" src="{{ asset('public/assets/images/home-1/Toiletries.webp') }}" alt="Luxury Villas in Mohali">
                     </div>
                     <div class="feature-content new-f">
                         <h4>Toiletries</h4>
@@ -537,7 +537,7 @@
             <div class="col-lg-2 col-md-4 col-sm-6 col-6">
                 <div class="single-feature-box" data-cue="zoomIn">
                     <div class="feature-icon ">
-                        <img loading="lazy" src="{{ asset('public/assets/images/home-1/Gyser.png') }}" alt="Luxury Villas in Mohali">
+                        <img loading="lazy" src="{{ asset('public/assets/images/home-1/Gyser.webp') }}" alt="Luxury Villas in Mohali">
                     </div>
                     <div class="feature-content new-f">
                         <h4>Gyser</h4>

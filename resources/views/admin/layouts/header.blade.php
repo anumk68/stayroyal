@@ -290,7 +290,7 @@
         <aside class="sidebar-wrapper" data-simplebar="true">
             <div class="sidebar-header">
                 <div>
-                    <img src="{{ asset('public/assets/images/inner/stay-logo.png') }}" height="45"
+                    <img src="{{ asset('public/assets/images/inner/stay-logo.webp') }}" height="45"
                         class="logo-icon" alt="logo icon"
                         style="background-color: black; border-radius: 50%; width: 45px; object-fit: cover;">
                 </div>

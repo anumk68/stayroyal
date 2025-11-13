@@ -23,7 +23,7 @@
                 <div class="col-md-12 text-center">
                     <div class="section-title center inner" data-cue="zoomIn">
                         <div class="section-thumb">
-                            <img src="{{ asset('public/assets/images/inner/stay-logo.png') }}" alt="Complete 4BHK Luxury Villa Room Mohali">
+                            <img src="{{ asset('public/assets/images/inner/stay-logo.webp') }}" alt="Complete 4BHK Luxury Villa Room Mohali">
                         </div>
                         <h2>Welcome to Stay Royal – Best Mohali Rooms at Stay Royal</h2>
                         <p class="section-desc-1">Welcome to Stay Royal, where comfort meets elegance in the heart of Mohali. Whether you're searching for premium rooms in Mohali or peaceful rooms in Kharar, our thoughtfully designed spaces offer the perfect blend of style, privacy, and convenience. Each room features tasteful interiors, modern amenities, and a calming ambiance tailored for both business and leisure travelers.

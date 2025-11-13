@@ -123,7 +123,7 @@
 
 <body>
     <div class="login-card">
-        <img src="{{ asset('public/assets/images/inner/stay-logo.png') }}" alt=" Logo">
+        <img src="{{ asset('public/assets/images/inner/stay-logo.webp') }}" alt=" Logo">
         <h2>Sign In</h2>
 
         @if (session('success'))

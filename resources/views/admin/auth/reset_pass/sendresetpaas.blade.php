@@ -103,7 +103,7 @@
 
     <div class="reset-container">
         <!-- Logo -->
-        <img src="{{ asset('public/assets/images/inner/stay-logo.png') }}" alt="Logo" class="logo">
+        <img src="{{ asset('public/assets/images/inner/stay-logo.webp') }}" alt="Logo" class="logo">
 
         <h2>Reset Password</h2>
 

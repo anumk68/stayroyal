@@ -5,7 +5,7 @@
                 <div class="footer-widget-contact">
                     <div class="footer-widget-logo" style="padding: 5px; display: inline-block;">
                         <a href="https://stayroyal.in/"><img loading="lazy"
-                                src="{{ asset('public/assets/images/inner/stay-logo.png') }}" alt="Logo"></a>
+                                src="{{ asset('public/assets/images/inner/stay-logo.webp') }}" alt="Logo"></a>
                     </div>
                     <div class="footer-widget-content">
                         <div class="footer-widget-title">
@@ -500,7 +500,7 @@ echo <<<JSON
     "name": "Stay Royal",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://stayroyal.in/public/assets/images/inner/stay-logo.png"
+      "url": "https://stayroyal.in/public/assets/images/inner/stay-logo.webp"
     }
   },
   "hasPart": [
@@ -545,7 +545,7 @@ echo <<<JSON
   "@type": "Corporation",
   "name": "Stay Royal",
   "url": "https://stayroyal.in/",
-  "logo": "https://stayroyal.in/public/assets/images/inner/stay-logo.png",
+  "logo": "https://stayroyal.in/public/assets/images/inner/stay-logo.webp",
   "contactPoint": {
     "@type": "ContactPoint",
     "telephone": "+917006022986",

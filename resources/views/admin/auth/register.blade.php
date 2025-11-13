@@ -113,7 +113,7 @@
 <body>
 
     <div class="register-box">
-         <img src="{{ asset('public/assets/images/inner/stay-logo.png') }}" alt="  Logo">
+         <img src="{{ asset('public/assets/images/inner/stay-logo.webp') }}" alt="  Logo">
         <h2>Sign Up</h2>
 @if (session('success'))
     <div style="color: green; margin-bottom: 10px;">
